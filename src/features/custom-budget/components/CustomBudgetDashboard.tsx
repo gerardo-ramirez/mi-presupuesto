@@ -1,0 +1,181 @@
+import { Loader2 } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { useCustomBudget } from '../hooks/useCustomBudget'
+import { useCustomCalculations } from '../hooks/useCustomCalculations'
+import { CurrencyBar } from './CurrencyBar'
+import { SimpleSection } from './SimpleSection'
+import { EquivalenceSection } from './EquivalenceSection'
+import { ConversionSection } from './ConversionSection'
+import { AddSectionButton } from './AddSectionButton'
+import type { CustomSection } from '../types/customBudget.types'
+
+function SectionRenderer({
+  section,
+  currencyValue,
+  currencyName,
+  onUpdate,
+  onAddExpense,
+  onRemoveExpense,
+  onIncrement,
+  onDecrement,
+  onAddDivision,
+  onRemoveDivision,
+  onRemove,
+}: {
+  section: CustomSection
+  currencyValue: number
+  currencyName: string
+  onUpdate: (updates: Partial<CustomSection>) => void
+  onAddExpense: (monto: number, nombre?: string) => void
+  onRemoveExpense: (expenseId: string) => void
+  onIncrement: () => void
+  onDecrement: () => void
+  onAddDivision: (parts: number) => void
+  onRemoveDivision: (index: number) => void
+  onRemove: () => void
+}) {
+  const calculations = useCustomCalculations(section, currencyValue)
+
+  if (section.type === 'simple') {
+    return (
+      <SimpleSection
+        section={section}
+        calculations={calculations}
+        onUpdate={onUpdate}
+        onAddExpense={onAddExpense}
+        onRemoveExpense={onRemoveExpense}
+        onRemove={onRemove}
+      />
+    )
+  }
+
+  if (section.type === 'equivalence') {
+    return (
+      <EquivalenceSection
+        section={section}
+        calculations={calculations}
+        onUpdate={onUpdate}
+        onIncrement={onIncrement}
+        onDecrement={onDecrement}
+        onRemove={onRemove}
+      />
+    )
+  }
+
+  return (
+    <ConversionSection
+      section={section}
+      calculations={calculations}
+      currencyName={currencyName}
+      onUpdate={onUpdate}
+      onAddDivision={onAddDivision}
+      onRemoveDivision={onRemoveDivision}
+      onRemove={onRemove}
+    />
+  )
+}
+
+export function CustomBudgetDashboard() {
+  const {
+    data,
+    isLoading,
+    isSaving,
+    updateCurrency,
+    addSection,
+    removeSection,
+    updateSection,
+    addExpense,
+    removeExpense,
+    incrementConsumed,
+    decrementConsumed,
+    addDivision,
+    removeDivision,
+    resetCustomBudget,
+  } = useCustomBudget()
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-amber-500" />
+      </div>
+    )
+  }
+
+  const sortedSections = [...data.sections].sort((a, b) => a.order - b.order)
+
+  return (
+    <>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+      />
+      <div
+        className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 p-4 md:p-8"
+        style={{ fontFamily: "'JetBrains Mono', monospace" }}
+      >
+        {/* Header */}
+        <header className="mb-6 flex items-start justify-between">
+          <div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+              Mi Presupuesto
+            </h1>
+            <p className="text-gray-500 text-sm mt-1">
+              {isSaving ? (
+                <span className="text-amber-500/70 inline-flex items-center gap-1">
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                  Guardando...
+                </span>
+              ) : (
+                'Auto-guardado en Firebase'
+              )}
+            </p>
+          </div>
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={resetCustomBudget}
+            className="text-gray-600 hover:text-red-400 hover:bg-red-950/30 text-xs"
+          >
+            Resetear
+          </Button>
+        </header>
+
+        {/* Currency bar */}
+        <CurrencyBar
+          currencyName={data.currencyName}
+          currencyValue={data.currencyValue}
+          onNameChange={(name) => updateCurrency(name, data.currencyValue)}
+          onValueChange={(value) => updateCurrency(data.currencyName, value)}
+        />
+
+        {/* Sections grid */}
+        {sortedSections.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4">
+            {sortedSections.map((section) => (
+              <SectionRenderer
+                key={section.id}
+                section={section}
+                currencyValue={data.currencyValue}
+                currencyName={data.currencyName}
+                onUpdate={(updates) => updateSection(section.id, updates)}
+                onAddExpense={(monto, nombre) => addExpense(section.id, monto, nombre)}
+                onRemoveExpense={(expenseId) => removeExpense(section.id, expenseId)}
+                onIncrement={() => incrementConsumed(section.id)}
+                onDecrement={() => decrementConsumed(section.id)}
+                onAddDivision={(parts) => addDivision(section.id, parts)}
+                onRemoveDivision={(index) => removeDivision(section.id, index)}
+                onRemove={() => removeSection(section.id)}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Add section */}
+        <div className="max-w-sm">
+          <AddSectionButton onAdd={addSection} />
+        </div>
+      </div>
+    </>
+  )
+}
