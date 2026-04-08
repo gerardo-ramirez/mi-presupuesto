@@ -10,24 +10,36 @@ export function useBudget() {
   const [budgetData, setBudgetData] = useState<BudgetData>(DEFAULT_BUDGET)
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
-  const isFirstLoad = useRef(true)
+  // Only true after the initial Firestore fetch completes — auto-save must not fire before this
+  const isLoaded = useRef(false)
 
+  // Load from Firestore when user is available
   useEffect(() => {
     if (!user) {
       setIsLoading(false)
+      isLoaded.current = false
       return
     }
+
+    // Reset loaded flag so auto-save doesn't fire during the upcoming fetch
+    isLoaded.current = false
+    setIsLoading(true)
+
     BudgetService.getBudget(user.uid)
-      .then(setBudgetData)
+      .then((data) => {
+        setBudgetData(data)
+        isLoaded.current = true
+      })
+      .catch(() => {
+        setBudgetData(DEFAULT_BUDGET)
+        isLoaded.current = true
+      })
       .finally(() => setIsLoading(false))
   }, [user])
 
+  // Auto-save with debounce — only runs after initial load
   useEffect(() => {
-    if (isFirstLoad.current) {
-      isFirstLoad.current = false
-      return
-    }
-    if (!user) return
+    if (!isLoaded.current || !user) return
 
     setIsSaving(true)
     const timer = setTimeout(() => {
