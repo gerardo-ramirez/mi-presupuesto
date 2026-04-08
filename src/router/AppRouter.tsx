@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { ProtectedRoute } from './ProtectedRoute'
 import { PublicRoute } from './PublicRoute'
 import { MainLayout } from '@/components/layout/MainLayout'
@@ -9,19 +9,47 @@ const LoginPage = lazy(() => import('@/pages/LoginPage'))
 const RegisterPage = lazy(() => import('@/pages/RegisterPage'))
 const BudgetPage = lazy(() => import('@/pages/BudgetPage'))
 
-export function AppRouter() {
-  return (
-    <Routes>
-      <Route element={<PublicRoute />}>
-        <Route path="/login" element={<Suspense fallback={<Loading />}><LoginPage /></Suspense>} />
-        <Route path="/register" element={<Suspense fallback={<Loading />}><RegisterPage /></Suspense>} />
-      </Route>
-      <Route element={<ProtectedRoute />}>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Suspense fallback={<Loading />}><BudgetPage /></Suspense>} />
-        </Route>
-      </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
-  )
-}
+export const router = createBrowserRouter([
+  {
+    path: '/login',
+    element: (
+      <PublicRoute>
+        <Suspense fallback={<Loading />}>
+          <LoginPage />
+        </Suspense>
+      </PublicRoute>
+    ),
+  },
+  {
+    path: '/register',
+    element: (
+      <PublicRoute>
+        <Suspense fallback={<Loading />}>
+          <RegisterPage />
+        </Suspense>
+      </PublicRoute>
+    ),
+  },
+  {
+    path: '/',
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <BudgetPage />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: '*',
+    element: <Navigate to="/" replace />,
+  },
+])
