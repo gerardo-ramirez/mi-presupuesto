@@ -24,7 +24,7 @@ import { cn } from '@/lib/utils'
 import { registerSchema, type RegisterFormData } from '../schemas/auth.schemas'
 
 interface RegisterFormProps {
-  onSubmit: (data: RegisterFormData) => void
+  onSubmit: (data: { displayName: string; email: string; password: string }) => void
   isLoading: boolean
   error: string | null
 }
@@ -32,8 +32,12 @@ interface RegisterFormProps {
 export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) {
   const form = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
-    defaultValues: { displayName: '', email: '', password: '' },
+    defaultValues: { displayName: '', email: '', password: '', confirmPassword: '' },
   })
+
+  const handleValidSubmit = ({ displayName, email, password }: RegisterFormData) => {
+    onSubmit({ displayName, email, password })
+  }
 
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
@@ -54,7 +58,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
         </CardHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form onSubmit={form.handleSubmit(handleValidSubmit)}>
             <CardContent className="space-y-4">
               <FormField
                 control={form.control}
@@ -117,6 +121,33 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                   <FormItem>
                     <FormLabel className="text-gray-300 text-sm font-medium">
                       Contraseña
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="password"
+                        placeholder="••••••••"
+                        autoComplete="new-password"
+                        disabled={isLoading}
+                        className={cn(
+                          'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500',
+                          'focus-visible:ring-amber-500 focus-visible:border-amber-500',
+                          fieldState.error && 'border-red-500 focus-visible:ring-red-500',
+                        )}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="confirmPassword"
+                render={({ field, fieldState }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-300 text-sm font-medium">
+                      Confirmar Contraseña
                     </FormLabel>
                     <FormControl>
                       <Input
