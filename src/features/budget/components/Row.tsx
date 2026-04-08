@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 
 interface RowProps {
-  label: string
+  label: React.ReactNode
   highlight?: boolean
   children: React.ReactNode
   className?: string

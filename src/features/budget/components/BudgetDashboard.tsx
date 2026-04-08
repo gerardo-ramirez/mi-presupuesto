@@ -73,7 +73,9 @@ export function BudgetDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           <DolarSection
             precioDolar={data.precioDolar}
+            currencyName={data.currencyName}
             onPrecioDolarChange={(v) => updateField('precioDolar', v)}
+            onCurrencyNameChange={(v) => updateField('currencyName', v)}
           />
 
           <BrubankSection

@@ -11,6 +11,7 @@ export interface ElementoComprado {
 
 export interface BudgetData {
   precioDolar: number;
+  currencyName: string;
   brubank: number;
   brubankGastos: BrubankGasto[];
   naranjaPesos: number;

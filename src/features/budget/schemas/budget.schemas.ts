@@ -14,6 +14,7 @@ const elementoCompradoSchema = z.object({
 
 export const budgetSchema = z.object({
   precioDolar: z.number(),
+  currencyName: z.string().default('DÓLAR'),
   brubank: z.number(),
   brubankGastos: z.array(brubankGastoSchema),
   naranjaPesos: z.number(),
@@ -38,6 +39,7 @@ export const budgetSchema = z.object({
 
 export const DEFAULT_BUDGET: BudgetData = {
   precioDolar: 1375,
+  currencyName: 'DÓLAR',
   brubank: 104000,
   brubankGastos: [],
   naranjaPesos: 249000,

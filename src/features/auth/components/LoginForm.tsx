@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Eye, EyeOff } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -30,6 +31,7 @@ interface LoginFormProps {
 }
 
 export function LoginForm({ onSubmit, isLoading, error }: LoginFormProps) {
+  const [showPassword, setShowPassword] = useState(false)
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: '', password: '' },
@@ -92,18 +94,31 @@ export function LoginForm({ onSubmit, isLoading, error }: LoginFormProps) {
                       Contraseña
                     </FormLabel>
                     <FormControl>
-                      <Input
-                        type="password"
-                        placeholder="••••••••"
-                        autoComplete="current-password"
-                        disabled={isLoading}
-                        className={cn(
-                          'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500',
-                          'focus-visible:ring-amber-500 focus-visible:border-amber-500',
-                          fieldState.error && 'border-red-500 focus-visible:ring-red-500',
-                        )}
-                        {...field}
-                      />
+                      <div className="relative">
+                        <Input
+                          type={showPassword ? 'text' : 'password'}
+                          placeholder="••••••••"
+                          autoComplete="current-password"
+                          disabled={isLoading}
+                          className={cn(
+                            'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500 pr-10',
+                            'focus-visible:ring-amber-500 focus-visible:border-amber-500',
+                            fieldState.error && 'border-red-500 focus-visible:ring-red-500',
+                          )}
+                          {...field}
+                        />
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => setShowPassword((p) => !p)}
+                          className="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-gray-300 hover:bg-transparent"
+                          tabIndex={-1}
+                          aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                        >
+                          {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        </Button>
+                      </div>
                     </FormControl>
                     <FormMessage className="text-red-400" />
                   </FormItem>
