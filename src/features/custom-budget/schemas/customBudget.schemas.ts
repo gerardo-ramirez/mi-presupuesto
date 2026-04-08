@@ -34,10 +34,52 @@ export const customBudgetSchema = z.object({
   sections: z.array(customSectionSchema).default([]),
 })
 
+export const EXAMPLE_SECTIONS: CustomSection[] = [
+  {
+    id: 'example-simple',
+    title: 'Ahorros',
+    icon: '🏦',
+    order: 0,
+    type: 'simple',
+    totalAmount: 500000,
+    expenses: [
+      { id: 'ex-1', nombre: 'Streaming', monto: 15000 },
+      { id: 'ex-2', nombre: 'Gimnasio', monto: 25000 },
+    ],
+  },
+  {
+    id: 'example-equivalence',
+    title: 'Clases de inglés',
+    icon: '📚',
+    order: 1,
+    type: 'equivalence',
+    totalAmount: 240000,
+    expenses: [],
+    unitLabel: 'clase',
+    unitPrice: 20000,
+    consumed: 3,
+  },
+  {
+    id: 'example-conversion',
+    title: 'Viaje',
+    icon: '🏖️',
+    order: 2,
+    type: 'conversion',
+    totalAmount: 0,
+    expenses: [],
+    useCurrency: true,
+    currencyAmount: 500,
+    extraAmount: 0,
+    extraLabel: '',
+    divisions: [3, 6],
+    divisionLabel: 'partes',
+  },
+]
+
 export const DEFAULT_CUSTOM_BUDGET: CustomBudgetData = {
   currencyName: 'DÓLAR',
   currencyValue: 1375,
-  sections: [],
+  sections: EXAMPLE_SECTIONS,
 }
 
 export const TEMPLATE_SIMPLE: Omit<CustomSection, 'id' | 'order'> = {

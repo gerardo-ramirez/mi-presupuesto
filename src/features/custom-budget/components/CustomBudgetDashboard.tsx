@@ -149,32 +149,43 @@ export function CustomBudgetDashboard() {
           onValueChange={(value) => updateCurrency(data.currencyName, value)}
         />
 
-        {/* Sections grid */}
-        {sortedSections.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4">
-            {sortedSections.map((section) => (
-              <SectionRenderer
-                key={section.id}
-                section={section}
-                currencyValue={data.currencyValue}
-                currencyName={data.currencyName}
-                onUpdate={(updates) => updateSection(section.id, updates)}
-                onAddExpense={(monto, nombre) => addExpense(section.id, monto, nombre)}
-                onRemoveExpense={(expenseId) => removeExpense(section.id, expenseId)}
-                onIncrement={() => incrementConsumed(section.id)}
-                onDecrement={() => decrementConsumed(section.id)}
-                onAddDivision={(parts) => addDivision(section.id, parts)}
-                onRemoveDivision={(index) => removeDivision(section.id, index)}
-                onRemove={() => removeSection(section.id)}
-              />
-            ))}
+        {sortedSections.length === 0 ? (
+          /* Empty state */
+          <div className="flex flex-col items-center justify-center py-24 gap-4">
+            <p className="text-gray-400 text-lg font-semibold">Tu presupuesto está vacío</p>
+            <p className="text-gray-600 text-sm">Agregá tu primera sección para empezar</p>
+            <div className="w-full max-w-sm mt-2">
+              <AddSectionButton onAdd={addSection} />
+            </div>
           </div>
-        )}
+        ) : (
+          <>
+            {/* Sections grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4">
+              {sortedSections.map((section) => (
+                <SectionRenderer
+                  key={section.id}
+                  section={section}
+                  currencyValue={data.currencyValue}
+                  currencyName={data.currencyName}
+                  onUpdate={(updates) => updateSection(section.id, updates)}
+                  onAddExpense={(monto, nombre) => addExpense(section.id, monto, nombre)}
+                  onRemoveExpense={(expenseId) => removeExpense(section.id, expenseId)}
+                  onIncrement={() => incrementConsumed(section.id)}
+                  onDecrement={() => decrementConsumed(section.id)}
+                  onAddDivision={(parts) => addDivision(section.id, parts)}
+                  onRemoveDivision={(index) => removeDivision(section.id, index)}
+                  onRemove={() => removeSection(section.id)}
+                />
+              ))}
+            </div>
 
-        {/* Add section */}
-        <div className="max-w-sm">
-          <AddSectionButton onAdd={addSection} />
-        </div>
+            {/* Add section */}
+            <div className="max-w-sm">
+              <AddSectionButton onAdd={addSection} />
+            </div>
+          </>
+        )}
       </div>
     </>
   )
