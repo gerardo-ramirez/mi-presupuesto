@@ -1,0 +1,5213 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.claude/settings.local.json
+.env.example
+.gitignore
+components.json
+index.html
+NEW_FEATURE.md
+package.json
+PLAN.md
+public/logo.svg
+public/pwa-192x192.png
+public/pwa-512x512.png
+README.md
+SETUP_VITE.md
+src/App.tsx
+src/components/layout/MainLayout.tsx
+src/components/layout/Navbar.tsx
+src/components/shared/Loading.tsx
+src/components/ui/button.tsx
+src/components/ui/card.tsx
+src/components/ui/dropdown-menu.tsx
+src/components/ui/form.tsx
+src/components/ui/input.tsx
+src/components/ui/label.tsx
+src/components/ui/select.tsx
+src/components/ui/separator.tsx
+src/components/ui/sonner.tsx
+src/features/auth/components/LoginForm.tsx
+src/features/auth/components/RegisterForm.tsx
+src/features/auth/hooks/useAuth.ts
+src/features/auth/index.ts
+src/features/auth/schemas/auth.schemas.ts
+src/features/auth/services/AuthService.ts
+src/features/auth/types/auth.types.ts
+src/features/budget/adapters/BudgetAdapter.ts
+src/features/budget/components/AddGastoForm.tsx
+src/features/budget/components/BrubankSection.tsx
+src/features/budget/components/BudgetDashboard.tsx
+src/features/budget/components/Counter.tsx
+src/features/budget/components/DolarSection.tsx
+src/features/budget/components/EditableNumber.tsx
+src/features/budget/components/FimaSection.tsx
+src/features/budget/components/FiwindSection.tsx
+src/features/budget/components/GaliciaAutoSection.tsx
+src/features/budget/components/GaliciaSueldoSection.tsx
+src/features/budget/components/GastosList.tsx
+src/features/budget/components/NaranjaSection.tsx
+src/features/budget/components/RipioSection.tsx
+src/features/budget/components/Row.tsx
+src/features/budget/components/SectionCard.tsx
+src/features/budget/hooks/useBudget.ts
+src/features/budget/hooks/useBudgetCalculations.ts
+src/features/budget/index.ts
+src/features/budget/schemas/budget.schemas.ts
+src/features/budget/services/BudgetService.ts
+src/features/budget/types/budget.types.ts
+src/features/custom-budget/adapters/CustomBudgetAdapter.ts
+src/features/custom-budget/components/AddExpenseForm.tsx
+src/features/custom-budget/components/AddSectionButton.tsx
+src/features/custom-budget/components/ConversionSection.tsx
+src/features/custom-budget/components/Counter.tsx
+src/features/custom-budget/components/CurrencyBar.tsx
+src/features/custom-budget/components/CustomBudgetDashboard.tsx
+src/features/custom-budget/components/DivisionManager.tsx
+src/features/custom-budget/components/EditableNumber.tsx
+src/features/custom-budget/components/EditableText.tsx
+src/features/custom-budget/components/EquivalenceSection.tsx
+src/features/custom-budget/components/ExpenseList.tsx
+src/features/custom-budget/components/IconPicker.tsx
+src/features/custom-budget/components/Row.tsx
+src/features/custom-budget/components/SectionCard.tsx
+src/features/custom-budget/components/SimpleSection.tsx
+src/features/custom-budget/hooks/useCustomBudget.ts
+src/features/custom-budget/hooks/useCustomCalculations.ts
+src/features/custom-budget/index.ts
+src/features/custom-budget/schemas/customBudget.schemas.ts
+src/features/custom-budget/services/CustomBudgetService.ts
+src/features/custom-budget/types/customBudget.types.ts
+src/index.css
+src/lib/firebase.ts
+src/lib/utils.ts
+src/main.tsx
+src/pages/BudgetPage.tsx
+src/pages/CustomBudgetPage.tsx
+src/pages/LoginPage.tsx
+src/pages/RegisterPage.tsx
+src/router/AdminRoute.tsx
+src/router/AppRouter.tsx
+src/router/ProtectedRoute.tsx
+src/router/PublicRoute.tsx
+src/store/authStore.ts
+src/vite-env.d.ts
+STYLE.md
+tsconfig.app.json
+tsconfig.json
+tsconfig.node.json
+vercel.json
+vite.config.ts
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".claude/settings.local.json">
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)"
+    ]
+  }
+}
+</file>
+
+<file path=".env.example">
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+</file>
+
+<file path=".gitignore">
+# Dependencies
+node_modules/
+
+# Build
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Vite
+*.local
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+</file>
+
+<file path="components.json">
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/index.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "iconLibrary": "lucide"
+}
+</file>
+
+<file path="NEW_FEATURE.md">
+# Sesión de Hoy — Mi Presupuesto
+
+## Objetivo
+Escalar la app "Mi Presupuesto" con:
+- Mejoras de UX en auth (confirm password, visibility toggle)
+- Currency name editable
+- Migración del router a createBrowserRouter
+- Feature nueva: Custom Budget (secciones dinámicas por usuario)
+- Routing admin vs usuario regular
+
+---
+
+## Cambios Realizados
+
+### 1. Auth — Confirm Password + Error Labels
+- Se agregó campo `confirmPassword` al schema de registro con `.refine()` de Zod
+- Validación: contraseñas deben coincidir
+- Errores inline por campo con `FormMessage` de shadcn
+
+### 2. Auth — Password Visibility Toggle
+- Botón Eye/EyeOff en campos password y confirmPassword
+- Toggle entre `type="password"` y `type="text"`
+- Aplica tanto en LoginForm como RegisterForm
+
+### 3. Budget — Currency Name Editable
+- Nuevo campo `currencyName` en BudgetData (default: "DÓLAR")
+- El usuario puede cambiar el nombre: DÓLAR, EURO, REALES, etc.
+- Se persiste en Firestore
+
+### 4. Router — Migración a createBrowserRouter
+- Se reemplazó `<Routes>/<Route>` por `createBrowserRouter`
+- Se actualizó `main.tsx` con `<RouterProvider>`
+- PublicRoute y ProtectedRoute adaptados al patrón children
+
+### 5. Bug Fix — Persistencia de Budget
+- **Root cause**: el auto-save se disparaba antes de que Firestore respondiera, sobreescribiendo datos reales con DEFAULT_BUDGET
+- **Fix**: flag `isLoaded` que solo se activa después del fetch, el auto-save solo corre si `isLoaded === true`
+
+### 6. Feature Nueva — Custom Budget (4 fases)
+
+#### Fase 1: Dominio (tipos, schemas, adapter, service)
+- 3 tipos de sección: `simple`, `equivalence`, `conversion`
+- **Simple**: monto + lista de gastos + disponible
+- **Equivalence**: monto + precio unitario + contador + calculados
+- **Conversion**: monto en divisa o pesos + equivalencia + hasta 3 divisiones + monto extra opcional
+- Adapter bidireccional Firestore ↔ dominio
+- Colección Firestore separada: `custom-budgets/{userId}`
+- Regla de seguridad agregada en Firebase Console
+
+#### Fase 2: Hooks
+- `useCustomCalculations`: cálculos derivados por tipo de sección (useMemo)
+- `useCustomBudget`: CRUD completo de secciones + auto-save con debounce + protección contra sobreescritura (mismo patrón del fix)
+
+#### Fase 3: Componentes
+- **Átomos**: EditableText, EditableNumber, Counter, Row, IconPicker (8 emojis)
+- **Moléculas**: SectionCard, ExpenseList, AddExpenseForm, DivisionManager
+- **Organismos**: SimpleSection, EquivalenceSection, ConversionSection
+- **Template**: CurrencyBar, AddSectionButton (dropdown con 3 tipos), CustomBudgetDashboard
+- shadcn dropdown-menu instalado
+
+#### Fase 4: Router + Pages
+- `CustomBudgetPage` creada
+- `AdminRoute` componente: filtra por email
+- **Admin** (gerardoramirez656@gmail.com): ve budget clásico por defecto, botón switch en navbar para ir al custom
+- **Otros usuarios**: ven solo custom-budget
+- Navbar con botón de switch condicional
+
+---
+
+## Estructura de Archivos Creados
+
+```
+src/features/custom-budget/
+├── types/
+│   └── customBudget.types.ts
+├── schemas/
+│   └── customBudget.schemas.ts
+├── adapters/
+│   └── CustomBudgetAdapter.ts
+├── services/
+│   └── CustomBudgetService.ts
+├── hooks/
+│   ├── useCustomCalculations.ts
+│   └── useCustomBudget.ts
+├── components/
+│   ├── EditableText.tsx
+│   ├── EditableNumber.tsx
+│   ├── Counter.tsx
+│   ├── Row.tsx
+│   ├── IconPicker.tsx
+│   ├── SectionCard.tsx
+│   ├── ExpenseList.tsx
+│   ├── AddExpenseForm.tsx
+│   ├── DivisionManager.tsx
+│   ├── SimpleSection.tsx
+│   ├── EquivalenceSection.tsx
+│   ├── ConversionSection.tsx
+│   ├── CurrencyBar.tsx
+│   ├── AddSectionButton.tsx
+│   └── CustomBudgetDashboard.tsx
+└── index.ts
+
+src/router/AdminRoute.tsx
+src/pages/CustomBudgetPage.tsx
+```
+
+## Firebase
+- Regla nueva: `custom-budgets/{userId}` con auth por uid
+
+---
+
+## Pendiente (próxima sesión)
+- **Fase 5: PWA** — manifest.json, service worker, logo/ícono, instalable en celular
+- **Merge**: branch `feature/custom-budget` → `main`
+- **Testing** en producción
+</file>
+
+<file path="PLAN.md">
+
+</file>
+
+<file path="public/logo.svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#111827"/>
+      <stop offset="100%" style="stop-color:#030712"/>
+    </linearGradient>
+    <linearGradient id="text" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <text x="256" y="330" font-family="'Arial Black', sans-serif" font-weight="900" font-size="220" text-anchor="middle" fill="url(#text)">MP</text>
+</svg>
+</file>
+
+<file path="README.md">
+# Mi Presupuesto
+
+Dashboard personal de presupuesto con autenticación, persistencia en Firebase y auto-guardado.
+
+## Stack
+
+- **React 19** + **TypeScript** + **Vite 6**
+- **Tailwind CSS 4** (zero-config) + **shadcn/ui**
+- **Firebase** (Auth + Firestore)
+- **Zustand** — estado global de autenticación
+- **TanStack Query** — preparado para queries async
+- **React Hook Form** + **Zod** — validación de formularios
+- **React Router v7** — ruteo con lazy loading
+
+## Funcionalidades
+
+### Autenticación
+- Registro e inicio de sesión con email/password via Firebase Auth
+- Rutas protegidas y públicas con guards automáticos
+- Sesión persistida entre recargas
+
+### Dashboard de Presupuesto
+Auto-guardado en Firestore con debounce de 1 segundo. Todas las cifras son editables con click.
+
+| Sección | Qué trackea |
+|---|---|
+| **Tipo de Cambio** | Precio del dólar editable |
+| **Brubank** | Saldo + lista de gastos deducibles |
+| **Naranja X** | Sesiones disponibles, contador de cursadas, equivalencia en meses de Visa |
+| **FIMA** | Nafta (tanques totales/restantes) + Clases Jony (clases totales/restantes) |
+| **Galicia Auto** | Dólares ahorrados + auto viejo + presupuesto total en pesos |
+| **Galicia Sueldo** | Dólares → pesos, distribuido a 4/5/6 meses |
+| **Ripio** | Ahorro diario entre 25/03/2026 y 01/12/2026, progreso automático |
+| **Fiwind** | Presupuesto de gastos generales + lista de elementos comprados |
+
+## Estructura
+
+```
+src/
+├── features/
+│   ├── auth/               # Tipos, schemas, servicio, store, hook, forms
+│   └── budget/             # Tipos, schemas, adapter, servicio, hooks, componentes
+├── components/
+│   ├── shared/             # Loading spinner
+│   └── layout/             # Navbar, MainLayout
+├── pages/                  # LoginPage, RegisterPage, BudgetPage
+├── router/                 # AppRouter, ProtectedRoute, PublicRoute
+├── store/                  # authStore (Zustand)
+└── lib/                    # firebase.ts, utils.ts
+```
+
+## Setup
+
+1. Clonar el repo e instalar dependencias:
+
+```bash
+npm install
+```
+
+2. Crear `.env` en la raíz con las credenciales de Firebase:
+
+```env
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+```
+
+3. Correr en desarrollo:
+
+```bash
+npm run dev
+```
+</file>
+
+<file path="SETUP_VITE.md">
+Actuá como: Senior Frontend Ops / Architect experto en Tailwind 4.
+Contexto: Inicializar un proyecto desde cero usando el stack: React 19, Vite 6, TS.
+
+Tarea 1: Comandos de Instalación
+Generá un único comando para instalar todas estas dependencias:
+• Core: react-router-dom, zustand, @tanstack/react-query, lucide-react.
+• Forms: react-hook-form, @hookform/resolvers, zod, firebase.
+• UI: class-variance-authority, clsx, tailwind-merge.
+• Dev: tailwindcss, @tailwindcss/vite (Configuración para Tailwind 4).
+
+Tarea 2: Configuración de Tailwind 4 y Vite
+1. IMPORTANTE: Tailwind 4 es ZERO-CONFIG. Prohibido generar tailwind.config.ts.
+2. Generá el contenido de vite.config.ts incluyendo:
+- El plugin @tailwindcss/vite.
+- La configuración de resolve.alias para que "@/" apunte a "./src" (usando path.resolve).
+3. Generá el contenido de src/index.css:
+- Solo debe tener la directiva @import "tailwindcss";
+- Prohibido usar @layer personalizado (no es compatible con el plugin de Vite en v4).
+
+Tarea 3: Estructura de Carpetas (Clean Architecture)
+Generá un comando mkdir para crear structura siguiento este patrón:
+src/
+├── components/
+│   ├── shared/
+│   ├── layout/
+│   └── ui/
+├── features/
+│   ├── auth/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── schemas/
+│   │   └── types/
+│   └── budget/
+│       ├── components/
+│       ├── hooks/
+│       ├── services/
+│       ├── adapters/
+│       ├── schemas/
+│       └── types/
+├── hooks/
+├── pages/
+├── router/
+├── store/
+├── lib/
+└── types/
+
+
+
+Tarea 4: Archivos Base
+Generá el contenido de:
+1. src/lib/utils.ts: La función cn() usando clsx y twMerge.
+2. src/main.tsx: Inicial con QueryClientProvider y BrowserRouter, importando index.css.
+3. tsconfig.json (compilerOptions.paths): Configuración del alias "@/*".
+
+Salida: Solo comandos de terminal y bloques de código listos para copiar/pegar.
+</file>
+
+<file path="src/App.tsx">
+function App() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <h1 className="text-3xl font-bold text-gray-900">Presupuesto App</h1>
+    </div>
+  )
+}
+
+export default App
+</file>
+
+<file path="src/components/shared/Loading.tsx">
+import { Loader2 } from 'lucide-react'
+
+export default function Loading() {
+  return (
+    <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+      <Loader2 className="h-8 w-8 animate-spin text-amber-500" />
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/ui/button.tsx">
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button"
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Button.displayName = "Button"
+
+export { Button, buttonVariants }
+</file>
+
+<file path="src/components/ui/card.tsx">
+import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+const Card = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      className
+    )}
+    {...props}
+  />
+))
+Card.displayName = "Card"
+
+const CardHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    {...props}
+  />
+))
+CardHeader.displayName = "CardHeader"
+
+const CardTitle = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "text-2xl font-semibold leading-none tracking-tight",
+      className
+    )}
+    {...props}
+  />
+))
+CardTitle.displayName = "CardTitle"
+
+const CardDescription = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+))
+CardDescription.displayName = "CardDescription"
+
+const CardContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+))
+CardContent.displayName = "CardContent"
+
+const CardFooter = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex items-center p-6 pt-0", className)}
+    {...props}
+  />
+))
+CardFooter.displayName = "CardFooter"
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+</file>
+
+<file path="src/components/ui/dropdown-menu.tsx">
+import * as React from "react"
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
+import { Check, ChevronRight, Circle } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+const DropdownMenu = DropdownMenuPrimitive.Root
+
+const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
+
+const DropdownMenuGroup = DropdownMenuPrimitive.Group
+
+const DropdownMenuPortal = DropdownMenuPrimitive.Portal
+
+const DropdownMenuSub = DropdownMenuPrimitive.Sub
+
+const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
+
+const DropdownMenuSubTrigger = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & {
+    inset?: boolean
+  }
+>(({ className, inset, children, ...props }, ref) => (
+  <DropdownMenuPrimitive.SubTrigger
+    ref={ref}
+    className={cn(
+      "flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+      inset && "pl-8",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <ChevronRight className="ml-auto" />
+  </DropdownMenuPrimitive.SubTrigger>
+))
+DropdownMenuSubTrigger.displayName =
+  DropdownMenuPrimitive.SubTrigger.displayName
+
+const DropdownMenuSubContent = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.SubContent>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent>
+>(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.SubContent
+    ref={ref}
+    className={cn(
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[--radix-dropdown-menu-content-transform-origin]",
+      className
+    )}
+    {...props}
+  />
+))
+DropdownMenuSubContent.displayName =
+  DropdownMenuPrimitive.SubContent.displayName
+
+const DropdownMenuContent = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
+>(({ className, sideOffset = 4, ...props }, ref) => (
+  <DropdownMenuPrimitive.Portal>
+    <DropdownMenuPrimitive.Content
+      ref={ref}
+      sideOffset={sideOffset}
+      className={cn(
+        "z-50 max-h-[var(--radix-dropdown-menu-content-available-height)] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[--radix-dropdown-menu-content-transform-origin]",
+        className
+      )}
+      {...props}
+    />
+  </DropdownMenuPrimitive.Portal>
+))
+DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
+
+const DropdownMenuItem = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
+    inset?: boolean
+  }
+>(({ className, inset, ...props }, ref) => (
+  <DropdownMenuPrimitive.Item
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+      inset && "pl-8",
+      className
+    )}
+    {...props}
+  />
+))
+DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
+
+const DropdownMenuCheckboxItem = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
+>(({ className, children, checked, ...props }, ref) => (
+  <DropdownMenuPrimitive.CheckboxItem
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      className
+    )}
+    checked={checked}
+    {...props}
+  >
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      <DropdownMenuPrimitive.ItemIndicator>
+        <Check className="h-4 w-4" />
+      </DropdownMenuPrimitive.ItemIndicator>
+    </span>
+    {children}
+  </DropdownMenuPrimitive.CheckboxItem>
+))
+DropdownMenuCheckboxItem.displayName =
+  DropdownMenuPrimitive.CheckboxItem.displayName
+
+const DropdownMenuRadioItem = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem>
+>(({ className, children, ...props }, ref) => (
+  <DropdownMenuPrimitive.RadioItem
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      className
+    )}
+    {...props}
+  >
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      <DropdownMenuPrimitive.ItemIndicator>
+        <Circle className="h-2 w-2 fill-current" />
+      </DropdownMenuPrimitive.ItemIndicator>
+    </span>
+    {children}
+  </DropdownMenuPrimitive.RadioItem>
+))
+DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
+
+const DropdownMenuLabel = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.Label>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label> & {
+    inset?: boolean
+  }
+>(({ className, inset, ...props }, ref) => (
+  <DropdownMenuPrimitive.Label
+    ref={ref}
+    className={cn(
+      "px-2 py-1.5 text-sm font-semibold",
+      inset && "pl-8",
+      className
+    )}
+    {...props}
+  />
+))
+DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName
+
+const DropdownMenuSeparator = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.Separator>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>
+>(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.Separator
+    ref={ref}
+    className={cn("-mx-1 my-1 h-px bg-muted", className)}
+    {...props}
+  />
+))
+DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName
+
+const DropdownMenuShortcut = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      className={cn("ml-auto text-xs tracking-widest opacity-60", className)}
+      {...props}
+    />
+  )
+}
+DropdownMenuShortcut.displayName = "DropdownMenuShortcut"
+
+export {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuGroup,
+  DropdownMenuPortal,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuRadioGroup,
+}
+</file>
+
+<file path="src/components/ui/form.tsx">
+import * as React from "react"
+import * as LabelPrimitive from "@radix-ui/react-label"
+import { Slot } from "@radix-ui/react-slot"
+import {
+  Controller,
+  FormProvider,
+  useFormContext,
+  type ControllerProps,
+  type FieldPath,
+  type FieldValues,
+} from "react-hook-form"
+
+import { cn } from "@/lib/utils"
+import { Label } from "@/components/ui/label"
+
+const Form = FormProvider
+
+type FormFieldContextValue<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+> = {
+  name: TName
+}
+
+const FormFieldContext = React.createContext<FormFieldContextValue | null>(null)
+
+const FormField = <
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+>({
+  ...props
+}: ControllerProps<TFieldValues, TName>) => {
+  return (
+    <FormFieldContext.Provider value={{ name: props.name }}>
+      <Controller {...props} />
+    </FormFieldContext.Provider>
+  )
+}
+
+const useFormField = () => {
+  const fieldContext = React.useContext(FormFieldContext)
+  const itemContext = React.useContext(FormItemContext)
+  const { getFieldState, formState } = useFormContext()
+
+  if (!fieldContext) {
+    throw new Error("useFormField should be used within <FormField>")
+  }
+
+  if (!itemContext) {
+    throw new Error("useFormField should be used within <FormItem>")
+  }
+
+  const fieldState = getFieldState(fieldContext.name, formState)
+
+  const { id } = itemContext
+
+  return {
+    id,
+    name: fieldContext.name,
+    formItemId: `${id}-form-item`,
+    formDescriptionId: `${id}-form-item-description`,
+    formMessageId: `${id}-form-item-message`,
+    ...fieldState,
+  }
+}
+
+type FormItemContextValue = {
+  id: string
+}
+
+const FormItemContext = React.createContext<FormItemContextValue | null>(null)
+
+const FormItem = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const id = React.useId()
+
+  return (
+    <FormItemContext.Provider value={{ id }}>
+      <div ref={ref} className={cn("space-y-2", className)} {...props} />
+    </FormItemContext.Provider>
+  )
+})
+FormItem.displayName = "FormItem"
+
+const FormLabel = React.forwardRef<
+  React.ElementRef<typeof LabelPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
+>(({ className, ...props }, ref) => {
+  const { error, formItemId } = useFormField()
+
+  return (
+    <Label
+      ref={ref}
+      className={cn(error && "text-destructive", className)}
+      htmlFor={formItemId}
+      {...props}
+    />
+  )
+})
+FormLabel.displayName = "FormLabel"
+
+const FormControl = React.forwardRef<
+  React.ElementRef<typeof Slot>,
+  React.ComponentPropsWithoutRef<typeof Slot>
+>(({ ...props }, ref) => {
+  const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+
+  return (
+    <Slot
+      ref={ref}
+      id={formItemId}
+      aria-describedby={
+        !error
+          ? `${formDescriptionId}`
+          : `${formDescriptionId} ${formMessageId}`
+      }
+      aria-invalid={!!error}
+      {...props}
+    />
+  )
+})
+FormControl.displayName = "FormControl"
+
+const FormDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => {
+  const { formDescriptionId } = useFormField()
+
+  return (
+    <p
+      ref={ref}
+      id={formDescriptionId}
+      className={cn("text-sm text-muted-foreground", className)}
+      {...props}
+    />
+  )
+})
+FormDescription.displayName = "FormDescription"
+
+const FormMessage = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, children, ...props }, ref) => {
+  const { error, formMessageId } = useFormField()
+  const body = error ? String(error?.message ?? "") : children
+
+  if (!body) {
+    return null
+  }
+
+  return (
+    <p
+      ref={ref}
+      id={formMessageId}
+      className={cn("text-sm font-medium text-destructive", className)}
+      {...props}
+    >
+      {body}
+    </p>
+  )
+})
+FormMessage.displayName = "FormMessage"
+
+export {
+  useFormField,
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormField,
+}
+</file>
+
+<file path="src/components/ui/input.tsx">
+import * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        type={type}
+        className={cn(
+          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Input.displayName = "Input"
+
+export { Input }
+</file>
+
+<file path="src/components/ui/label.tsx">
+import * as React from "react"
+import * as LabelPrimitive from "@radix-ui/react-label"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+
+const labelVariants = cva(
+  "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+)
+
+const Label = React.forwardRef<
+  React.ElementRef<typeof LabelPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
+    VariantProps<typeof labelVariants>
+>(({ className, ...props }, ref) => (
+  <LabelPrimitive.Root
+    ref={ref}
+    className={cn(labelVariants(), className)}
+    {...props}
+  />
+))
+Label.displayName = LabelPrimitive.Root.displayName
+
+export { Label }
+</file>
+
+<file path="src/components/ui/select.tsx">
+"use client"
+
+import * as React from "react"
+import * as SelectPrimitive from "@radix-ui/react-select"
+import { Check, ChevronDown, ChevronUp } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+const Select = SelectPrimitive.Root
+
+const SelectGroup = SelectPrimitive.Group
+
+const SelectValue = SelectPrimitive.Value
+
+const SelectTrigger = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <SelectPrimitive.Trigger
+    ref={ref}
+    className={cn(
+      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background data-[placeholder]:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <SelectPrimitive.Icon asChild>
+      <ChevronDown className="h-4 w-4 opacity-50" />
+    </SelectPrimitive.Icon>
+  </SelectPrimitive.Trigger>
+))
+SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
+
+const SelectScrollUpButton = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.ScrollUpButton>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollUpButton>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.ScrollUpButton
+    ref={ref}
+    className={cn(
+      "flex cursor-default items-center justify-center py-1",
+      className
+    )}
+    {...props}
+  >
+    <ChevronUp className="h-4 w-4" />
+  </SelectPrimitive.ScrollUpButton>
+))
+SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName
+
+const SelectScrollDownButton = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.ScrollDownButton>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollDownButton>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.ScrollDownButton
+    ref={ref}
+    className={cn(
+      "flex cursor-default items-center justify-center py-1",
+      className
+    )}
+    {...props}
+  >
+    <ChevronDown className="h-4 w-4" />
+  </SelectPrimitive.ScrollDownButton>
+))
+SelectScrollDownButton.displayName =
+  SelectPrimitive.ScrollDownButton.displayName
+
+const SelectContent = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
+>(({ className, children, position = "popper", ...props }, ref) => (
+  <SelectPrimitive.Portal>
+    <SelectPrimitive.Content
+      ref={ref}
+      className={cn(
+        "relative z-50 max-h-[--radix-select-content-available-height] min-w-[8rem] overflow-y-auto overflow-x-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 origin-[--radix-select-content-transform-origin]",
+        position === "popper" &&
+          "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
+        className
+      )}
+      position={position}
+      {...props}
+    >
+      <SelectScrollUpButton />
+      <SelectPrimitive.Viewport
+        className={cn(
+          "p-1",
+          position === "popper" &&
+            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
+        )}
+      >
+        {children}
+      </SelectPrimitive.Viewport>
+      <SelectScrollDownButton />
+    </SelectPrimitive.Content>
+  </SelectPrimitive.Portal>
+))
+SelectContent.displayName = SelectPrimitive.Content.displayName
+
+const SelectLabel = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Label>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.Label
+    ref={ref}
+    className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)}
+    {...props}
+  />
+))
+SelectLabel.displayName = SelectPrimitive.Label.displayName
+
+const SelectItem = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
+>(({ className, children, ...props }, ref) => (
+  <SelectPrimitive.Item
+    ref={ref}
+    className={cn(
+      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      className
+    )}
+    {...props}
+  >
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      <SelectPrimitive.ItemIndicator>
+        <Check className="h-4 w-4" />
+      </SelectPrimitive.ItemIndicator>
+    </span>
+
+    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+  </SelectPrimitive.Item>
+))
+SelectItem.displayName = SelectPrimitive.Item.displayName
+
+const SelectSeparator = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Separator>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.Separator
+    ref={ref}
+    className={cn("-mx-1 my-1 h-px bg-muted", className)}
+    {...props}
+  />
+))
+SelectSeparator.displayName = SelectPrimitive.Separator.displayName
+
+export {
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectLabel,
+  SelectItem,
+  SelectSeparator,
+  SelectScrollUpButton,
+  SelectScrollDownButton,
+}
+</file>
+
+<file path="src/components/ui/separator.tsx">
+import * as React from "react"
+import * as SeparatorPrimitive from "@radix-ui/react-separator"
+
+import { cn } from "@/lib/utils"
+
+const Separator = React.forwardRef<
+  React.ElementRef<typeof SeparatorPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
+>(
+  (
+    { className, orientation = "horizontal", decorative = true, ...props },
+    ref
+  ) => (
+    <SeparatorPrimitive.Root
+      ref={ref}
+      decorative={decorative}
+      orientation={orientation}
+      className={cn(
+        "shrink-0 bg-border",
+        orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
+        className
+      )}
+      {...props}
+    />
+  )
+)
+Separator.displayName = SeparatorPrimitive.Root.displayName
+
+export { Separator }
+</file>
+
+<file path="src/components/ui/sonner.tsx">
+"use client"
+
+import {
+  CircleCheck,
+  Info,
+  LoaderCircle,
+  OctagonX,
+  TriangleAlert,
+} from "lucide-react"
+import { useTheme } from "next-themes"
+import { Toaster as Sonner } from "sonner"
+
+type ToasterProps = React.ComponentProps<typeof Sonner>
+
+const Toaster = ({ ...props }: ToasterProps) => {
+  const { theme = "system" } = useTheme()
+
+  return (
+    <Sonner
+      theme={theme as ToasterProps["theme"]}
+      className="toaster group"
+      icons={{
+        success: <CircleCheck className="h-4 w-4" />,
+        info: <Info className="h-4 w-4" />,
+        warning: <TriangleAlert className="h-4 w-4" />,
+        error: <OctagonX className="h-4 w-4" />,
+        loading: <LoaderCircle className="h-4 w-4 animate-spin" />,
+      }}
+      toastOptions={{
+        classNames: {
+          toast:
+            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
+          description: "group-[.toast]:text-muted-foreground",
+          actionButton:
+            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
+          cancelButton:
+            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
+        },
+      }}
+      {...props}
+    />
+  )
+}
+
+export { Toaster }
+</file>
+
+<file path="src/features/auth/hooks/useAuth.ts">
+import { useEffect } from 'react'
+import { useAuthStore } from '@/store/authStore'
+import * as AuthService from '../services/AuthService'
+import type { LoginCredentials, RegisterCredentials } from '../types/auth.types'
+
+export function useAuth() {
+  const { user, isAuthenticated, isLoading, setUser, setLoading } = useAuthStore()
+
+  useEffect(() => {
+    const unsubscribe = AuthService.onAuthChange((user) => {
+      setUser(user)
+      setLoading(false)
+    })
+    return unsubscribe
+  }, [setUser, setLoading])
+
+  const login = async (credentials: LoginCredentials) => {
+    try {
+      return await AuthService.login(credentials)
+    } catch (error) {
+      throw error
+    }
+  }
+
+  const register = async (credentials: RegisterCredentials) => {
+    try {
+      return await AuthService.register(credentials)
+    } catch (error) {
+      throw error
+    }
+  }
+
+  const logout = async () => {
+    try {
+      await AuthService.logout()
+    } catch (error) {
+      throw error
+    }
+  }
+
+  return { user, isAuthenticated, isLoading, login, register, logout }
+}
+</file>
+
+<file path="src/features/auth/index.ts">
+export { useAuth } from './hooks/useAuth'
+export type { AuthUser, LoginCredentials, RegisterCredentials } from './types/auth.types'
+export { LoginForm } from './components/LoginForm'
+export { RegisterForm } from './components/RegisterForm'
+</file>
+
+<file path="src/features/auth/services/AuthService.ts">
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  updateProfile,
+  type User,
+  type Unsubscribe,
+} from 'firebase/auth'
+import { auth } from '@/lib/firebase'
+import type { AuthUser, LoginCredentials, RegisterCredentials } from '../types/auth.types'
+
+function mapFirebaseUser(firebaseUser: User): AuthUser {
+  return {
+    uid: firebaseUser.uid,
+    email: firebaseUser.email ?? '',
+    displayName: firebaseUser.displayName,
+  }
+}
+
+export async function login(credentials: LoginCredentials): Promise<AuthUser> {
+  const { user } = await signInWithEmailAndPassword(auth, credentials.email, credentials.password)
+  return mapFirebaseUser(user)
+}
+
+export async function register(credentials: RegisterCredentials): Promise<AuthUser> {
+  const { user } = await createUserWithEmailAndPassword(auth, credentials.email, credentials.password)
+  await updateProfile(user, { displayName: credentials.displayName })
+  return mapFirebaseUser(user)
+}
+
+export async function logout(): Promise<void> {
+  await signOut(auth)
+}
+
+export function onAuthChange(callback: (user: AuthUser | null) => void): Unsubscribe {
+  return onAuthStateChanged(auth, (firebaseUser) => {
+    callback(firebaseUser ? mapFirebaseUser(firebaseUser) : null)
+  })
+}
+</file>
+
+<file path="src/features/auth/types/auth.types.ts">
+export type AuthUser = {
+  uid: string;
+  email: string;
+  displayName: string | null;
+};
+
+export type LoginCredentials = {
+  email: string;
+  password: string;
+};
+
+export type RegisterCredentials = {
+  email: string;
+  password: string;
+  displayName: string;
+};
+</file>
+
+<file path="src/features/budget/adapters/BudgetAdapter.ts">
+import { budgetSchema, DEFAULT_BUDGET } from '../schemas/budget.schemas'
+import type { BudgetData } from '../types/budget.types'
+
+export const BudgetAdapter = {
+  toFirestore(budget: BudgetData): Record<string, unknown> {
+    return budget as unknown as Record<string, unknown>
+  },
+
+  fromFirestore(doc: Record<string, unknown>): BudgetData {
+    const merged = { ...DEFAULT_BUDGET, ...doc }
+    const result = budgetSchema.safeParse(merged)
+    return result.success ? result.data : DEFAULT_BUDGET
+  },
+}
+</file>
+
+<file path="src/features/budget/components/AddGastoForm.tsx">
+import { useState } from 'react'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+
+interface AddGastoFormProps {
+  onAdd: (monto: number, nombre?: string) => void
+  withName?: boolean
+  className?: string
+}
+
+export function AddGastoForm({ onAdd, withName = false, className }: AddGastoFormProps) {
+  const [nombre, setNombre] = useState('')
+  const [monto, setMonto] = useState('')
+
+  const inputClass = cn(
+    'h-8 bg-gray-800 border-gray-700 text-gray-100 placeholder:text-gray-600 text-sm',
+    'focus-visible:ring-amber-500 focus-visible:border-amber-500',
+  )
+
+  const handleAdd = () => {
+    const parsed = parseFloat(monto.replace(/[^0-9.-]/g, ''))
+    if (isNaN(parsed) || parsed <= 0) return
+    onAdd(parsed, withName ? nombre || undefined : undefined)
+    setNombre('')
+    setMonto('')
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') handleAdd()
+  }
+
+  return (
+    <div className={cn('flex items-center gap-2 pt-2', className)}>
+      {withName && (
+        <Input
+          placeholder="Nombre"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+          onKeyDown={handleKeyDown}
+          className={cn(inputClass, 'flex-1')}
+        />
+      )}
+      <Input
+        placeholder="Monto"
+        value={monto}
+        onChange={(e) => setMonto(e.target.value)}
+        onKeyDown={handleKeyDown}
+        className={cn(inputClass, withName ? 'w-28' : 'flex-1')}
+      />
+      <Button
+        type="button"
+        onClick={handleAdd}
+        size="sm"
+        className="h-8 bg-amber-500 hover:bg-amber-400 text-gray-950 font-semibold shrink-0"
+      >
+        {withName ? '+' : 'Aplicar'}
+      </Button>
+    </div>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/BrubankSection.tsx">
+import type { BrubankGasto } from '../types/budget.types'
+import type { BudgetCalculations } from '../types/budget.types'
+import { SectionCard } from './SectionCard'
+import { Row } from './Row'
+import { EditableNumber } from './EditableNumber'
+import { GastosList } from './GastosList'
+import { AddGastoForm } from './AddGastoForm'
+import { Separator } from '@/components/ui/separator'
+
+interface BrubankSectionProps {
+  brubank: number
+  brubankGastos: BrubankGasto[]
+  calculations: Pick<BudgetCalculations, 'totalBrubankGastado' | 'brubankRestante'>
+  onBrubankChange: (v: number) => void
+  onAddGasto: (monto: number) => void
+  onRemoveGasto: (id: string) => void
+}
+
+export function BrubankSection({
+  brubank,
+  brubankGastos,
+  calculations,
+  onBrubankChange,
+  onAddGasto,
+  onRemoveGasto,
+}: BrubankSectionProps) {
+  return (
+    <SectionCard title="Brubank" icon="🏦">
+      <Row label="Saldo">
+        <EditableNumber value={brubank} onChange={onBrubankChange} />
+      </Row>
+      <Separator className="bg-gray-800 my-2" />
+      <GastosList items={brubankGastos} onRemove={onRemoveGasto} />
+      <AddGastoForm onAdd={onAddGasto} withName={false} />
+      <Separator className="bg-gray-800 my-2" />
+      <Row label="Gastado">$ {calculations.totalBrubankGastado.toLocaleString('es-AR')}</Row>
+      <Row label="Disponible" highlight>
+        $ {calculations.brubankRestante.toLocaleString('es-AR')}
+      </Row>
+    </SectionCard>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/Counter.tsx">
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+
+interface CounterProps {
+  value: number
+  onChange: (v: number) => void
+  label?: string
+  className?: string
+}
+
+export function Counter({ value, onChange, label, className }: CounterProps) {
+  return (
+    <div className={cn('flex items-center gap-3', className)}>
+      {label && <span className="text-gray-400 text-sm">{label}</span>}
+      <div className="flex items-center gap-1">
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          onClick={() => onChange(Math.max(0, value - 1))}
+          disabled={value <= 0}
+          className="h-7 w-7 p-0 text-gray-400 hover:text-amber-400 hover:bg-gray-800"
+        >
+          −
+        </Button>
+        <span className="font-mono text-amber-300 min-w-[2rem] text-center">{value}</span>
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          onClick={() => onChange(value + 1)}
+          className="h-7 w-7 p-0 text-gray-400 hover:text-amber-400 hover:bg-gray-800"
+        >
+          +
+        </Button>
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/EditableNumber.tsx">
+import { useState, useRef } from 'react'
+import { Input } from '@/components/ui/input'
+import { cn } from '@/lib/utils'
+
+interface EditableNumberProps {
+  value: number
+  onChange: (v: number) => void
+  prefix?: '$' | 'USD'
+  className?: string
+}
+
+function format(value: number, prefix: '$' | 'USD' = '$'): string {
+  if (prefix === 'USD') return `USD ${value.toLocaleString('es-AR')}`
+  return `$ ${value.toLocaleString('es-AR')}`
+}
+
+export function EditableNumber({ value, onChange, prefix = '$', className }: EditableNumberProps) {
+  const [editing, setEditing] = useState(false)
+  const [raw, setRaw] = useState('')
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const startEditing = () => {
+    setRaw(String(value))
+    setEditing(true)
+    setTimeout(() => inputRef.current?.select(), 0)
+  }
+
+  const confirm = () => {
+    const parsed = parseFloat(raw.replace(/[^0-9.-]/g, ''))
+    if (!isNaN(parsed)) onChange(parsed)
+    setEditing(false)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') confirm()
+    if (e.key === 'Escape') setEditing(false)
+  }
+
+  if (editing) {
+    return (
+      <Input
+        ref={inputRef}
+        value={raw}
+        onChange={(e) => setRaw(e.target.value)}
+        onBlur={confirm}
+        onKeyDown={handleKeyDown}
+        className={cn(
+          'h-7 w-36 bg-gray-800 border-amber-500 text-amber-300 text-sm font-mono',
+          'focus-visible:ring-amber-500',
+          className,
+        )}
+      />
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={startEditing}
+      className={cn(
+        'font-mono text-amber-300 hover:text-amber-200 hover:underline',
+        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-500 rounded',
+        'cursor-pointer transition-colors',
+        className,
+      )}
+    >
+      {format(value, prefix)}
+    </button>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/FimaSection.tsx">
+import type { BudgetData, BudgetCalculations } from '../types/budget.types'
+import { SectionCard } from './SectionCard'
+import { Row } from './Row'
+import { EditableNumber } from './EditableNumber'
+import { Counter } from './Counter'
+import { Separator } from '@/components/ui/separator'
+
+interface FimaSectionProps {
+  data: Pick<BudgetData, 'fima' | 'montoNafta' | 'precioTanque' | 'tanquesCargados' | 'paraClasesJony' | 'precioClase' | 'clasesCursadas'>
+  calculations: Pick<BudgetCalculations, 'naftaRestante' | 'tanquesTotales' | 'tanquesRestantes' | 'clasesTotales' | 'clasesRestantes' | 'clasesMontoRestante'>
+  onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
+}
+
+export function FimaSection({ data, calculations, onUpdate }: FimaSectionProps) {
+  return (
+    <SectionCard title="FIMA" icon="💼">
+      <Row label="Saldo total" highlight>
+        <EditableNumber value={data.fima} onChange={(v) => onUpdate('fima', v)} />
+      </Row>
+
+      <Separator className="bg-gray-800 my-3" />
+      <p className="text-xs uppercase tracking-widest text-gray-600 px-3 pb-1">⛽ Nafta</p>
+
+      <Row label="Monto asignado">
+        <EditableNumber value={data.montoNafta} onChange={(v) => onUpdate('montoNafta', v)} />
+      </Row>
+      <Row label="Precio por tanque">
+        <EditableNumber value={data.precioTanque} onChange={(v) => onUpdate('precioTanque', v)} />
+      </Row>
+      <Row label="Tanques totales">{calculations.tanquesTotales}</Row>
+      <Counter
+        value={data.tanquesCargados}
+        onChange={(v) => onUpdate('tanquesCargados', v)}
+        label="Tanques cargados"
+        className="px-3 py-2"
+      />
+      <Row label="Tanques restantes">{calculations.tanquesRestantes}</Row>
+      <Row label="Monto restante" highlight>
+        $ {calculations.naftaRestante.toLocaleString('es-AR')}
+      </Row>
+
+      <Separator className="bg-gray-800 my-3" />
+      <p className="text-xs uppercase tracking-widest text-gray-600 px-3 pb-1">🎸 Clases Jony</p>
+
+      <Row label="Monto asignado">
+        <EditableNumber value={data.paraClasesJony} onChange={(v) => onUpdate('paraClasesJony', v)} />
+      </Row>
+      <Row label="Precio por clase">
+        <EditableNumber value={data.precioClase} onChange={(v) => onUpdate('precioClase', v)} />
+      </Row>
+      <Row label="Clases totales">{calculations.clasesTotales}</Row>
+      <Counter
+        value={data.clasesCursadas}
+        onChange={(v) => onUpdate('clasesCursadas', v)}
+        label="Clases cursadas"
+        className="px-3 py-2"
+      />
+      <Row label="Clases restantes">{calculations.clasesRestantes}</Row>
+      <Row label="Monto restante" highlight>
+        $ {calculations.clasesMontoRestante.toLocaleString('es-AR')}
+      </Row>
+    </SectionCard>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/FiwindSection.tsx">
+import type { BudgetData, BudgetCalculations, ElementoComprado } from '../types/budget.types'
+import { SectionCard } from './SectionCard'
+import { Row } from './Row'
+import { EditableNumber } from './EditableNumber'
+import { GastosList } from './GastosList'
+import { AddGastoForm } from './AddGastoForm'
+import { Separator } from '@/components/ui/separator'
+
+interface FiwindSectionProps {
+  data: Pick<BudgetData, 'gastosGenerales'>
+  elementosComprados: ElementoComprado[]
+  calculations: Pick<BudgetCalculations, 'totalElementosComprados' | 'gastosDisponible'>
+  onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
+  onAddElemento: (nombre: string, monto: number) => void
+  onRemoveElemento: (id: string) => void
+}
+
+export function FiwindSection({
+  data,
+  elementosComprados,
+  calculations,
+  onUpdate,
+  onAddElemento,
+  onRemoveElemento,
+}: FiwindSectionProps) {
+  return (
+    <SectionCard title="Fiwind — Gastos Generales" icon="🧾">
+      <Row label="Presupuesto">
+        <EditableNumber value={data.gastosGenerales} onChange={(v) => onUpdate('gastosGenerales', v)} />
+      </Row>
+      <Separator className="bg-gray-800 my-2" />
+      <GastosList items={elementosComprados} onRemove={onRemoveElemento} />
+      <AddGastoForm
+        onAdd={(monto, nombre) => onAddElemento(nombre ?? '', monto)}
+        withName
+      />
+      <Separator className="bg-gray-800 my-2" />
+      <Row label="Gastado">$ {calculations.totalElementosComprados.toLocaleString('es-AR')}</Row>
+      <Row label="Disponible" highlight>
+        $ {calculations.gastosDisponible.toLocaleString('es-AR')}
+      </Row>
+    </SectionCard>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/GaliciaAutoSection.tsx">
+import type { BudgetData, BudgetCalculations } from '../types/budget.types'
+import { SectionCard } from './SectionCard'
+import { Row } from './Row'
+import { EditableNumber } from './EditableNumber'
+
+interface GaliciaAutoSectionProps {
+  data: Pick<BudgetData, 'dolarAuto' | 'autoViejoVendido'>
+  calculations: Pick<BudgetCalculations, 'pesosAuto' | 'totalPresupuestoAuto'>
+  onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
+}
+
+export function GaliciaAutoSection({ data, calculations, onUpdate }: GaliciaAutoSectionProps) {
+  return (
+    <SectionCard title="Galicia — Auto" icon="🚗">
+      <Row label="Dólares">
+        <EditableNumber value={data.dolarAuto} onChange={(v) => onUpdate('dolarAuto', v)} prefix="USD" />
+      </Row>
+      <Row label="Equivale en pesos">$ {calculations.pesosAuto.toLocaleString('es-AR')}</Row>
+      <Row label="Auto viejo vendido">
+        <EditableNumber value={data.autoViejoVendido} onChange={(v) => onUpdate('autoViejoVendido', v)} />
+      </Row>
+      <Row label="Total presupuesto auto" highlight>
+        $ {calculations.totalPresupuestoAuto.toLocaleString('es-AR')}
+      </Row>
+    </SectionCard>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/GaliciaSueldoSection.tsx">
+import type { BudgetData, BudgetCalculations } from '../types/budget.types'
+import { SectionCard } from './SectionCard'
+import { Row } from './Row'
+import { EditableNumber } from './EditableNumber'
+
+interface GaliciaSueldoSectionProps {
+  data: Pick<BudgetData, 'dolarSueldo'>
+  calculations: Pick<BudgetCalculations, 'pesosSueldo' | 'sueldo4' | 'sueldo5' | 'sueldo6'>
+  onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
+}
+
+export function GaliciaSueldoSection({ data, calculations, onUpdate }: GaliciaSueldoSectionProps) {
+  return (
+    <SectionCard title="Galicia — Sueldo" icon="💰">
+      <Row label="Dólares">
+        <EditableNumber value={data.dolarSueldo} onChange={(v) => onUpdate('dolarSueldo', v)} prefix="USD" />
+      </Row>
+      <Row label="Equivale en pesos">$ {calculations.pesosSueldo.toLocaleString('es-AR')}</Row>
+      <Row label="A 4 meses" highlight>$ {Math.round(calculations.sueldo4).toLocaleString('es-AR')}</Row>
+      <Row label="A 5 meses" highlight>$ {Math.round(calculations.sueldo5).toLocaleString('es-AR')}</Row>
+      <Row label="A 6 meses" highlight>$ {Math.round(calculations.sueldo6).toLocaleString('es-AR')}</Row>
+    </SectionCard>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/GastosList.tsx">
+import { cn } from '@/lib/utils'
+
+interface GastosListItem {
+  id: string
+  nombre?: string
+  monto: number
+}
+
+interface GastosListProps {
+  items: GastosListItem[]
+  onRemove: (id: string) => void
+  className?: string
+}
+
+export function GastosList({ items, onRemove, className }: GastosListProps) {
+  if (items.length === 0) return null
+
+  return (
+    <ul className={cn('space-y-1', className)}>
+      {items.map((item) => (
+        <li
+          key={item.id}
+          className="flex items-center justify-between gap-2 px-3 py-1.5 rounded-md bg-gray-800/60 text-sm"
+        >
+          <span className="text-gray-300 truncate">
+            {item.nombre ? `${item.nombre} — ` : ''}
+            <span className="font-mono text-amber-300">
+              $ {item.monto.toLocaleString('es-AR')}
+            </span>
+          </span>
+          <button
+            type="button"
+            onClick={() => onRemove(item.id)}
+            className="text-red-500 hover:text-red-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500 rounded shrink-0"
+            aria-label="Eliminar gasto"
+          >
+            ✕
+          </button>
+        </li>
+      ))}
+    </ul>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/NaranjaSection.tsx">
+import type { BudgetData, BudgetCalculations } from '../types/budget.types'
+import { SectionCard } from './SectionCard'
+import { Row } from './Row'
+import { EditableNumber } from './EditableNumber'
+import { Counter } from './Counter'
+import { Separator } from '@/components/ui/separator'
+
+interface NaranjaSectionProps {
+  data: Pick<BudgetData, 'naranjaPesos' | 'costoSesion' | 'sesionesCursadas' | 'dolaresNaranja' | 'costoVisa'>
+  calculations: Pick<BudgetCalculations, 'sesionesDisponibles' | 'sesionesRestantes' | 'mesesVisa'>
+  onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
+}
+
+export function NaranjaSection({ data, calculations, onUpdate }: NaranjaSectionProps) {
+  return (
+    <SectionCard title="Naranja X" icon="🟠">
+      <Row label="Pesos disponibles">
+        <EditableNumber value={data.naranjaPesos} onChange={(v) => onUpdate('naranjaPesos', v)} />
+      </Row>
+      <Row label="Costo sesión">
+        <EditableNumber value={data.costoSesion} onChange={(v) => onUpdate('costoSesion', v)} />
+      </Row>
+      <Row label="Sesiones disponibles">{calculations.sesionesDisponibles}</Row>
+      <Counter
+        value={data.sesionesCursadas}
+        onChange={(v) => onUpdate('sesionesCursadas', v)}
+        label="Sesiones cursadas"
+        className="px-3 py-2"
+      />
+      <Row label="Restantes" highlight>{calculations.sesionesRestantes}</Row>
+      <Separator className="bg-gray-800 my-2" />
+      <Row label="Dólares">
+        <EditableNumber value={data.dolaresNaranja} onChange={(v) => onUpdate('dolaresNaranja', v)} prefix="USD" />
+      </Row>
+      <Row label="Costo Visa (USD/mes)">
+        <EditableNumber value={data.costoVisa} onChange={(v) => onUpdate('costoVisa', v)} prefix="USD" />
+      </Row>
+      <Row label="Meses equivalentes" highlight>{calculations.mesesVisa.toFixed(1)}</Row>
+    </SectionCard>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/RipioSection.tsx">
+import type { BudgetData, BudgetCalculations } from '../types/budget.types'
+import { SectionCard } from './SectionCard'
+import { Row } from './Row'
+import { EditableNumber } from './EditableNumber'
+
+interface RipioSectionProps {
+  data: Pick<BudgetData, 'ripioPorDia'>
+  calculations: Pick<BudgetCalculations, 'diasRipio' | 'diasTranscurridos' | 'totalRipioObjetivo' | 'totalRipioAcumulado'>
+  onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
+}
+
+export function RipioSection({ data, calculations, onUpdate }: RipioSectionProps) {
+  const progreso = calculations.diasRipio > 0
+    ? Math.round((calculations.diasTranscurridos / calculations.diasRipio) * 100)
+    : 0
+
+  return (
+    <SectionCard title="Ripio" icon="🪨">
+      <Row label="Ahorro por día">
+        <EditableNumber value={data.ripioPorDia} onChange={(v) => onUpdate('ripioPorDia', v)} />
+      </Row>
+      <Row label="Período">25/03/2026 → 01/12/2026</Row>
+      <Row label="Días totales">{calculations.diasRipio}</Row>
+      <Row label="Días transcurridos">{calculations.diasTranscurridos} ({progreso}%)</Row>
+      <Row label="Objetivo total">$ {calculations.totalRipioObjetivo.toLocaleString('es-AR')}</Row>
+      <Row label="Acumulado a hoy" highlight>
+        $ {calculations.totalRipioAcumulado.toLocaleString('es-AR')}
+      </Row>
+    </SectionCard>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/SectionCard.tsx">
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
+
+interface SectionCardProps {
+  title: string
+  icon: string
+  children: React.ReactNode
+  className?: string
+}
+
+export function SectionCard({ title, icon, children, className }: SectionCardProps) {
+  return (
+    <Card className={cn('bg-gray-900 border-gray-800', className)}>
+      <CardHeader className="pb-3">
+        <CardTitle className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-500">
+          <span>{icon}</span>
+          <span>{title}</span>
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-1 pt-0">{children}</CardContent>
+    </Card>
+  )
+}
+</file>
+
+<file path="src/features/budget/hooks/useBudgetCalculations.ts">
+import { useMemo } from 'react'
+import type { BudgetData, BudgetCalculations } from '../types/budget.types'
+
+const START_DATE = new Date('2026-03-25T00:00:00')
+const END_DATE = new Date('2026-12-01T00:00:00')
+const MS_PER_DAY = 1000 * 60 * 60 * 24
+
+function daysBetween(a: Date, b: Date): number {
+  return Math.round((b.getTime() - a.getTime()) / MS_PER_DAY)
+}
+
+export function useBudgetCalculations(data: BudgetData): BudgetCalculations {
+  return useMemo(() => {
+    const totalBrubankGastado = data.brubankGastos.reduce((sum, g) => sum + g.monto, 0)
+    const brubankRestante = data.brubank - totalBrubankGastado
+
+    const sesionesDisponibles = Math.floor(data.naranjaPesos / data.costoSesion)
+    const sesionesRestantes = sesionesDisponibles - data.sesionesCursadas
+
+    const mesesVisa = data.dolaresNaranja / data.costoVisa
+
+    const naftaRestante = data.montoNafta - data.tanquesCargados * data.precioTanque
+    const tanquesTotales = Math.floor(data.montoNafta / data.precioTanque)
+    const tanquesRestantes = tanquesTotales - data.tanquesCargados
+
+    const clasesTotales = Math.floor(data.paraClasesJony / data.precioClase)
+    const clasesRestantes = clasesTotales - data.clasesCursadas
+    const clasesMontoRestante = data.paraClasesJony - data.clasesCursadas * data.precioClase
+
+    const pesosAuto = data.dolarAuto * data.precioDolar
+    const totalPresupuestoAuto = pesosAuto + data.autoViejoVendido
+
+    const pesosSueldo = data.dolarSueldo * data.precioDolar
+    const sueldo4 = pesosSueldo / 4
+    const sueldo5 = pesosSueldo / 5
+    const sueldo6 = pesosSueldo / 6
+
+    const diasRipio = daysBetween(START_DATE, END_DATE)
+    const rawDiasTranscurridos = daysBetween(START_DATE, new Date())
+    const diasTranscurridos = Math.min(Math.max(rawDiasTranscurridos, 0), diasRipio)
+
+    const totalRipioObjetivo = diasRipio * data.ripioPorDia
+    const totalRipioAcumulado = diasTranscurridos * data.ripioPorDia
+
+    const totalElementosComprados = data.elementosComprados.reduce((sum, e) => sum + e.monto, 0)
+    const gastosDisponible = data.gastosGenerales - totalElementosComprados
+
+    return {
+      totalBrubankGastado,
+      brubankRestante,
+      sesionesDisponibles,
+      sesionesRestantes,
+      mesesVisa,
+      naftaRestante,
+      tanquesTotales,
+      tanquesRestantes,
+      clasesTotales,
+      clasesRestantes,
+      clasesMontoRestante,
+      pesosAuto,
+      totalPresupuestoAuto,
+      pesosSueldo,
+      sueldo4,
+      sueldo5,
+      sueldo6,
+      diasRipio,
+      diasTranscurridos,
+      totalRipioObjetivo,
+      totalRipioAcumulado,
+      totalElementosComprados,
+      gastosDisponible,
+    }
+  }, [data])
+}
+</file>
+
+<file path="src/features/budget/index.ts">
+export { BudgetDashboard } from './components/BudgetDashboard'
+export { useBudget } from './hooks/useBudget'
+export type { BudgetData, BudgetCalculations } from './types/budget.types'
+</file>
+
+<file path="src/features/budget/services/BudgetService.ts">
+import { doc, getDoc, setDoc } from 'firebase/firestore'
+import { db } from '@/lib/firebase'
+import { BudgetAdapter } from '../adapters/BudgetAdapter'
+import { DEFAULT_BUDGET } from '../schemas/budget.schemas'
+import type { BudgetData } from '../types/budget.types'
+
+export const BudgetService = {
+  async getBudget(userId: string): Promise<BudgetData> {
+    const ref = doc(db, 'budgets', userId)
+    const snap = await getDoc(ref)
+    if (!snap.exists()) return DEFAULT_BUDGET
+    return BudgetAdapter.fromFirestore(snap.data() as Record<string, unknown>)
+  },
+
+  async saveBudget(userId: string, data: BudgetData): Promise<void> {
+    const ref = doc(db, 'budgets', userId)
+    await setDoc(ref, BudgetAdapter.toFirestore(data), { merge: true })
+  },
+}
+</file>
+
+<file path="src/features/custom-budget/adapters/CustomBudgetAdapter.ts">
+import { customBudgetSchema, DEFAULT_CUSTOM_BUDGET } from '../schemas/customBudget.schemas'
+import type { CustomBudgetData } from '../types/customBudget.types'
+
+export const CustomBudgetAdapter = {
+  toFirestore(data: CustomBudgetData): Record<string, unknown> {
+    return data as unknown as Record<string, unknown>
+  },
+
+  fromFirestore(doc: Record<string, unknown>): CustomBudgetData {
+    const result = customBudgetSchema.safeParse(doc)
+    if (!result.success) return DEFAULT_CUSTOM_BUDGET
+    return result.data as CustomBudgetData
+  },
+}
+</file>
+
+<file path="src/features/custom-budget/components/AddExpenseForm.tsx">
+import { useState, useRef } from 'react'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+
+interface AddExpenseFormProps {
+  onAdd: (monto: number, nombre?: string) => void
+  withName?: boolean
+}
+
+export function AddExpenseForm({ onAdd, withName = false }: AddExpenseFormProps) {
+  const [nombre, setNombre] = useState('')
+  const [monto, setMonto] = useState('')
+  const montoRef = useRef<HTMLInputElement>(null)
+
+  const handleSubmit = () => {
+    const parsed = parseFloat(monto.replace(',', '.'))
+    if (isNaN(parsed) || parsed <= 0) return
+    onAdd(parsed, withName && nombre.trim() ? nombre.trim() : undefined)
+    setNombre('')
+    setMonto('')
+  }
+
+  const handleMontoKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') handleSubmit()
+  }
+
+  return (
+    <div className="flex items-center gap-1 px-3 py-1">
+      {withName && (
+        <Input
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+          onKeyDown={(e) => { if (e.key === 'Enter') montoRef.current?.focus() }}
+          placeholder="Nombre"
+          className="h-7 bg-gray-800 border-gray-700 text-gray-200 text-xs placeholder:text-gray-600 focus-visible:ring-amber-500 focus-visible:border-amber-500"
+        />
+      )}
+      <Input
+        ref={montoRef}
+        value={monto}
+        onChange={(e) => setMonto(e.target.value)}
+        onKeyDown={handleMontoKeyDown}
+        placeholder="Monto"
+        className="h-7 bg-gray-800 border-gray-700 text-gray-200 text-xs placeholder:text-gray-600 focus-visible:ring-amber-500 focus-visible:border-amber-500"
+      />
+      <Button
+        type="button"
+        size="sm"
+        onClick={handleSubmit}
+        className="h-7 px-2 bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/30 text-xs"
+      >
+        {withName ? '+' : 'Aplicar'}
+      </Button>
+    </div>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/AddSectionButton.tsx">
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import { Button } from '@/components/ui/button'
+import type { SectionType } from '../types/customBudget.types'
+
+interface AddSectionButtonProps {
+  onAdd: (type: SectionType) => void
+}
+
+const OPTIONS: { type: SectionType; emoji: string; label: string; description: string }[] = [
+  { type: 'simple', emoji: '💰', label: 'Simple', description: 'Monto + lista de gastos' },
+  { type: 'equivalence', emoji: '📊', label: 'Equivalencia', description: 'Monto + unidades consumibles' },
+  { type: 'conversion', emoji: '💱', label: 'Conversión', description: 'Divisa + divisiones' },
+]
+
+export function AddSectionButton({ onAdd }: AddSectionButtonProps) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          type="button"
+          variant="outline"
+          className="w-full border-amber-500/30 text-amber-400 hover:bg-amber-500/10 hover:text-amber-300 hover:border-amber-500/50 bg-transparent text-sm"
+        >
+          + Agregar sección
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        className="bg-gray-900 border-gray-700 w-56"
+        align="center"
+      >
+        {OPTIONS.map(({ type, emoji, label, description }) => (
+          <DropdownMenuItem
+            key={type}
+            onClick={() => onAdd(type)}
+            className="flex flex-col items-start gap-0.5 cursor-pointer focus:bg-amber-500/20 focus:text-amber-300 py-2"
+          >
+            <span className="text-gray-200 font-medium text-sm">
+              {emoji} {label}
+            </span>
+            <span className="text-gray-500 text-xs">{description}</span>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/ConversionSection.tsx">
+import { useState } from 'react'
+import { Separator } from '@/components/ui/separator'
+import { Button } from '@/components/ui/button'
+import type { CustomSection, SectionCalculations } from '../types/customBudget.types'
+import { SectionCard } from './SectionCard'
+import { Row } from './Row'
+import { EditableNumber } from './EditableNumber'
+import { EditableText } from './EditableText'
+import { DivisionManager } from './DivisionManager'
+
+interface ConversionSectionProps {
+  section: CustomSection
+  calculations: SectionCalculations
+  currencyName: string
+  onUpdate: (updates: Partial<CustomSection>) => void
+  onAddDivision: (parts: number) => void
+  onRemoveDivision: (index: number) => void
+  onRemove: () => void
+}
+
+export function ConversionSection({
+  section,
+  calculations,
+  currencyName,
+  onUpdate,
+  onAddDivision,
+  onRemoveDivision,
+  onRemove,
+}: ConversionSectionProps) {
+  const [showExtra, setShowExtra] = useState(!!(section.extraLabel || (section.extraAmount ?? 0) > 0))
+  const equivalencia = calculations.equivalenciaPesos ?? 0
+
+  return (
+    <SectionCard
+      title={section.title}
+      icon={section.icon}
+      onRemove={onRemove}
+      onTitleChange={(title) => onUpdate({ title })}
+      onIconChange={(icon) => onUpdate({ icon })}
+    >
+      {/* Toggle useCurrency */}
+      <div className="flex items-center gap-2 px-3 py-2">
+        <button
+          type="button"
+          onClick={() => onUpdate({ useCurrency: !section.useCurrency })}
+          className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
+            section.useCurrency ? 'bg-amber-500' : 'bg-gray-700'
+          }`}
+        >
+          <span
+            className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform ${
+              section.useCurrency ? 'translate-x-5' : 'translate-x-1'
+            }`}
+          />
+        </button>
+        <span className="text-xs text-gray-400">Usar tipo de cambio</span>
+      </div>
+
+      {section.useCurrency ? (
+        <>
+          <Row label={`Monto en ${currencyName}`}>
+            <EditableNumber
+              value={section.currencyAmount ?? 0}
+              onChange={(v) => onUpdate({ currencyAmount: v })}
+              prefix="USD"
+            />
+          </Row>
+          <Row label="Equivale en pesos" highlight>
+            $ {equivalencia.toLocaleString('es-AR')}
+          </Row>
+        </>
+      ) : (
+        <Row label="Monto en pesos">
+          <EditableNumber
+            value={section.totalAmount}
+            onChange={(v) => onUpdate({ totalAmount: v })}
+          />
+        </Row>
+      )}
+
+      {/* Extra amount */}
+      {showExtra ? (
+        <div className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800/50">
+          <span className="text-sm text-gray-400 flex items-center gap-1">
+            <EditableText
+              value={section.extraLabel || 'Extra'}
+              onChange={(v) => onUpdate({ extraLabel: v })}
+              className="normal-case tracking-normal"
+            />
+          </span>
+          <EditableNumber
+            value={section.extraAmount ?? 0}
+            onChange={(v) => onUpdate({ extraAmount: v })}
+          />
+        </div>
+      ) : (
+        <div className="px-3">
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={() => { setShowExtra(true); onUpdate({ extraLabel: 'Extra', extraAmount: 0 }) }}
+            className="h-6 text-xs text-gray-600 hover:text-amber-400 px-0"
+          >
+            + Agregar monto extra
+          </Button>
+        </div>
+      )}
+
+      {(section.extraAmount ?? 0) > 0 && (
+        <Row label="Total" highlight>
+          $ {(calculations.totalConExtra ?? 0).toLocaleString('es-AR')}
+        </Row>
+      )}
+
+      <Separator className="bg-gray-800 my-2" />
+
+      <DivisionManager
+        divisions={section.divisions ?? []}
+        divisionLabel={section.divisionLabel ?? 'partes'}
+        equivalencia={equivalencia}
+        onAdd={onAddDivision}
+        onRemove={onRemoveDivision}
+        onLabelChange={(v) => onUpdate({ divisionLabel: v })}
+      />
+    </SectionCard>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/Counter.tsx">
+import { Button } from '@/components/ui/button'
+
+interface CounterProps {
+  value: number
+  onChange: (v: number) => void
+  label?: string
+}
+
+export function Counter({ value, onChange, label }: CounterProps) {
+  return (
+    <div className="flex items-center gap-2">
+      {label && <span className="text-xs text-gray-400">{label}</span>}
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        onClick={() => onChange(Math.max(0, value - 1))}
+        className="h-6 w-6 p-0 text-gray-400 hover:text-amber-300 hover:bg-amber-500/10"
+      >
+        −
+      </Button>
+      <span className="text-sm font-mono font-semibold text-amber-300 min-w-[2ch] text-center">
+        {value}
+      </span>
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        onClick={() => onChange(value + 1)}
+        className="h-6 w-6 p-0 text-gray-400 hover:text-amber-300 hover:bg-amber-500/10"
+      >
+        +
+      </Button>
+    </div>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/CurrencyBar.tsx">
+import { EditableText } from './EditableText'
+import { EditableNumber } from './EditableNumber'
+
+interface CurrencyBarProps {
+  currencyName: string
+  currencyValue: number
+  onNameChange: (name: string) => void
+  onValueChange: (value: number) => void
+}
+
+export function CurrencyBar({
+  currencyName,
+  currencyValue,
+  onNameChange,
+  onValueChange,
+}: CurrencyBarProps) {
+  return (
+    <div className="flex items-center justify-between px-4 py-3 rounded-lg bg-amber-500/10 border border-amber-500/20 mb-4">
+      <div className="flex items-center gap-2">
+        <span className="text-base">💵</span>
+        <span className="text-xs text-gray-500 font-semibold tracking-widest uppercase">
+          Tipo de cambio
+        </span>
+        <EditableText value={currencyName} onChange={onNameChange} />
+      </div>
+      <EditableNumber value={currencyValue} onChange={onValueChange} />
+    </div>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/DivisionManager.tsx">
+import { useState } from 'react'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { EditableText } from './EditableText'
+
+interface DivisionManagerProps {
+  divisions: number[]
+  divisionLabel: string
+  equivalencia: number
+  onAdd: (parts: number) => void
+  onRemove: (index: number) => void
+  onLabelChange: (label: string) => void
+}
+
+export function DivisionManager({
+  divisions,
+  divisionLabel,
+  equivalencia,
+  onAdd,
+  onRemove,
+  onLabelChange,
+}: DivisionManagerProps) {
+  const [raw, setRaw] = useState('')
+
+  const handleAdd = () => {
+    const parsed = parseInt(raw)
+    if (isNaN(parsed) || parsed <= 0) return
+    onAdd(parsed)
+    setRaw('')
+  }
+
+  return (
+    <div className="space-y-1">
+      <div className="flex items-center gap-1 px-3 py-1">
+        <span className="text-xs text-gray-500">Dividir en</span>
+        <EditableText value={divisionLabel} onChange={onLabelChange} />
+      </div>
+
+      {divisions.map((parts, index) => (
+        <div key={index} className="flex items-center justify-between px-3 py-1 rounded-md hover:bg-gray-800/50">
+          <span className="text-sm text-gray-400">
+            A {parts} {divisionLabel}
+          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-mono text-gray-200">
+              $ {Math.round(equivalencia / parts).toLocaleString('es-AR')}
+            </span>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => onRemove(index)}
+              className="h-5 w-5 p-0 text-gray-600 hover:text-red-400 hover:bg-red-950/30"
+            >
+              ✕
+            </Button>
+          </div>
+        </div>
+      ))}
+
+      {divisions.length < 3 && (
+        <div className="flex items-center gap-1 px-3 py-1">
+          <Input
+            value={raw}
+            onChange={(e) => setRaw(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter') handleAdd() }}
+            placeholder="Partes"
+            className="h-7 w-20 bg-gray-800 border-gray-700 text-gray-200 text-xs placeholder:text-gray-600 focus-visible:ring-amber-500 focus-visible:border-amber-500"
+          />
+          <Button
+            type="button"
+            size="sm"
+            onClick={handleAdd}
+            className="h-7 px-2 bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/30 text-xs"
+          >
+            +
+          </Button>
+        </div>
+      )}
+    </div>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/EditableNumber.tsx">
+import { useState, useRef } from 'react'
+import { Input } from '@/components/ui/input'
+import { cn } from '@/lib/utils'
+
+interface EditableNumberProps {
+  value: number
+  onChange: (v: number) => void
+  prefix?: '$' | 'USD'
+}
+
+export function EditableNumber({ value, onChange, prefix = '$' }: EditableNumberProps) {
+  const [editing, setEditing] = useState(false)
+  const [raw, setRaw] = useState('')
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const formatted =
+    prefix === 'USD'
+      ? `USD ${value.toLocaleString('es-AR')}`
+      : `$ ${value.toLocaleString('es-AR')}`
+
+  const startEditing = () => {
+    setRaw(String(value))
+    setEditing(true)
+    setTimeout(() => inputRef.current?.select(), 0)
+  }
+
+  const confirm = () => {
+    const parsed = parseFloat(raw.replace(',', '.'))
+    if (!isNaN(parsed)) onChange(parsed)
+    setEditing(false)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') confirm()
+    if (e.key === 'Escape') setEditing(false)
+  }
+
+  if (editing) {
+    return (
+      <Input
+        ref={inputRef}
+        value={raw}
+        onChange={(e) => setRaw(e.target.value)}
+        onBlur={confirm}
+        onKeyDown={handleKeyDown}
+        className="h-6 w-28 bg-gray-800 border-amber-500 text-amber-300 text-xs font-mono focus-visible:ring-amber-500 px-2"
+      />
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={startEditing}
+      className={cn(
+        'text-sm font-mono font-semibold text-amber-300',
+        'hover:text-amber-200 hover:underline underline-offset-2',
+        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-500 rounded',
+        'cursor-pointer transition-colors',
+      )}
+      title="Click para editar"
+    >
+      {formatted}
+    </button>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/EditableText.tsx">
+import { useState, useRef } from 'react'
+import { Input } from '@/components/ui/input'
+import { cn } from '@/lib/utils'
+
+interface EditableTextProps {
+  value: string
+  onChange: (v: string) => void
+  className?: string
+}
+
+export function EditableText({ value, onChange, className }: EditableTextProps) {
+  const [editing, setEditing] = useState(false)
+  const [raw, setRaw] = useState('')
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const startEditing = () => {
+    setRaw(value)
+    setEditing(true)
+    setTimeout(() => inputRef.current?.select(), 0)
+  }
+
+  const confirm = () => {
+    const trimmed = raw.trim()
+    if (trimmed) onChange(trimmed)
+    setEditing(false)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') confirm()
+    if (e.key === 'Escape') setEditing(false)
+  }
+
+  if (editing) {
+    return (
+      <Input
+        ref={inputRef}
+        value={raw}
+        onChange={(e) => setRaw(e.target.value)}
+        onBlur={confirm}
+        onKeyDown={handleKeyDown}
+        className={cn(
+          'h-6 bg-gray-800 border-amber-500 text-amber-300 text-xs font-semibold tracking-widest uppercase focus-visible:ring-amber-500 px-2',
+          className,
+        )}
+      />
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={startEditing}
+      className={cn(
+        'text-xs font-semibold tracking-widest uppercase text-amber-300',
+        'hover:text-amber-200 hover:underline underline-offset-2',
+        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-500 rounded',
+        'cursor-pointer transition-colors',
+        className,
+      )}
+      title="Click para editar"
+    >
+      {value}
+    </button>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/EquivalenceSection.tsx">
+import type { CustomSection, SectionCalculations } from '../types/customBudget.types'
+import { SectionCard } from './SectionCard'
+import { Row } from './Row'
+import { EditableNumber } from './EditableNumber'
+import { EditableText } from './EditableText'
+import { Counter } from './Counter'
+
+interface EquivalenceSectionProps {
+  section: CustomSection
+  calculations: SectionCalculations
+  onUpdate: (updates: Partial<CustomSection>) => void
+  onIncrement: () => void
+  onDecrement: () => void
+  onRemove: () => void
+}
+
+export function EquivalenceSection({
+  section,
+  calculations,
+  onUpdate,
+  onIncrement,
+  onDecrement,
+  onRemove,
+}: EquivalenceSectionProps) {
+  const unitLabel = section.unitLabel ?? 'unidad'
+
+  return (
+    <SectionCard
+      title={section.title}
+      icon={section.icon}
+      onRemove={onRemove}
+      onTitleChange={(title) => onUpdate({ title })}
+      onIconChange={(icon) => onUpdate({ icon })}
+    >
+      <Row label="Monto total">
+        <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />
+      </Row>
+      <div className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800/50">
+        <span className="text-sm text-gray-400 flex items-center gap-1">
+          Precio por{' '}
+          <EditableText
+            value={unitLabel}
+            onChange={(v) => onUpdate({ unitLabel: v })}
+            className="normal-case tracking-normal"
+          />
+        </span>
+        <EditableNumber
+          value={section.unitPrice ?? 0}
+          onChange={(v) => onUpdate({ unitPrice: v })}
+        />
+      </div>
+      <Row label={`Total ${unitLabel}s`}>
+        {calculations.totalUnidades ?? 0}
+      </Row>
+      <div className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800/50">
+        <span className="text-sm text-gray-400">{unitLabel}s consumidos</span>
+        <Counter
+          value={section.consumed ?? 0}
+          onChange={(v) => {
+            if (v > (section.consumed ?? 0)) onIncrement()
+            else onDecrement()
+          }}
+        />
+      </div>
+      <Row label={`${unitLabel}s restantes`}>
+        {calculations.unidadesRestantes ?? 0}
+      </Row>
+      <Row label="Monto restante" highlight>
+        $ {(calculations.montoRestante ?? 0).toLocaleString('es-AR')}
+      </Row>
+    </SectionCard>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/ExpenseList.tsx">
+import { Button } from '@/components/ui/button'
+import type { Expense } from '../types/customBudget.types'
+
+interface ExpenseListProps {
+  expenses: Expense[]
+  onRemove: (id: string) => void
+}
+
+export function ExpenseList({ expenses, onRemove }: ExpenseListProps) {
+  if (expenses.length === 0) {
+    return <p className="text-xs text-gray-600 italic px-3 py-1">Sin gastos</p>
+  }
+
+  return (
+    <ul className="space-y-1">
+      {expenses.map((e) => (
+        <li key={e.id} className="flex items-center justify-between px-3 py-1 rounded-md hover:bg-gray-800/50">
+          <span className="text-sm text-gray-400 truncate max-w-[60%]">
+            {e.nombre ?? '—'}
+          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-mono text-gray-200">
+              $ {e.monto.toLocaleString('es-AR')}
+            </span>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => onRemove(e.id)}
+              className="h-5 w-5 p-0 text-gray-600 hover:text-red-400 hover:bg-red-950/30"
+            >
+              ✕
+            </Button>
+          </div>
+        </li>
+      ))}
+    </ul>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/IconPicker.tsx">
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+
+const ICONS = [
+  { emoji: '💰', label: 'Dinero' },
+  { emoji: '🏦', label: 'Banco' },
+  { emoji: '📚', label: 'Estudio' },
+  { emoji: '🚗', label: 'Auto' },
+  { emoji: '⛽', label: 'Nafta' },
+  { emoji: '🛒', label: 'Compras' },
+  { emoji: '🏖️', label: 'Vacaciones' },
+  { emoji: '📁', label: 'General' },
+]
+
+interface IconPickerProps {
+  value: string
+  onChange: (v: string) => void
+}
+
+export function IconPicker({ value, onChange }: IconPickerProps) {
+  return (
+    <Select value={value} onValueChange={onChange}>
+      <SelectTrigger className="h-7 w-14 bg-transparent border-none text-base px-1 focus:ring-0 focus:ring-offset-0">
+        <SelectValue>{value}</SelectValue>
+      </SelectTrigger>
+      <SelectContent className="bg-gray-900 border-gray-700">
+        {ICONS.map(({ emoji, label }) => (
+          <SelectItem
+            key={emoji}
+            value={emoji}
+            className="text-gray-200 focus:bg-amber-500/20 focus:text-amber-300 cursor-pointer"
+          >
+            {emoji} {label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/Row.tsx">
+import { cn } from '@/lib/utils'
+
+interface RowProps {
+  label: string
+  highlight?: boolean
+  children: React.ReactNode
+}
+
+export function Row({ label, highlight, children }: RowProps) {
+  return (
+    <div
+      className={cn(
+        'flex items-center justify-between px-3 py-2 rounded-md',
+        highlight ? 'bg-amber-500/10 border border-amber-500/20' : 'hover:bg-gray-800/50',
+      )}
+    >
+      <span className={cn('text-sm', highlight ? 'text-amber-300 font-medium' : 'text-gray-400')}>
+        {label}
+      </span>
+      <div className={cn('text-sm font-mono', highlight ? 'text-amber-300 font-semibold' : 'text-gray-200')}>
+        {children}
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/SectionCard.tsx">
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { IconPicker } from './IconPicker'
+import { EditableText } from './EditableText'
+
+interface SectionCardProps {
+  title: string
+  icon: string
+  children: React.ReactNode
+  onRemove?: () => void
+  onTitleChange?: (title: string) => void
+  onIconChange?: (icon: string) => void
+}
+
+export function SectionCard({
+  title,
+  icon,
+  children,
+  onRemove,
+  onTitleChange,
+  onIconChange,
+}: SectionCardProps) {
+  return (
+    <Card className="bg-gray-900 border-gray-800 shadow-lg">
+      <CardHeader className="pb-2 pt-4 px-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1">
+            {onIconChange ? (
+              <IconPicker value={icon} onChange={onIconChange} />
+            ) : (
+              <span className="text-base">{icon}</span>
+            )}
+            {onTitleChange ? (
+              <EditableText value={title} onChange={onTitleChange} />
+            ) : (
+              <span className="text-xs font-semibold tracking-widest uppercase text-amber-300">
+                {title}
+              </span>
+            )}
+          </div>
+          {onRemove && (
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={onRemove}
+              className="h-6 w-6 p-0 text-gray-600 hover:text-red-400 hover:bg-red-950/30"
+              title="Eliminar sección"
+            >
+              ✕
+            </Button>
+          )}
+        </div>
+      </CardHeader>
+      <CardContent className="px-4 pb-4 space-y-1">{children}</CardContent>
+    </Card>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/components/SimpleSection.tsx">
+import { Separator } from '@/components/ui/separator'
+import type { CustomSection, SectionCalculations } from '../types/customBudget.types'
+import { SectionCard } from './SectionCard'
+import { Row } from './Row'
+import { EditableNumber } from './EditableNumber'
+import { ExpenseList } from './ExpenseList'
+import { AddExpenseForm } from './AddExpenseForm'
+
+interface SimpleSectionProps {
+  section: CustomSection
+  calculations: SectionCalculations
+  onUpdate: (updates: Partial<CustomSection>) => void
+  onAddExpense: (monto: number, nombre?: string) => void
+  onRemoveExpense: (expenseId: string) => void
+  onRemove: () => void
+}
+
+export function SimpleSection({
+  section,
+  calculations,
+  onUpdate,
+  onAddExpense,
+  onRemoveExpense,
+  onRemove,
+}: SimpleSectionProps) {
+  return (
+    <SectionCard
+      title={section.title}
+      icon={section.icon}
+      onRemove={onRemove}
+      onTitleChange={(title) => onUpdate({ title })}
+      onIconChange={(icon) => onUpdate({ icon })}
+    >
+      <Row label="Monto total">
+        <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />
+      </Row>
+      <Separator className="bg-gray-800 my-1" />
+      <ExpenseList expenses={section.expenses} onRemove={onRemoveExpense} />
+      <AddExpenseForm onAdd={onAddExpense} withName />
+      <Separator className="bg-gray-800 my-1" />
+      <Row label="Gastado">
+        $ {(calculations.totalGastado ?? 0).toLocaleString('es-AR')}
+      </Row>
+      <Row label="Disponible" highlight>
+        $ {(calculations.disponible ?? 0).toLocaleString('es-AR')}
+      </Row>
+    </SectionCard>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/hooks/useCustomBudget.ts">
+import { useEffect, useState, useRef } from 'react'
+import { useAuth } from '@/features/auth'
+import { CustomBudgetService } from '../services/CustomBudgetService'
+import {
+  DEFAULT_CUSTOM_BUDGET,
+  TEMPLATE_SIMPLE,
+  TEMPLATE_EQUIVALENCE,
+  TEMPLATE_CONVERSION,
+} from '../schemas/customBudget.schemas'
+import type { CustomBudgetData, CustomSection, SectionType } from '../types/customBudget.types'
+
+export function useCustomBudget() {
+  const { user } = useAuth()
+  const [data, setData] = useState<CustomBudgetData>(DEFAULT_CUSTOM_BUDGET)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isSaving, setIsSaving] = useState(false)
+  const isLoaded = useRef(false)
+
+  useEffect(() => {
+    if (!user) {
+      setIsLoading(false)
+      isLoaded.current = false
+      return
+    }
+
+    isLoaded.current = false
+    setIsLoading(true)
+
+    CustomBudgetService.getCustomBudget(user.uid)
+      .then((fetched) => {
+        setData(fetched)
+        isLoaded.current = true
+      })
+      .catch(() => {
+        setData(DEFAULT_CUSTOM_BUDGET)
+        isLoaded.current = true
+      })
+      .finally(() => setIsLoading(false))
+  }, [user])
+
+  useEffect(() => {
+    if (!isLoaded.current || !user) return
+
+    setIsSaving(true)
+    const timer = setTimeout(() => {
+      CustomBudgetService.saveCustomBudget(user.uid, data).finally(() => setIsSaving(false))
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [data, user])
+
+  function updateCurrency(name: string, value: number) {
+    setData((prev) => ({ ...prev, currencyName: name, currencyValue: value }))
+  }
+
+  function addSection(type: SectionType) {
+    const template =
+      type === 'simple'
+        ? TEMPLATE_SIMPLE
+        : type === 'equivalence'
+          ? TEMPLATE_EQUIVALENCE
+          : TEMPLATE_CONVERSION
+
+    const newSection: CustomSection = {
+      ...template,
+      id: crypto.randomUUID(),
+      order: data.sections.length,
+    }
+    setData((prev) => ({ ...prev, sections: [...prev.sections, newSection] }))
+  }
+
+  function removeSection(sectionId: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.filter((s) => s.id !== sectionId),
+    }))
+  }
+
+  function updateSection(sectionId: string, updates: Partial<CustomSection>) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) => (s.id === sectionId ? { ...s, ...updates } : s)),
+    }))
+  }
+
+  function reorderSections(sectionIds: string[]) {
+    setData((prev) => {
+      const map = new Map(prev.sections.map((s) => [s.id, s]))
+      const reordered = sectionIds
+        .map((id, index) => {
+          const s = map.get(id)
+          return s ? { ...s, order: index } : null
+        })
+        .filter(Boolean) as CustomSection[]
+      return { ...prev, sections: reordered }
+    })
+  }
+
+  function addExpense(sectionId: string, monto: number, nombre?: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId
+          ? {
+              ...s,
+              expenses: [...s.expenses, { id: crypto.randomUUID(), nombre, monto }],
+            }
+          : s,
+      ),
+    }))
+  }
+
+  function removeExpense(sectionId: string, expenseId: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId
+          ? { ...s, expenses: s.expenses.filter((e) => e.id !== expenseId) }
+          : s,
+      ),
+    }))
+  }
+
+  function incrementConsumed(sectionId: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId ? { ...s, consumed: (s.consumed ?? 0) + 1 } : s,
+      ),
+    }))
+  }
+
+  function decrementConsumed(sectionId: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId ? { ...s, consumed: Math.max(0, (s.consumed ?? 0) - 1) } : s,
+      ),
+    }))
+  }
+
+  function addDivision(sectionId: string, parts: number) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId && (s.divisions ?? []).length < 3
+          ? { ...s, divisions: [...(s.divisions ?? []), parts] }
+          : s,
+      ),
+    }))
+  }
+
+  function removeDivision(sectionId: string, index: number) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId
+          ? { ...s, divisions: (s.divisions ?? []).filter((_, i) => i !== index) }
+          : s,
+      ),
+    }))
+  }
+
+  function resetCustomBudget() {
+    setData(DEFAULT_CUSTOM_BUDGET)
+  }
+
+  return {
+    data,
+    isLoading,
+    isSaving,
+    updateCurrency,
+    addSection,
+    removeSection,
+    updateSection,
+    reorderSections,
+    addExpense,
+    removeExpense,
+    incrementConsumed,
+    decrementConsumed,
+    addDivision,
+    removeDivision,
+    resetCustomBudget,
+  }
+}
+</file>
+
+<file path="src/features/custom-budget/hooks/useCustomCalculations.ts">
+import { useMemo } from 'react'
+import type { CustomSection, SectionCalculations } from '../types/customBudget.types'
+
+export function useCustomCalculations(
+  section: CustomSection,
+  currencyValue: number,
+): SectionCalculations {
+  return useMemo(() => {
+    if (section.type === 'simple') {
+      const totalGastado = section.expenses.reduce((acc, e) => acc + e.monto, 0)
+      const disponible = section.totalAmount - totalGastado
+      return { totalGastado, disponible }
+    }
+
+    if (section.type === 'equivalence') {
+      const unitPrice = section.unitPrice ?? 0
+      const consumed = section.consumed ?? 0
+      const totalUnidades = unitPrice > 0 ? Math.floor(section.totalAmount / unitPrice) : 0
+      const unidadesRestantes = totalUnidades - consumed
+      const montoRestante = section.totalAmount - consumed * unitPrice
+      return { totalUnidades, unidadesRestantes, montoRestante }
+    }
+
+    // conversion
+    const equivalenciaPesos = section.useCurrency
+      ? (section.currencyAmount ?? 0) * currencyValue
+      : section.totalAmount
+    const totalConExtra = equivalenciaPesos + (section.extraAmount ?? 0)
+    const divisionResults = (section.divisions ?? []).map((parts) => ({
+      parts,
+      amount: Math.round(equivalenciaPesos / parts),
+    }))
+    return { equivalenciaPesos, totalConExtra, divisionResults }
+  }, [section, currencyValue])
+}
+</file>
+
+<file path="src/features/custom-budget/index.ts">
+export type { CustomSection, CustomBudgetData, SectionType, Expense, SectionCalculations } from './types/customBudget.types'
+export { useCustomBudget } from './hooks/useCustomBudget'
+export { useCustomCalculations } from './hooks/useCustomCalculations'
+export { CustomBudgetDashboard } from './components/CustomBudgetDashboard'
+</file>
+
+<file path="src/features/custom-budget/services/CustomBudgetService.ts">
+import { doc, getDoc, setDoc } from 'firebase/firestore'
+import { db } from '@/lib/firebase'
+import { CustomBudgetAdapter } from '../adapters/CustomBudgetAdapter'
+import { DEFAULT_CUSTOM_BUDGET } from '../schemas/customBudget.schemas'
+import type { CustomBudgetData } from '../types/customBudget.types'
+
+export const CustomBudgetService = {
+  async getCustomBudget(userId: string): Promise<CustomBudgetData> {
+    const ref = doc(db, 'custom-budgets', userId)
+    const snap = await getDoc(ref)
+    if (!snap.exists()) return DEFAULT_CUSTOM_BUDGET
+    return CustomBudgetAdapter.fromFirestore(snap.data() as Record<string, unknown>)
+  },
+
+  async saveCustomBudget(userId: string, data: CustomBudgetData): Promise<void> {
+    const ref = doc(db, 'custom-budgets', userId)
+    await setDoc(ref, CustomBudgetAdapter.toFirestore(data), { merge: true })
+  },
+}
+</file>
+
+<file path="src/features/custom-budget/types/customBudget.types.ts">
+export type SectionType = "simple" | "equivalence" | "conversion";
+
+export interface Expense {
+  id: string;
+  nombre?: string;
+  monto: number;
+}
+
+export interface CustomSection {
+  id: string;
+  title: string;
+  icon: string;
+  order: number;
+  type: SectionType;
+
+  // Común a simple y equivalence
+  totalAmount: number;
+
+  // Solo SIMPLE: lista de gastos
+  expenses: Expense[];
+
+  // Solo EQUIVALENCE
+  unitLabel?: string;       // "tanque", "clase", "sesión"
+  unitPrice?: number;
+  consumed?: number;
+
+  // Solo CONVERSION
+  useCurrency?: boolean;    // true = usa tipo de cambio global, false = pesos directo
+  currencyAmount?: number;  // monto en divisa
+  extraAmount?: number;     // monto extra sumable, default 0
+  extraLabel?: string;      // "Auto viejo vendido"
+  divisions?: number[];     // ej: [4, 5, 6] -> max 3 elementos
+  divisionLabel?: string;   // "partes" por defecto
+}
+
+export interface CustomBudgetData {
+  currencyName: string;     // "DÓLAR", "EURO", etc.
+  currencyValue: number;    // tipo de cambio
+  sections: CustomSection[];
+}
+
+export interface SectionCalculations {
+  // Simple
+  totalGastado?: number;
+  disponible?: number;
+
+  // Equivalence
+  totalUnidades?: number;
+  unidadesRestantes?: number;
+  montoRestante?: number;
+
+  // Conversion
+  equivalenciaPesos?: number;
+  totalConExtra?: number;
+  divisionResults?: { parts: number; amount: number }[];
+}
+</file>
+
+<file path="src/index.css">
+@import "tailwindcss";
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
+}
+</file>
+
+<file path="src/lib/firebase.ts">
+import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
+
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY as string,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN as string,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID as string,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET as string,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID as string,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID as string,
+}
+
+export const app = initializeApp(firebaseConfig)
+export const auth = getAuth(app)
+export const db = getFirestore(app)
+</file>
+
+<file path="src/lib/utils.ts">
+import { clsx, type ClassValue } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+</file>
+
+<file path="src/pages/BudgetPage.tsx">
+import { BudgetDashboard } from '@/features/budget'
+
+export default function BudgetPage() {
+  return <BudgetDashboard />
+}
+</file>
+
+<file path="src/pages/CustomBudgetPage.tsx">
+import { CustomBudgetDashboard } from '@/features/custom-budget'
+
+export default function CustomBudgetPage() {
+  return <CustomBudgetDashboard />
+}
+</file>
+
+<file path="src/pages/LoginPage.tsx">
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { LoginForm } from '@/features/auth'
+import { useAuth } from '@/features/auth'
+
+export default function LoginPage() {
+  const { login } = useAuth()
+  const navigate = useNavigate()
+  const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleSubmit = async (data: { email: string; password: string }) => {
+    setError(null)
+    setIsLoading(true)
+    try {
+      await login(data)
+      navigate('/')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Error al iniciar sesión')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return <LoginForm onSubmit={handleSubmit} isLoading={isLoading} error={error} />
+}
+</file>
+
+<file path="src/pages/RegisterPage.tsx">
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { RegisterForm } from '@/features/auth'
+import { useAuth } from '@/features/auth'
+
+export default function RegisterPage() {
+  const { register } = useAuth()
+  const navigate = useNavigate()
+  const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleSubmit = async (data: { displayName: string; email: string; password: string }) => {
+    setError(null)
+    setIsLoading(true)
+    try {
+      await register(data)
+      navigate('/')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Error al crear la cuenta')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return <RegisterForm onSubmit={handleSubmit} isLoading={isLoading} error={error} />
+}
+</file>
+
+<file path="src/router/AdminRoute.tsx">
+import type { ReactNode } from 'react'
+import { useAuth } from '@/features/auth'
+
+const ADMIN_EMAIL = 'gerardoramirez656@gmail.com'
+
+interface AdminRouteProps {
+  children: ReactNode
+  fallback: ReactNode
+}
+
+export function AdminRoute({ children, fallback }: AdminRouteProps) {
+  const { user } = useAuth()
+  return user?.email === ADMIN_EMAIL ? <>{children}</> : <>{fallback}</>
+}
+</file>
+
+<file path="src/store/authStore.ts">
+import { create } from 'zustand'
+import type { AuthUser } from '@/features/auth/types/auth.types'
+
+type AuthState = {
+  user: AuthUser | null
+  isLoading: boolean
+  isAuthenticated: boolean
+  setUser: (user: AuthUser | null) => void
+  setLoading: (isLoading: boolean) => void
+  clearUser: () => void
+}
+
+export const useAuthStore = create<AuthState>((set) => ({
+  user: null,
+  isLoading: true,
+  isAuthenticated: false,
+  setUser: (user) => set({ user, isAuthenticated: user !== null }),
+  setLoading: (isLoading) => set({ isLoading }),
+  clearUser: () => set({ user: null, isAuthenticated: false }),
+}))
+</file>
+
+<file path="src/vite-env.d.ts">
+/// <reference types="vite/client" />
+</file>
+
+<file path="STYLE.md">
+Actuá como: Senior UI Engineer experto en el ecosistema moderno (Tailwind 4 + Radix UI + Shadcn).
+Misión: Generar el esqueleto visual de [DESCRIPCIÓN DEL COMPONENTE].
+
+Fase 0: Verificación de Configuración (Safe Check)
+1. Antes de codear, recordame que debo tener configurado el Path Alias (@/) en vite.config.ts y tsconfig.json.
+2. Verificá si necesito src/lib/utils.ts para la función cn().
+
+Fase 1: Verificación de Entorno e Instalación
+Antes de generar el código, revisá si el componente solicitado requiere dependencias:
+1. Si es un componente estándar de Shadcn, generá el comando: npx shadcn@latest add [componente].
+2. Si es un componente custom basado en Radix, listá la instalación de la primitiva necesaria: npm install @radix-ui/react-[primitiva].
+3. Asegurá que las clases asuman que Tailwind 4 está configurado (Zero-config mode).
+
+Fase 2: Construcción del Componente
+Restricción: Solo JSX/TSX y clases de Tailwind 4. PROHIBIDO incluir lógica de react-hook-form, zod o useState complejo. Solo estados visuales.
+PROHIBIDO: No usar @layer CSS ni clases personalizadas en archivos .css. Todo debe ser clases inline.
+
+Criterios de Calidad:
+• Estilo: Usar variables de color nativas de Tailwind 4 (--color-primary, --color-destructive, etc.).
+• Tipado: TypeScript estricto. Extendé las props de los elementos nativos o de Radix: interface Props extends React.ComponentPropsWithoutRef<typeof [RadixPrimitive]>.
+• Estados: Implementar estilos para hover:, focus-visible:, disabled: y un estado de error basado en la prop hasError: boolean.
+• Accesibilidad: Uso correcto de ARIA roles, aria-invalid, aria-describedby y estados de Radix (data-state).
+
+Salida: Check de configuración + Comando de instalación + Código TSX limpio usando el alias @/lib/utils.
+</file>
+
+<file path="tsconfig.app.json">
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}
+</file>
+
+<file path="tsconfig.json">
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+</file>
+
+<file path="tsconfig.node.json">
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["vite.config.ts"]
+}
+</file>
+
+<file path="vercel.json">
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <title>Mi Presupuesto</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="src/components/layout/MainLayout.tsx">
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { useAuth } from '@/features/auth'
+import { Navbar } from './Navbar'
+
+const ADMIN_EMAIL = 'gerardoramirez656@gmail.com'
+
+export function MainLayout() {
+  const { user, logout } = useAuth()
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const isAdmin = user?.email === ADMIN_EMAIL
+  const currentView = location.pathname === '/custom' ? 'custom' : 'classic'
+
+  const handleSwitch = () => {
+    navigate(currentView === 'classic' ? '/custom' : '/')
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-950">
+      <Navbar
+        userName={user?.displayName ?? null}
+        onLogout={logout}
+        showSwitch={isAdmin}
+        currentView={currentView}
+        onSwitch={handleSwitch}
+      />
+      <Outlet />
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/layout/Navbar.tsx">
+import { LogOut, LayoutGrid, LayoutList } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+
+interface NavbarProps {
+  userName: string | null
+  onLogout: () => void
+  showSwitch?: boolean
+  currentView?: 'classic' | 'custom'
+  onSwitch?: () => void
+}
+
+export function Navbar({ userName, onLogout, showSwitch, currentView, onSwitch }: NavbarProps) {
+  return (
+    <nav className="flex items-center justify-between bg-gray-900 border-b border-gray-800 px-6 py-3">
+      <span className="text-lg font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+        Mi Presupuesto
+      </span>
+      <div className="flex items-center gap-3">
+        {userName && (
+          <span className="text-gray-400 text-sm">{userName}</span>
+        )}
+        {showSwitch && onSwitch && (
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={onSwitch}
+            className="text-gray-400 hover:text-amber-400 hover:bg-amber-500/10 flex items-center gap-1"
+          >
+            {currentView === 'classic' ? (
+              <>
+                <LayoutGrid className="h-4 w-4" />
+                <span className="text-xs">Custom</span>
+              </>
+            ) : (
+              <>
+                <LayoutList className="h-4 w-4" />
+                <span className="text-xs">Clásico</span>
+              </>
+            )}
+          </Button>
+        )}
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          onClick={onLogout}
+          className="text-gray-500 hover:text-red-400 hover:bg-red-950/30"
+          aria-label="Cerrar sesión"
+        >
+          <LogOut className="h-4 w-4" />
+        </Button>
+      </div>
+    </nav>
+  )
+}
+</file>
+
+<file path="src/features/auth/components/LoginForm.tsx">
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Loader2, Eye, EyeOff } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { cn } from '@/lib/utils'
+import { loginSchema, type LoginFormData } from '../schemas/auth.schemas'
+
+interface LoginFormProps {
+  onSubmit: (data: LoginFormData) => void
+  isLoading: boolean
+  error: string | null
+}
+
+export function LoginForm({ onSubmit, isLoading, error }: LoginFormProps) {
+  const [showPassword, setShowPassword] = useState(false)
+  const form = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: { email: '', password: '' },
+  })
+
+  return (
+    <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md bg-gray-900 border-gray-800 shadow-2xl shadow-black/50">
+        <CardHeader className="space-y-1 pb-6">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="h-6 w-6 rounded-sm bg-amber-500" />
+            <span className="text-amber-400 text-sm font-medium tracking-wide uppercase">
+              Mi Presupuesto
+            </span>
+          </div>
+          <CardTitle className="text-2xl font-bold text-gray-100">
+            Iniciar Sesión
+          </CardTitle>
+          <CardDescription className="text-gray-400">
+            Ingresá a tu presupuesto
+          </CardDescription>
+        </CardHeader>
+
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <CardContent className="space-y-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field, fieldState }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-300 text-sm font-medium">
+                      Email
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        placeholder="tu@email.com"
+                        autoComplete="email"
+                        disabled={isLoading}
+                        className={cn(
+                          'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500',
+                          'focus-visible:ring-amber-500 focus-visible:border-amber-500',
+                          fieldState.error && 'border-red-500 focus-visible:ring-red-500',
+                        )}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field, fieldState }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-300 text-sm font-medium">
+                      Contraseña
+                    </FormLabel>
+                    <FormControl>
+                      <div className="relative">
+                        <Input
+                          type={showPassword ? 'text' : 'password'}
+                          placeholder="••••••••"
+                          autoComplete="current-password"
+                          disabled={isLoading}
+                          className={cn(
+                            'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500 pr-10',
+                            'focus-visible:ring-amber-500 focus-visible:border-amber-500',
+                            fieldState.error && 'border-red-500 focus-visible:ring-red-500',
+                          )}
+                          {...field}
+                        />
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => setShowPassword((p) => !p)}
+                          className="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-gray-300 hover:bg-transparent"
+                          tabIndex={-1}
+                          aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                        >
+                          {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        </Button>
+                      </div>
+                    </FormControl>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
+              />
+
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className={cn(
+                  'w-full bg-amber-500 hover:bg-amber-400 text-gray-950 font-semibold',
+                  'focus-visible:ring-amber-400',
+                  'disabled:opacity-50 disabled:cursor-not-allowed',
+                  'transition-colors duration-150',
+                )}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Ingresando...
+                  </>
+                ) : (
+                  'Iniciar Sesión'
+                )}
+              </Button>
+
+              {error !== null && (
+                <p role="alert" className="text-red-400 text-sm text-center">
+                  {error}
+                </p>
+              )}
+            </CardContent>
+
+            <CardFooter className="pt-2 pb-6 justify-center">
+              <p className="text-gray-500 text-sm">
+                ¿No tenés cuenta?{' '}
+                <Link
+                  to="/register"
+                  className="text-amber-400 hover:text-amber-300 font-medium underline-offset-4 hover:underline transition-colors"
+                >
+                  Registrate
+                </Link>
+              </p>
+            </CardFooter>
+          </form>
+        </Form>
+      </Card>
+    </div>
+  )
+}
+</file>
+
+<file path="src/features/auth/schemas/auth.schemas.ts">
+import { z } from 'zod'
+
+export const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+})
+
+export const registerSchema = z.object({
+  displayName: z.string().min(2),
+  email: z.string().email(),
+  password: z.string().min(6),
+  confirmPassword: z.string().min(6),
+}).refine((data) => data.password === data.confirmPassword, {
+  message: 'Las contraseñas no coinciden',
+  path: ['confirmPassword'],
+})
+
+export type LoginFormData = z.infer<typeof loginSchema>
+export type RegisterFormData = z.infer<typeof registerSchema>
+</file>
+
+<file path="src/features/budget/components/BudgetDashboard.tsx">
+import { Loader2 } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { useBudget } from '../hooks/useBudget'
+import { DolarSection } from './DolarSection'
+import { BrubankSection } from './BrubankSection'
+import { NaranjaSection } from './NaranjaSection'
+import { FimaSection } from './FimaSection'
+import { GaliciaAutoSection } from './GaliciaAutoSection'
+import { GaliciaSueldoSection } from './GaliciaSueldoSection'
+import { RipioSection } from './RipioSection'
+import { FiwindSection } from './FiwindSection'
+
+export function BudgetDashboard() {
+  const {
+    data,
+    calculations,
+    isLoading,
+    isSaving,
+    updateField,
+    addBrubankGasto,
+    removeBrubankGasto,
+    addElemento,
+    removeElemento,
+    resetBudget,
+  } = useBudget()
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-amber-500" />
+      </div>
+    )
+  }
+
+  return (
+    <>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+      />
+      <div
+        className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 p-4 md:p-8"
+        style={{ fontFamily: "'JetBrains Mono', monospace" }}
+      >
+        {/* Header */}
+        <header className="mb-8 flex items-start justify-between">
+          <div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+              Mi Presupuesto
+            </h1>
+            <p className="text-gray-500 text-sm mt-1">
+              Auto-guardado en Firebase
+              {isSaving && (
+                <span className="ml-2 text-amber-500/70 inline-flex items-center gap-1">
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                  Guardando...
+                </span>
+              )}
+            </p>
+          </div>
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={resetBudget}
+            className="text-gray-600 hover:text-red-400 hover:bg-red-950/30 text-xs"
+          >
+            Resetear
+          </Button>
+        </header>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <DolarSection
+            precioDolar={data.precioDolar}
+            currencyName={data.currencyName}
+            onPrecioDolarChange={(v) => updateField('precioDolar', v)}
+            onCurrencyNameChange={(v) => updateField('currencyName', v)}
+          />
+
+          <BrubankSection
+            brubank={data.brubank}
+            brubankGastos={data.brubankGastos}
+            calculations={calculations}
+            onBrubankChange={(v) => updateField('brubank', v)}
+            onAddGasto={addBrubankGasto}
+            onRemoveGasto={removeBrubankGasto}
+          />
+
+          <NaranjaSection
+            data={{
+              naranjaPesos: data.naranjaPesos,
+              costoSesion: data.costoSesion,
+              sesionesCursadas: data.sesionesCursadas,
+              dolaresNaranja: data.dolaresNaranja,
+              costoVisa: data.costoVisa,
+            }}
+            calculations={calculations}
+            onUpdate={updateField}
+          />
+
+          <FimaSection
+            data={{
+              fima: data.fima,
+              montoNafta: data.montoNafta,
+              precioTanque: data.precioTanque,
+              tanquesCargados: data.tanquesCargados,
+              paraClasesJony: data.paraClasesJony,
+              precioClase: data.precioClase,
+              clasesCursadas: data.clasesCursadas,
+            }}
+            calculations={calculations}
+            onUpdate={updateField}
+          />
+
+          <GaliciaAutoSection
+            data={{ dolarAuto: data.dolarAuto, autoViejoVendido: data.autoViejoVendido }}
+            calculations={calculations}
+            onUpdate={updateField}
+          />
+
+          <GaliciaSueldoSection
+            data={{ dolarSueldo: data.dolarSueldo }}
+            calculations={calculations}
+            onUpdate={updateField}
+          />
+
+          <RipioSection
+            data={{ ripioPorDia: data.ripioPorDia }}
+            calculations={calculations}
+            onUpdate={updateField}
+          />
+
+          <div className="md:col-span-2 xl:col-span-1">
+            <FiwindSection
+              data={{ gastosGenerales: data.gastosGenerales }}
+              elementosComprados={data.elementosComprados}
+              calculations={calculations}
+              onUpdate={updateField}
+              onAddElemento={addElemento}
+              onRemoveElemento={removeElemento}
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/DolarSection.tsx">
+import { useState, useRef } from 'react'
+import { Input } from '@/components/ui/input'
+import { SectionCard } from './SectionCard'
+import { Row } from './Row'
+import { EditableNumber } from './EditableNumber'
+import { cn } from '@/lib/utils'
+
+interface DolarSectionProps {
+  precioDolar: number
+  currencyName: string
+  onPrecioDolarChange: (v: number) => void
+  onCurrencyNameChange: (v: string) => void
+}
+
+function EditableLabel({
+  value,
+  onChange,
+}: {
+  value: string
+  onChange: (v: string) => void
+}) {
+  const [editing, setEditing] = useState(false)
+  const [raw, setRaw] = useState('')
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const startEditing = () => {
+    setRaw(value)
+    setEditing(true)
+    setTimeout(() => inputRef.current?.select(), 0)
+  }
+
+  const confirm = () => {
+    const trimmed = raw.trim()
+    if (trimmed) onChange(trimmed)
+    setEditing(false)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') confirm()
+    if (e.key === 'Escape') setEditing(false)
+  }
+
+  if (editing) {
+    return (
+      <Input
+        ref={inputRef}
+        value={raw}
+        onChange={(e) => setRaw(e.target.value)}
+        onBlur={confirm}
+        onKeyDown={handleKeyDown}
+        className="h-6 w-28 bg-gray-800 border-amber-500 text-amber-300 text-xs font-semibold tracking-widest uppercase focus-visible:ring-amber-500 px-2"
+      />
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={startEditing}
+      className={cn(
+        'text-xs font-semibold tracking-widest uppercase text-amber-300',
+        'hover:text-amber-200 hover:underline underline-offset-2',
+        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-500 rounded',
+        'cursor-pointer transition-colors',
+      )}
+      title="Click para editar nombre"
+    >
+      {value}
+    </button>
+  )
+}
+
+export function DolarSection({
+  precioDolar,
+  currencyName,
+  onPrecioDolarChange,
+  onCurrencyNameChange,
+}: DolarSectionProps) {
+  return (
+    <SectionCard title="Tipo de Cambio" icon="💵">
+      <Row label={<EditableLabel value={currencyName} onChange={onCurrencyNameChange} />} highlight>
+        <EditableNumber value={precioDolar} onChange={onPrecioDolarChange} />
+      </Row>
+    </SectionCard>
+  )
+}
+</file>
+
+<file path="src/features/budget/components/Row.tsx">
+import { cn } from '@/lib/utils'
+
+interface RowProps {
+  label: React.ReactNode
+  highlight?: boolean
+  children: React.ReactNode
+  className?: string
+}
+
+export function Row({ label, highlight, children, className }: RowProps) {
+  return (
+    <div
+      className={cn(
+        'flex items-center justify-between px-3 py-2 rounded-md',
+        highlight
+          ? 'bg-amber-500/10 border border-amber-500/20'
+          : 'hover:bg-gray-800/50',
+        className,
+      )}
+    >
+      <span className={cn('text-sm', highlight ? 'text-amber-300 font-medium' : 'text-gray-400')}>
+        {label}
+      </span>
+      <div className={cn('text-sm font-mono', highlight ? 'text-amber-300 font-semibold' : 'text-gray-200')}>
+        {children}
+      </div>
+    </div>
+  )
+}
+</file>
+
+<file path="src/features/budget/hooks/useBudget.ts">
+import { useEffect, useState, useRef } from 'react'
+import { useAuth } from '@/features/auth'
+import { BudgetService } from '../services/BudgetService'
+import { DEFAULT_BUDGET } from '../schemas/budget.schemas'
+import { useBudgetCalculations } from './useBudgetCalculations'
+import type { BudgetData } from '../types/budget.types'
+
+export function useBudget() {
+  const { user } = useAuth()
+  const [budgetData, setBudgetData] = useState<BudgetData>(DEFAULT_BUDGET)
+  const [isLoading, setIsLoading] = useState(true)
+  const [isSaving, setIsSaving] = useState(false)
+  // Only true after the initial Firestore fetch completes — auto-save must not fire before this
+  const isLoaded = useRef(false)
+
+  // Load from Firestore when user is available
+  useEffect(() => {
+    if (!user) {
+      setIsLoading(false)
+      isLoaded.current = false
+      return
+    }
+
+    // Reset loaded flag so auto-save doesn't fire during the upcoming fetch
+    isLoaded.current = false
+    setIsLoading(true)
+
+    BudgetService.getBudget(user.uid)
+      .then((data) => {
+        setBudgetData(data)
+        isLoaded.current = true
+      })
+      .catch(() => {
+        setBudgetData(DEFAULT_BUDGET)
+        isLoaded.current = true
+      })
+      .finally(() => setIsLoading(false))
+  }, [user])
+
+  // Auto-save with debounce — only runs after initial load
+  useEffect(() => {
+    if (!isLoaded.current || !user) return
+
+    setIsSaving(true)
+    const timer = setTimeout(() => {
+      BudgetService.saveBudget(user.uid, budgetData)
+        .finally(() => setIsSaving(false))
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [budgetData, user])
+
+  const calculations = useBudgetCalculations(budgetData)
+
+  function updateField<K extends keyof BudgetData>(key: K, value: BudgetData[K]) {
+    setBudgetData((prev) => ({ ...prev, [key]: value }))
+  }
+
+  function addBrubankGasto(monto: number) {
+    setBudgetData((prev) => ({
+      ...prev,
+      brubankGastos: [...prev.brubankGastos, { id: crypto.randomUUID(), monto }],
+    }))
+  }
+
+  function removeBrubankGasto(id: string) {
+    setBudgetData((prev) => ({
+      ...prev,
+      brubankGastos: prev.brubankGastos.filter((g) => g.id !== id),
+    }))
+  }
+
+  function addElemento(nombre: string, monto: number) {
+    setBudgetData((prev) => ({
+      ...prev,
+      elementosComprados: [...prev.elementosComprados, { id: crypto.randomUUID(), nombre, monto }],
+    }))
+  }
+
+  function removeElemento(id: string) {
+    setBudgetData((prev) => ({
+      ...prev,
+      elementosComprados: prev.elementosComprados.filter((e) => e.id !== id),
+    }))
+  }
+
+  function resetBudget() {
+    setBudgetData(DEFAULT_BUDGET)
+  }
+
+  return {
+    data: budgetData,
+    calculations,
+    isLoading,
+    isSaving,
+    updateField,
+    addBrubankGasto,
+    removeBrubankGasto,
+    addElemento,
+    removeElemento,
+    resetBudget,
+  }
+}
+</file>
+
+<file path="src/features/budget/schemas/budget.schemas.ts">
+import { z } from 'zod'
+import type { BudgetData } from '../types/budget.types'
+
+const brubankGastoSchema = z.object({
+  id: z.string(),
+  monto: z.number(),
+})
+
+const elementoCompradoSchema = z.object({
+  id: z.string(),
+  nombre: z.string(),
+  monto: z.number(),
+})
+
+export const budgetSchema = z.object({
+  precioDolar: z.number(),
+  currencyName: z.string().default('DÓLAR'),
+  brubank: z.number(),
+  brubankGastos: z.array(brubankGastoSchema),
+  naranjaPesos: z.number(),
+  costoSesion: z.number(),
+  sesionesCursadas: z.number(),
+  dolaresNaranja: z.number(),
+  costoVisa: z.number(),
+  fima: z.number(),
+  montoNafta: z.number(),
+  precioTanque: z.number(),
+  tanquesCargados: z.number(),
+  paraClasesJony: z.number(),
+  precioClase: z.number(),
+  clasesCursadas: z.number(),
+  dolarAuto: z.number(),
+  autoViejoVendido: z.number(),
+  dolarSueldo: z.number(),
+  ripioPorDia: z.number(),
+  gastosGenerales: z.number(),
+  elementosComprados: z.array(elementoCompradoSchema),
+})
+
+export const DEFAULT_BUDGET: BudgetData = {
+  precioDolar: 1375,
+  currencyName: 'DÓLAR',
+  brubank: 104000,
+  brubankGastos: [],
+  naranjaPesos: 249000,
+  costoSesion: 35000,
+  sesionesCursadas: 0,
+  dolaresNaranja: 126,
+  costoVisa: 42,
+  fima: 2160000,
+  montoNafta: 1200000,
+  precioTanque: 100000,
+  tanquesCargados: 0,
+  paraClasesJony: 960000,
+  precioClase: 20000,
+  clasesCursadas: 0,
+  dolarAuto: 9000,
+  autoViejoVendido: 7000000,
+  dolarSueldo: 11000,
+  ripioPorDia: 10000,
+  gastosGenerales: 100000,
+  elementosComprados: [],
+}
+</file>
+
+<file path="src/features/budget/types/budget.types.ts">
+export interface BrubankGasto {
+  id: string;
+  monto: number;
+}
+
+export interface ElementoComprado {
+  id: string;
+  nombre: string;
+  monto: number;
+}
+
+export interface BudgetData {
+  precioDolar: number;
+  currencyName: string;
+  brubank: number;
+  brubankGastos: BrubankGasto[];
+  naranjaPesos: number;
+  costoSesion: number;
+  sesionesCursadas: number;
+  dolaresNaranja: number;
+  costoVisa: number;
+  fima: number;
+  montoNafta: number;
+  precioTanque: number;
+  tanquesCargados: number;
+  paraClasesJony: number;
+  precioClase: number;
+  clasesCursadas: number;
+  dolarAuto: number;
+  autoViejoVendido: number;
+  dolarSueldo: number;
+  ripioPorDia: number;
+  gastosGenerales: number;
+  elementosComprados: ElementoComprado[];
+}
+
+export interface BudgetCalculations {
+  totalBrubankGastado: number;
+  brubankRestante: number;
+  sesionesDisponibles: number;
+  sesionesRestantes: number;
+  mesesVisa: number;
+  naftaRestante: number;
+  tanquesTotales: number;
+  tanquesRestantes: number;
+  clasesTotales: number;
+  clasesRestantes: number;
+  clasesMontoRestante: number;
+  pesosAuto: number;
+  totalPresupuestoAuto: number;
+  pesosSueldo: number;
+  sueldo4: number;
+  sueldo5: number;
+  sueldo6: number;
+  diasRipio: number;
+  diasTranscurridos: number;
+  totalRipioObjetivo: number;
+  totalRipioAcumulado: number;
+  totalElementosComprados: number;
+  gastosDisponible: number;
+}
+</file>
+
+<file path="src/features/custom-budget/components/CustomBudgetDashboard.tsx">
+import { Loader2 } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { useCustomBudget } from '../hooks/useCustomBudget'
+import { useCustomCalculations } from '../hooks/useCustomCalculations'
+import { CurrencyBar } from './CurrencyBar'
+import { SimpleSection } from './SimpleSection'
+import { EquivalenceSection } from './EquivalenceSection'
+import { ConversionSection } from './ConversionSection'
+import { AddSectionButton } from './AddSectionButton'
+import type { CustomSection } from '../types/customBudget.types'
+
+function SectionRenderer({
+  section,
+  currencyValue,
+  currencyName,
+  onUpdate,
+  onAddExpense,
+  onRemoveExpense,
+  onIncrement,
+  onDecrement,
+  onAddDivision,
+  onRemoveDivision,
+  onRemove,
+}: {
+  section: CustomSection
+  currencyValue: number
+  currencyName: string
+  onUpdate: (updates: Partial<CustomSection>) => void
+  onAddExpense: (monto: number, nombre?: string) => void
+  onRemoveExpense: (expenseId: string) => void
+  onIncrement: () => void
+  onDecrement: () => void
+  onAddDivision: (parts: number) => void
+  onRemoveDivision: (index: number) => void
+  onRemove: () => void
+}) {
+  const calculations = useCustomCalculations(section, currencyValue)
+
+  if (section.type === 'simple') {
+    return (
+      <SimpleSection
+        section={section}
+        calculations={calculations}
+        onUpdate={onUpdate}
+        onAddExpense={onAddExpense}
+        onRemoveExpense={onRemoveExpense}
+        onRemove={onRemove}
+      />
+    )
+  }
+
+  if (section.type === 'equivalence') {
+    return (
+      <EquivalenceSection
+        section={section}
+        calculations={calculations}
+        onUpdate={onUpdate}
+        onIncrement={onIncrement}
+        onDecrement={onDecrement}
+        onRemove={onRemove}
+      />
+    )
+  }
+
+  return (
+    <ConversionSection
+      section={section}
+      calculations={calculations}
+      currencyName={currencyName}
+      onUpdate={onUpdate}
+      onAddDivision={onAddDivision}
+      onRemoveDivision={onRemoveDivision}
+      onRemove={onRemove}
+    />
+  )
+}
+
+export function CustomBudgetDashboard() {
+  const {
+    data,
+    isLoading,
+    isSaving,
+    updateCurrency,
+    addSection,
+    removeSection,
+    updateSection,
+    addExpense,
+    removeExpense,
+    incrementConsumed,
+    decrementConsumed,
+    addDivision,
+    removeDivision,
+    resetCustomBudget,
+  } = useCustomBudget()
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-amber-500" />
+      </div>
+    )
+  }
+
+  const sortedSections = [...data.sections].sort((a, b) => a.order - b.order)
+
+  return (
+    <>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+      />
+      <div
+        className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 p-4 md:p-8"
+        style={{ fontFamily: "'JetBrains Mono', monospace" }}
+      >
+        {/* Header */}
+        <header className="mb-6 flex items-start justify-between">
+          <div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+              Mi Presupuesto
+            </h1>
+            <p className="text-gray-500 text-sm mt-1">
+              {isSaving ? (
+                <span className="text-amber-500/70 inline-flex items-center gap-1">
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                  Guardando...
+                </span>
+              ) : (
+                'Auto-guardado en Firebase'
+              )}
+            </p>
+          </div>
+          <Button
+            type="button"
+            variant="ghost"
+            size="sm"
+            onClick={resetCustomBudget}
+            className="text-gray-600 hover:text-red-400 hover:bg-red-950/30 text-xs"
+          >
+            Resetear
+          </Button>
+        </header>
+
+        {/* Currency bar */}
+        <CurrencyBar
+          currencyName={data.currencyName}
+          currencyValue={data.currencyValue}
+          onNameChange={(name) => updateCurrency(name, data.currencyValue)}
+          onValueChange={(value) => updateCurrency(data.currencyName, value)}
+        />
+
+        {sortedSections.length === 0 ? (
+          /* Empty state */
+          <div className="flex flex-col items-center justify-center py-24 gap-4">
+            <p className="text-gray-400 text-lg font-semibold">Tu presupuesto está vacío</p>
+            <p className="text-gray-600 text-sm">Agregá tu primera sección para empezar</p>
+            <div className="w-full max-w-sm mt-2">
+              <AddSectionButton onAdd={addSection} />
+            </div>
+          </div>
+        ) : (
+          <>
+            {/* Sections grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4">
+              {sortedSections.map((section) => (
+                <SectionRenderer
+                  key={section.id}
+                  section={section}
+                  currencyValue={data.currencyValue}
+                  currencyName={data.currencyName}
+                  onUpdate={(updates) => updateSection(section.id, updates)}
+                  onAddExpense={(monto, nombre) => addExpense(section.id, monto, nombre)}
+                  onRemoveExpense={(expenseId) => removeExpense(section.id, expenseId)}
+                  onIncrement={() => incrementConsumed(section.id)}
+                  onDecrement={() => decrementConsumed(section.id)}
+                  onAddDivision={(parts) => addDivision(section.id, parts)}
+                  onRemoveDivision={(index) => removeDivision(section.id, index)}
+                  onRemove={() => removeSection(section.id)}
+                />
+              ))}
+            </div>
+
+            {/* Add section */}
+            <div className="max-w-sm">
+              <AddSectionButton onAdd={addSection} />
+            </div>
+          </>
+        )}
+      </div>
+    </>
+  )
+}
+</file>
+
+<file path="src/features/custom-budget/schemas/customBudget.schemas.ts">
+import { z } from 'zod'
+import type { CustomBudgetData, CustomSection } from '../types/customBudget.types'
+
+const expenseSchema = z.object({
+  id: z.string(),
+  nombre: z.string().optional(),
+  monto: z.number(),
+})
+
+export const customSectionSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  icon: z.string(),
+  order: z.number(),
+  type: z.enum(['simple', 'equivalence', 'conversion']),
+  totalAmount: z.number(),
+  expenses: z.array(expenseSchema).default([]),
+  // Equivalence
+  unitLabel: z.string().optional(),
+  unitPrice: z.number().optional(),
+  consumed: z.number().min(0).default(0),
+  // Conversion
+  useCurrency: z.boolean().optional(),
+  currencyAmount: z.number().optional(),
+  extraAmount: z.number().default(0),
+  extraLabel: z.string().optional(),
+  divisions: z.array(z.number().positive()).max(3).default([]),
+  divisionLabel: z.string().default('partes'),
+})
+
+export const customBudgetSchema = z.object({
+  currencyName: z.string().default('DÓLAR'),
+  currencyValue: z.number(),
+  sections: z.array(customSectionSchema).default([]),
+})
+
+export const EXAMPLE_SECTIONS: CustomSection[] = [
+  {
+    id: 'example-simple',
+    title: 'Ahorros',
+    icon: '🏦',
+    order: 0,
+    type: 'simple',
+    totalAmount: 500000,
+    expenses: [
+      { id: 'ex-1', nombre: 'Streaming', monto: 15000 },
+      { id: 'ex-2', nombre: 'Gimnasio', monto: 25000 },
+    ],
+  },
+  {
+    id: 'example-equivalence',
+    title: 'Clases de inglés',
+    icon: '📚',
+    order: 1,
+    type: 'equivalence',
+    totalAmount: 240000,
+    expenses: [],
+    unitLabel: 'clase',
+    unitPrice: 20000,
+    consumed: 3,
+  },
+  {
+    id: 'example-conversion',
+    title: 'Viaje',
+    icon: '🏖️',
+    order: 2,
+    type: 'conversion',
+    totalAmount: 0,
+    expenses: [],
+    useCurrency: true,
+    currencyAmount: 500,
+    extraAmount: 0,
+    extraLabel: '',
+    divisions: [3, 6],
+    divisionLabel: 'partes',
+  },
+]
+
+export const DEFAULT_CUSTOM_BUDGET: CustomBudgetData = {
+  currencyName: 'DÓLAR',
+  currencyValue: 1375,
+  sections: EXAMPLE_SECTIONS,
+}
+
+export const TEMPLATE_SIMPLE: Omit<CustomSection, 'id' | 'order'> = {
+  title: 'Nueva Sección',
+  icon: '📁',
+  type: 'simple',
+  totalAmount: 0,
+  expenses: [],
+}
+
+export const TEMPLATE_EQUIVALENCE: Omit<CustomSection, 'id' | 'order'> = {
+  title: 'Nueva Sección',
+  icon: '📁',
+  type: 'equivalence',
+  totalAmount: 0,
+  expenses: [],
+  unitLabel: 'unidad',
+  unitPrice: 0,
+  consumed: 0,
+}
+
+export const TEMPLATE_CONVERSION: Omit<CustomSection, 'id' | 'order'> = {
+  title: 'Nueva Sección',
+  icon: '📁',
+  type: 'conversion',
+  totalAmount: 0,
+  expenses: [],
+  useCurrency: true,
+  currencyAmount: 0,
+  extraAmount: 0,
+  extraLabel: '',
+  divisions: [],
+  divisionLabel: 'partes',
+}
+</file>
+
+<file path="src/main.tsx">
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { RouterProvider } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Toaster } from '@/components/ui/sonner'
+import { router } from '@/router/AppRouter'
+import './index.css'
+
+const queryClient = new QueryClient()
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <Toaster />
+    </QueryClientProvider>
+  </StrictMode>,
+)
+</file>
+
+<file path="src/router/ProtectedRoute.tsx">
+import { Navigate } from 'react-router-dom'
+import { useAuth } from '@/features/auth'
+import Loading from '@/components/shared/Loading'
+
+export function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const { isLoading, isAuthenticated } = useAuth()
+
+  if (isLoading) return <Loading />
+  if (!isAuthenticated) return <Navigate to="/login" replace />
+  return <>{children}</>
+}
+</file>
+
+<file path="src/router/PublicRoute.tsx">
+import { Navigate } from 'react-router-dom'
+import { useAuth } from '@/features/auth'
+import Loading from '@/components/shared/Loading'
+
+export function PublicRoute({ children }: { children: React.ReactNode }) {
+  const { isLoading, isAuthenticated } = useAuth()
+
+  if (isLoading) return <Loading />
+  if (isAuthenticated) return <Navigate to="/" replace />
+  return <>{children}</>
+}
+</file>
+
+<file path="vite.config.ts">
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import { VitePWA } from 'vite-plugin-pwa'
+import path from 'path'
+
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: ['logo.svg'],
+      manifest: {
+        name: 'Mi Presupuesto',
+        short_name: 'Presupuesto',
+        description: 'Dashboard personal de presupuesto',
+        theme_color: '#0a0a0f',
+        background_color: '#0a0a0f',
+        display: 'standalone',
+        orientation: 'portrait',
+        scope: '/',
+        start_url: '/',
+        icons: [
+          {
+            src: 'pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable',
+          },
+        ],
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'gstatic-fonts-cache',
+              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/firestore\.googleapis\.com\/.*/i,
+            handler: 'NetworkOnly',
+          },
+          {
+            urlPattern: /^https:\/\/identitytoolkit\.googleapis\.com\/.*/i,
+            handler: 'NetworkOnly',
+          },
+          {
+            urlPattern: /^https:\/\/securetoken\.googleapis\.com\/.*/i,
+            handler: 'NetworkOnly',
+          },
+        ],
+      },
+    }),
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+})
+</file>
+
+<file path="package.json">
+{
+  "name": "dia_1_presupuesto",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-separator": "^1.1.8",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@tanstack/react-query": "^5.75.5",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "firebase": "^11.6.0",
+    "lucide-react": "^0.503.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.72.1",
+    "react-router-dom": "^7.5.0",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.2.0",
+    "zod": "^3.25.76",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.3",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.1.3",
+    "typescript": "~5.7.2",
+    "vite": "^6.3.1",
+    "vite-plugin-pwa": "^1.2.0"
+  }
+}
+</file>
+
+<file path="src/features/auth/components/RegisterForm.tsx">
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Loader2, Eye, EyeOff } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { cn } from '@/lib/utils'
+import { registerSchema, type RegisterFormData } from '../schemas/auth.schemas'
+
+interface RegisterFormProps {
+  onSubmit: (data: { displayName: string; email: string; password: string }) => void
+  isLoading: boolean
+  error: string | null
+}
+
+export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) {
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
+  const form = useForm<RegisterFormData>({
+    resolver: zodResolver(registerSchema),
+    defaultValues: { displayName: '', email: '', password: '', confirmPassword: '' },
+  })
+
+  const handleValidSubmit = ({ displayName, email, password }: RegisterFormData) => {
+    onSubmit({ displayName, email, password })
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md bg-gray-900 border-gray-800 shadow-2xl shadow-black/50">
+        <CardHeader className="space-y-1 pb-6">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="h-6 w-6 rounded-sm bg-amber-500" />
+            <span className="text-amber-400 text-sm font-medium tracking-wide uppercase">
+              Mi Presupuesto
+            </span>
+          </div>
+          <CardTitle className="text-2xl font-bold text-gray-100">
+            Crear Cuenta
+          </CardTitle>
+          <CardDescription className="text-gray-400">
+            Empezá a gestionar tu presupuesto
+          </CardDescription>
+        </CardHeader>
+
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(handleValidSubmit)}>
+            <CardContent className="space-y-4">
+              <FormField
+                control={form.control}
+                name="displayName"
+                render={({ field, fieldState }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-300 text-sm font-medium">
+                      Nombre
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        placeholder="Tu nombre"
+                        autoComplete="name"
+                        disabled={isLoading}
+                        className={cn(
+                          'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500',
+                          'focus-visible:ring-amber-500 focus-visible:border-amber-500',
+                          fieldState.error && 'border-red-500 focus-visible:ring-red-500',
+                        )}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field, fieldState }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-300 text-sm font-medium">
+                      Email
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        placeholder="tu@email.com"
+                        autoComplete="email"
+                        disabled={isLoading}
+                        className={cn(
+                          'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500',
+                          'focus-visible:ring-amber-500 focus-visible:border-amber-500',
+                          fieldState.error && 'border-red-500 focus-visible:ring-red-500',
+                        )}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field, fieldState }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-300 text-sm font-medium">
+                      Contraseña
+                    </FormLabel>
+                    <FormControl>
+                      <div className="relative">
+                        <Input
+                          type={showPassword ? 'text' : 'password'}
+                          placeholder="••••••••"
+                          autoComplete="new-password"
+                          disabled={isLoading}
+                          className={cn(
+                            'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500 pr-10',
+                            'focus-visible:ring-amber-500 focus-visible:border-amber-500',
+                            fieldState.error && 'border-red-500 focus-visible:ring-red-500',
+                          )}
+                          {...field}
+                        />
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => setShowPassword((p) => !p)}
+                          className="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-gray-300 hover:bg-transparent"
+                          tabIndex={-1}
+                          aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                        >
+                          {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        </Button>
+                      </div>
+                    </FormControl>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="confirmPassword"
+                render={({ field, fieldState }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-300 text-sm font-medium">
+                      Confirmar Contraseña
+                    </FormLabel>
+                    <FormControl>
+                      <div className="relative">
+                        <Input
+                          type={showConfirmPassword ? 'text' : 'password'}
+                          placeholder="••••••••"
+                          autoComplete="new-password"
+                          disabled={isLoading}
+                          className={cn(
+                            'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500 pr-10',
+                            'focus-visible:ring-amber-500 focus-visible:border-amber-500',
+                            fieldState.error && 'border-red-500 focus-visible:ring-red-500',
+                          )}
+                          {...field}
+                        />
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => setShowConfirmPassword((p) => !p)}
+                          className="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-gray-300 hover:bg-transparent"
+                          tabIndex={-1}
+                          aria-label={showConfirmPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                        >
+                          {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        </Button>
+                      </div>
+                    </FormControl>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
+              />
+
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className={cn(
+                  'w-full bg-amber-500 hover:bg-amber-400 text-gray-950 font-semibold',
+                  'focus-visible:ring-amber-400',
+                  'disabled:opacity-50 disabled:cursor-not-allowed',
+                  'transition-colors duration-150',
+                )}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Creando cuenta...
+                  </>
+                ) : (
+                  'Crear Cuenta'
+                )}
+              </Button>
+
+              {error !== null && (
+                <p role="alert" className="text-red-400 text-sm text-center">
+                  {error}
+                </p>
+              )}
+            </CardContent>
+
+            <CardFooter className="pt-2 pb-6 justify-center">
+              <p className="text-gray-500 text-sm">
+                ¿Ya tenés cuenta?{' '}
+                <Link
+                  to="/login"
+                  className="text-amber-400 hover:text-amber-300 font-medium underline-offset-4 hover:underline transition-colors"
+                >
+                  Iniciá sesión
+                </Link>
+              </p>
+            </CardFooter>
+          </form>
+        </Form>
+      </Card>
+    </div>
+  )
+}
+</file>
+
+<file path="src/router/AppRouter.tsx">
+import { lazy, Suspense } from 'react'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { ProtectedRoute } from './ProtectedRoute'
+import { PublicRoute } from './PublicRoute'
+import { AdminRoute } from './AdminRoute'
+import { MainLayout } from '@/components/layout/MainLayout'
+import Loading from '@/components/shared/Loading'
+
+const LoginPage = lazy(() => import('@/pages/LoginPage'))
+const RegisterPage = lazy(() => import('@/pages/RegisterPage'))
+const BudgetPage = lazy(() => import('@/pages/BudgetPage'))
+const CustomBudgetPage = lazy(() => import('@/pages/CustomBudgetPage'))
+
+export const router = createBrowserRouter([
+  {
+    path: '/login',
+    element: (
+      <PublicRoute>
+        <Suspense fallback={<Loading />}>
+          <LoginPage />
+        </Suspense>
+      </PublicRoute>
+    ),
+  },
+  {
+    path: '/register',
+    element: (
+      <PublicRoute>
+        <Suspense fallback={<Loading />}>
+          <RegisterPage />
+        </Suspense>
+      </PublicRoute>
+    ),
+  },
+  {
+    path: '/',
+    element: (
+      <ProtectedRoute>
+        <MainLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <AdminRoute
+            fallback={
+              <Suspense fallback={<Loading />}>
+                <CustomBudgetPage />
+              </Suspense>
+            }
+          >
+            <Suspense fallback={<Loading />}>
+              <BudgetPage />
+            </Suspense>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: 'custom',
+        element: (
+          <AdminRoute fallback={<Navigate to="/" replace />}>
+            <Suspense fallback={<Loading />}>
+              <CustomBudgetPage />
+            </Suspense>
+          </AdminRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: '*',
+    element: <Navigate to="/" replace />,
+  },
+])
+</file>
+
+</files>
