@@ -13,7 +13,8 @@ export function AddExpenseForm({ onAdd, withName = false }: AddExpenseFormProps)
   const montoRef = useRef<HTMLInputElement>(null)
 
   const handleSubmit = () => {
-    const parsed = parseFloat(monto.replace(',', '.'))
+    const cleaned = monto.replace(/[^0-9.]/g, '')
+    const parsed = parseFloat(cleaned)
     if (isNaN(parsed) || parsed <= 0) return
     onAdd(parsed, withName && nombre.trim() ? nombre.trim() : undefined)
     setNombre('')
@@ -31,16 +32,18 @@ export function AddExpenseForm({ onAdd, withName = false }: AddExpenseFormProps)
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
           onKeyDown={(e) => { if (e.key === 'Enter') montoRef.current?.focus() }}
-          placeholder="Nombre"
+          placeholder="Agregá un gasto"
+          maxLength={200}
           className="h-7 bg-gray-800 border-gray-700 text-gray-200 text-xs placeholder:text-gray-600 focus-visible:ring-amber-500 focus-visible:border-amber-500"
         />
       )}
       <Input
         ref={montoRef}
         value={monto}
-        onChange={(e) => setMonto(e.target.value)}
+        onChange={(e) => setMonto(e.target.value.replace(/[^0-9.]/g, ''))}
         onKeyDown={handleMontoKeyDown}
         placeholder="Monto"
+        inputMode="decimal"
         className="h-7 bg-gray-800 border-gray-700 text-gray-200 text-xs placeholder:text-gray-600 focus-visible:ring-amber-500 focus-visible:border-amber-500"
       />
       <Button

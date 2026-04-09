@@ -6,9 +6,10 @@ interface EditableTextProps {
   value: string
   onChange: (v: string) => void
   className?: string
+  placeholder?: string
 }
 
-export function EditableText({ value, onChange, className }: EditableTextProps) {
+export function EditableText({ value, onChange, className, placeholder = 'Agregá un título' }: EditableTextProps) {
   const [editing, setEditing] = useState(false)
   const [raw, setRaw] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -38,6 +39,8 @@ export function EditableText({ value, onChange, className }: EditableTextProps) 
         onChange={(e) => setRaw(e.target.value)}
         onBlur={confirm}
         onKeyDown={handleKeyDown}
+        maxLength={50}
+        placeholder={placeholder}
         className={cn(
           'h-6 bg-gray-800 border-amber-500 text-amber-300 text-xs font-semibold tracking-widest uppercase focus-visible:ring-amber-500 px-2',
           className,
@@ -59,7 +62,7 @@ export function EditableText({ value, onChange, className }: EditableTextProps) 
       )}
       title="Click para editar"
     >
-      {value}
+      {value || placeholder}
     </button>
   )
 }

@@ -69,7 +69,7 @@ export function LoginForm({ onSubmit, isLoading, error }: LoginFormProps) {
                     <FormControl>
                       <Input
                         type="email"
-                        placeholder="tu@email.com"
+                        placeholder="ejemplo@correo.com"
                         autoComplete="email"
                         disabled={isLoading}
                         className={cn(
@@ -97,7 +97,7 @@ export function LoginForm({ onSubmit, isLoading, error }: LoginFormProps) {
                       <div className="relative">
                         <Input
                           type={showPassword ? 'text' : 'password'}
-                          placeholder="••••••••"
+                          placeholder="Mínimo 6 caracteres"
                           autoComplete="current-password"
                           disabled={isLoading}
                           className={cn(

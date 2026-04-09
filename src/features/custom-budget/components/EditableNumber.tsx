@@ -25,7 +25,7 @@ export function EditableNumber({ value, onChange, prefix = '$' }: EditableNumber
   }
 
   const confirm = () => {
-    const parsed = parseFloat(raw.replace(',', '.'))
+    const parsed = parseFloat(raw.replace(/[^0-9.]/g, ''))
     if (!isNaN(parsed)) onChange(parsed)
     setEditing(false)
   }
@@ -40,9 +40,11 @@ export function EditableNumber({ value, onChange, prefix = '$' }: EditableNumber
       <Input
         ref={inputRef}
         value={raw}
-        onChange={(e) => setRaw(e.target.value)}
+        onChange={(e) => setRaw(e.target.value.replace(/[^0-9.]/g, ''))}
         onBlur={confirm}
         onKeyDown={handleKeyDown}
+        inputMode="decimal"
+        placeholder="0"
         className="h-6 w-28 bg-gray-800 border-amber-500 text-amber-300 text-xs font-mono focus-visible:ring-amber-500 px-2"
       />
     )

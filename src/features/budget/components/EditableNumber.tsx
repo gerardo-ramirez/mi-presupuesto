@@ -26,7 +26,7 @@ export function EditableNumber({ value, onChange, prefix = '$', className }: Edi
   }
 
   const confirm = () => {
-    const parsed = parseFloat(raw.replace(/[^0-9.-]/g, ''))
+    const parsed = parseFloat(raw.replace(/[^0-9.]/g, ''))
     if (!isNaN(parsed)) onChange(parsed)
     setEditing(false)
   }
@@ -41,9 +41,11 @@ export function EditableNumber({ value, onChange, prefix = '$', className }: Edi
       <Input
         ref={inputRef}
         value={raw}
-        onChange={(e) => setRaw(e.target.value)}
+        onChange={(e) => setRaw(e.target.value.replace(/[^0-9.]/g, ''))}
         onBlur={confirm}
         onKeyDown={handleKeyDown}
+        inputMode="decimal"
+        placeholder="0"
         className={cn(
           'h-7 w-36 bg-gray-800 border-amber-500 text-amber-300 text-sm font-mono',
           'focus-visible:ring-amber-500',

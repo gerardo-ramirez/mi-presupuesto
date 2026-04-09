@@ -83,8 +83,9 @@ export function ConversionSection({
         <div className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800/50">
           <span className="text-sm text-gray-400 flex items-center gap-1">
             <EditableText
-              value={section.extraLabel || 'Extra'}
+              value={section.extraLabel || ''}
               onChange={(v) => onUpdate({ extraLabel: v })}
+              placeholder="Descripción del monto extra"
               className="normal-case tracking-normal"
             />
           </span>
@@ -99,7 +100,7 @@ export function ConversionSection({
             type="button"
             variant="ghost"
             size="sm"
-            onClick={() => { setShowExtra(true); onUpdate({ extraLabel: 'Extra', extraAmount: 0 }) }}
+            onClick={() => { setShowExtra(true); onUpdate({ extraLabel: '', extraAmount: 0 }) }}
             className="h-6 text-xs text-gray-600 hover:text-amber-400 px-0"
           >
             + Agregar monto extra

@@ -6,7 +6,7 @@ export const loginSchema = z.object({
 })
 
 export const registerSchema = z.object({
-  displayName: z.string().min(2),
+  displayName: z.string().min(2).max(50).regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9]+$/, 'Solo letras y números, sin espacios ni caracteres especiales'),
   email: z.string().email(),
   password: z.string().min(6),
   confirmPassword: z.string().min(6),

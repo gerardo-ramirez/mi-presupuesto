@@ -64,7 +64,7 @@ export function DivisionManager({
             value={raw}
             onChange={(e) => setRaw(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter') handleAdd() }}
-            placeholder="Partes"
+            placeholder="Cantidad"
             className="h-7 w-20 bg-gray-800 border-gray-700 text-gray-200 text-xs placeholder:text-gray-600 focus-visible:ring-amber-500 focus-visible:border-amber-500"
           />
           <Button

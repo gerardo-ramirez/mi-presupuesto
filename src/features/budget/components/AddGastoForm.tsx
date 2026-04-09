@@ -19,7 +19,8 @@ export function AddGastoForm({ onAdd, withName = false, className }: AddGastoFor
   )
 
   const handleAdd = () => {
-    const parsed = parseFloat(monto.replace(/[^0-9.-]/g, ''))
+    const cleaned = monto.replace(/[^0-9.]/g, '')
+    const parsed = parseFloat(cleaned)
     if (isNaN(parsed) || parsed <= 0) return
     onAdd(parsed, withName ? nombre || undefined : undefined)
     setNombre('')
@@ -34,18 +35,20 @@ export function AddGastoForm({ onAdd, withName = false, className }: AddGastoFor
     <div className={cn('flex items-center gap-2 pt-2', className)}>
       {withName && (
         <Input
-          placeholder="Nombre"
+          placeholder="Agregá un gasto"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
           onKeyDown={handleKeyDown}
+          maxLength={200}
           className={cn(inputClass, 'flex-1')}
         />
       )}
       <Input
         placeholder="Monto"
         value={monto}
-        onChange={(e) => setMonto(e.target.value)}
+        onChange={(e) => setMonto(e.target.value.replace(/[^0-9.]/g, ''))}
         onKeyDown={handleKeyDown}
+        inputMode="decimal"
         className={cn(inputClass, withName ? 'w-28' : 'flex-1')}
       />
       <Button

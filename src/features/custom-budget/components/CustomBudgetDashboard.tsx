@@ -1,4 +1,5 @@
-import { Loader2 } from 'lucide-react'
+import { useState } from 'react'
+import { Loader2, Info } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useCustomBudget } from '../hooks/useCustomBudget'
 import { useCustomCalculations } from '../hooks/useCustomCalculations'
@@ -75,6 +76,8 @@ function SectionRenderer({
   )
 }
 
+const BANNER_KEY = 'custom-budget-example-dismissed'
+
 export function CustomBudgetDashboard() {
   const {
     data,
@@ -92,6 +95,15 @@ export function CustomBudgetDashboard() {
     removeDivision,
     resetCustomBudget,
   } = useCustomBudget()
+
+  const [bannerDismissed, setBannerDismissed] = useState(
+    () => localStorage.getItem(BANNER_KEY) === 'true',
+  )
+
+  const dismissBanner = () => {
+    localStorage.setItem(BANNER_KEY, 'true')
+    setBannerDismissed(true)
+  }
 
   if (isLoading) {
     return (
@@ -148,6 +160,28 @@ export function CustomBudgetDashboard() {
           onNameChange={(name) => updateCurrency(name, data.currencyValue)}
           onValueChange={(value) => updateCurrency(data.currencyName, value)}
         />
+
+        {/* Example banner */}
+        {!bannerDismissed && sortedSections.some((s) => s.id.startsWith('example-')) && (
+          <div className="flex items-start gap-3 mb-4 px-4 py-3 rounded-xl bg-amber-900/20 border border-amber-800/50">
+            <Info className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-amber-300">Estas secciones son de ejemplo</p>
+              <p className="text-xs text-amber-700 mt-0.5">
+                Podés editarlas, eliminarlas o crear las tuyas propias. Los cambios se guardan automáticamente en tu cuenta.
+              </p>
+            </div>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={dismissBanner}
+              className="text-amber-600 hover:text-amber-400 hover:bg-amber-500/10 text-xs h-7 px-2 shrink-0"
+            >
+              Entendido
+            </Button>
+          </div>
+        )}
 
         {sortedSections.length === 0 ? (
           /* Empty state */

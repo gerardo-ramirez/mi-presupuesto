@@ -102,7 +102,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                     <FormControl>
                       <Input
                         type="email"
-                        placeholder="tu@email.com"
+                        placeholder="ejemplo@correo.com"
                         autoComplete="email"
                         disabled={isLoading}
                         className={cn(
@@ -130,7 +130,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                       <div className="relative">
                         <Input
                           type={showPassword ? 'text' : 'password'}
-                          placeholder="••••••••"
+                          placeholder="Mínimo 6 caracteres"
                           autoComplete="new-password"
                           disabled={isLoading}
                           className={cn(
@@ -170,7 +170,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                       <div className="relative">
                         <Input
                           type={showConfirmPassword ? 'text' : 'password'}
-                          placeholder="••••••••"
+                          placeholder="Repetí tu contraseña"
                           autoComplete="new-password"
                           disabled={isLoading}
                           className={cn(
