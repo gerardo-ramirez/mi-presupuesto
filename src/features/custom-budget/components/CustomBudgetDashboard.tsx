@@ -220,6 +220,29 @@ export function CustomBudgetDashboard() {
             </div>
           </>
         )}
+        {/* Footer */}
+        <footer className="mt-12 pt-6 border-t border-gray-800/50 flex items-center justify-between gap-4">
+          <a
+            href="https://gramirez-lab.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-gray-700 hover:text-amber-500/70 transition-colors duration-200 tracking-widest uppercase"
+          >
+            gramirezlab ↗
+          </a>
+          <div className="flex items-center gap-2 text-xs text-gray-700">
+            <span className="text-gray-800">·</span>
+            <span>desarrollado por</span>
+            <a
+              href="https://gramirez.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-amber-500/70 transition-colors duration-200"
+            >
+              Gerardo Ramirez ↗
+            </a>
+          </div>
+        </footer>
       </div>
     </>
   )
