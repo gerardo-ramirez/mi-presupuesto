@@ -1,5 +1,17 @@
+import { useState } from 'react'
 import { Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from '@dnd-kit/core'
+import { SortableContext, arrayMove, rectSortingStrategy } from '@dnd-kit/sortable'
+import { SortableItem } from '@/components/shared/SortableItem'
 import { useBudget } from '../hooks/useBudget'
 import { DolarSection } from './DolarSection'
 import { BrubankSection } from './BrubankSection'
@@ -9,6 +21,17 @@ import { GaliciaAutoSection } from './GaliciaAutoSection'
 import { GaliciaSueldoSection } from './GaliciaSueldoSection'
 import { RipioSection } from './RipioSection'
 import { FiwindSection } from './FiwindSection'
+
+const DEFAULT_ORDER = [
+  'dolar',
+  'brubank',
+  'naranja',
+  'fima',
+  'galiciaAuto',
+  'galiciaSueldo',
+  'ripio',
+  'fiwind',
+]
 
 export function BudgetDashboard() {
   const {
@@ -23,6 +46,23 @@ export function BudgetDashboard() {
     removeElemento,
     resetBudget,
   } = useBudget()
+
+  const [sectionOrder, setSectionOrder] = useState(DEFAULT_ORDER)
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 150, tolerance: 5 } }),
+  )
+
+  function handleDragEnd(event: DragEndEvent) {
+    const { active, over } = event
+    if (!over || active.id === over.id) return
+    setSectionOrder((prev) => {
+      const oldIndex = prev.indexOf(active.id as string)
+      const newIndex = prev.indexOf(over.id as string)
+      return arrayMove(prev, oldIndex, newIndex)
+    })
+  }
 
   if (isLoading) {
     return (
@@ -69,79 +109,98 @@ export function BudgetDashboard() {
           </Button>
         </header>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          <DolarSection
-            precioDolar={data.precioDolar}
-            currencyName={data.currencyName}
-            onPrecioDolarChange={(v) => updateField('precioDolar', v)}
-            onCurrencyNameChange={(v) => updateField('currencyName', v)}
-          />
-
-          <BrubankSection
-            brubank={data.brubank}
-            brubankGastos={data.brubankGastos}
-            calculations={calculations}
-            onBrubankChange={(v) => updateField('brubank', v)}
-            onAddGasto={addBrubankGasto}
-            onRemoveGasto={removeBrubankGasto}
-          />
-
-          <NaranjaSection
-            data={{
-              naranjaPesos: data.naranjaPesos,
-              costoSesion: data.costoSesion,
-              sesionesCursadas: data.sesionesCursadas,
-              dolaresNaranja: data.dolaresNaranja,
-              costoVisa: data.costoVisa,
-            }}
-            calculations={calculations}
-            onUpdate={updateField}
-          />
-
-          <FimaSection
-            data={{
-              fima: data.fima,
-              montoNafta: data.montoNafta,
-              precioTanque: data.precioTanque,
-              tanquesCargados: data.tanquesCargados,
-              paraClasesJony: data.paraClasesJony,
-              precioClase: data.precioClase,
-              clasesCursadas: data.clasesCursadas,
-            }}
-            calculations={calculations}
-            onUpdate={updateField}
-          />
-
-          <GaliciaAutoSection
-            data={{ dolarAuto: data.dolarAuto, autoViejoVendido: data.autoViejoVendido }}
-            calculations={calculations}
-            onUpdate={updateField}
-          />
-
-          <GaliciaSueldoSection
-            data={{ dolarSueldo: data.dolarSueldo }}
-            calculations={calculations}
-            onUpdate={updateField}
-          />
-
-          <RipioSection
-            data={{ ripioPorDia: data.ripioPorDia }}
-            calculations={calculations}
-            onUpdate={updateField}
-          />
-
-          <div className="md:col-span-2 xl:col-span-1">
-            <FiwindSection
-              data={{ gastosGenerales: data.gastosGenerales }}
-              elementosComprados={data.elementosComprados}
-              calculations={calculations}
-              onUpdate={updateField}
-              onAddElemento={addElemento}
-              onRemoveElemento={removeElemento}
-            />
-          </div>
-        </div>
+        {/* Grid con drag & drop */}
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext items={sectionOrder} strategy={rectSortingStrategy}>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {sectionOrder.map((id) => (
+                <SortableItem key={id} id={id}>
+                  {id === 'dolar' && (
+                    <DolarSection
+                      precioDolar={data.precioDolar}
+                      currencyName={data.currencyName}
+                      onPrecioDolarChange={(v) => updateField('precioDolar', v)}
+                      onCurrencyNameChange={(v) => updateField('currencyName', v)}
+                    />
+                  )}
+                  {id === 'brubank' && (
+                    <BrubankSection
+                      brubank={data.brubank}
+                      brubankGastos={data.brubankGastos}
+                      calculations={calculations}
+                      onBrubankChange={(v) => updateField('brubank', v)}
+                      onAddGasto={addBrubankGasto}
+                      onRemoveGasto={removeBrubankGasto}
+                    />
+                  )}
+                  {id === 'naranja' && (
+                    <NaranjaSection
+                      data={{
+                        naranjaPesos: data.naranjaPesos,
+                        costoSesion: data.costoSesion,
+                        sesionesCursadas: data.sesionesCursadas,
+                        dolaresNaranja: data.dolaresNaranja,
+                        costoVisa: data.costoVisa,
+                      }}
+                      calculations={calculations}
+                      onUpdate={updateField}
+                    />
+                  )}
+                  {id === 'fima' && (
+                    <FimaSection
+                      data={{
+                        fima: data.fima,
+                        montoNafta: data.montoNafta,
+                        precioTanque: data.precioTanque,
+                        tanquesCargados: data.tanquesCargados,
+                        paraClasesJony: data.paraClasesJony,
+                        precioClase: data.precioClase,
+                        clasesCursadas: data.clasesCursadas,
+                      }}
+                      calculations={calculations}
+                      onUpdate={updateField}
+                    />
+                  )}
+                  {id === 'galiciaAuto' && (
+                    <GaliciaAutoSection
+                      data={{ dolarAuto: data.dolarAuto, autoViejoVendido: data.autoViejoVendido }}
+                      calculations={calculations}
+                      onUpdate={updateField}
+                    />
+                  )}
+                  {id === 'galiciaSueldo' && (
+                    <GaliciaSueldoSection
+                      data={{ dolarSueldo: data.dolarSueldo }}
+                      calculations={calculations}
+                      onUpdate={updateField}
+                    />
+                  )}
+                  {id === 'ripio' && (
+                    <RipioSection
+                      data={{ ripioPorDia: data.ripioPorDia }}
+                      calculations={calculations}
+                      onUpdate={updateField}
+                    />
+                  )}
+                  {id === 'fiwind' && (
+                    <FiwindSection
+                      data={{ gastosGenerales: data.gastosGenerales }}
+                      elementosComprados={data.elementosComprados}
+                      calculations={calculations}
+                      onUpdate={updateField}
+                      onAddElemento={addElemento}
+                      onRemoveElemento={removeElemento}
+                    />
+                  )}
+                </SortableItem>
+              ))}
+            </div>
+          </SortableContext>
+        </DndContext>
 
         {/* Footer */}
         <footer className="mt-12 pt-6 border-t border-gray-800/50 flex items-center justify-between gap-4">

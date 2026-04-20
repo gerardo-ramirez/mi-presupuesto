@@ -1,6 +1,17 @@
 import { useState } from 'react'
 import { Loader2, Info } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from '@dnd-kit/core'
+import { SortableContext, arrayMove, rectSortingStrategy } from '@dnd-kit/sortable'
+import { SortableItem } from '@/components/shared/SortableItem'
 import { useCustomBudget } from '../hooks/useCustomBudget'
 import { useCustomCalculations } from '../hooks/useCustomCalculations'
 import { CurrencyBar } from './CurrencyBar'
@@ -87,6 +98,7 @@ export function CustomBudgetDashboard() {
     addSection,
     removeSection,
     updateSection,
+    reorderSections,
     addExpense,
     removeExpense,
     incrementConsumed,
@@ -100,9 +112,23 @@ export function CustomBudgetDashboard() {
     () => localStorage.getItem(BANNER_KEY) === 'true',
   )
 
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 150, tolerance: 5 } }),
+  )
+
   const dismissBanner = () => {
     localStorage.setItem(BANNER_KEY, 'true')
     setBannerDismissed(true)
+  }
+
+  function handleDragEnd(event: DragEndEvent) {
+    const { active, over } = event
+    if (!over || active.id === over.id) return
+    const sortedIds = [...data.sections].sort((a, b) => a.order - b.order).map((s) => s.id)
+    const oldIndex = sortedIds.indexOf(active.id as string)
+    const newIndex = sortedIds.indexOf(over.id as string)
+    reorderSections(arrayMove(sortedIds, oldIndex, newIndex))
   }
 
   if (isLoading) {
@@ -194,25 +220,37 @@ export function CustomBudgetDashboard() {
           </div>
         ) : (
           <>
-            {/* Sections grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4">
-              {sortedSections.map((section) => (
-                <SectionRenderer
-                  key={section.id}
-                  section={section}
-                  currencyValue={data.currencyValue}
-                  currencyName={data.currencyName}
-                  onUpdate={(updates) => updateSection(section.id, updates)}
-                  onAddExpense={(monto, nombre) => addExpense(section.id, monto, nombre)}
-                  onRemoveExpense={(expenseId) => removeExpense(section.id, expenseId)}
-                  onIncrement={() => incrementConsumed(section.id)}
-                  onDecrement={() => decrementConsumed(section.id)}
-                  onAddDivision={(parts) => addDivision(section.id, parts)}
-                  onRemoveDivision={(index) => removeDivision(section.id, index)}
-                  onRemove={() => removeSection(section.id)}
-                />
-              ))}
-            </div>
+            {/* Sections grid con drag & drop */}
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragEnd={handleDragEnd}
+            >
+              <SortableContext
+                items={sortedSections.map((s) => s.id)}
+                strategy={rectSortingStrategy}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4">
+                  {sortedSections.map((section) => (
+                    <SortableItem key={section.id} id={section.id}>
+                      <SectionRenderer
+                        section={section}
+                        currencyValue={data.currencyValue}
+                        currencyName={data.currencyName}
+                        onUpdate={(updates) => updateSection(section.id, updates)}
+                        onAddExpense={(monto, nombre) => addExpense(section.id, monto, nombre)}
+                        onRemoveExpense={(expenseId) => removeExpense(section.id, expenseId)}
+                        onIncrement={() => incrementConsumed(section.id)}
+                        onDecrement={() => decrementConsumed(section.id)}
+                        onAddDivision={(parts) => addDivision(section.id, parts)}
+                        onRemoveDivision={(index) => removeDivision(section.id, index)}
+                        onRemove={() => removeSection(section.id)}
+                      />
+                    </SortableItem>
+                  ))}
+                </div>
+              </SortableContext>
+            </DndContext>
 
             {/* Add section */}
             <div className="max-w-sm">
