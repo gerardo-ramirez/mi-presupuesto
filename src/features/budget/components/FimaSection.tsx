@@ -35,7 +35,7 @@ export function FimaSection({ data, calculations, onUpdate }: FimaSectionProps) 
         className="px-3 py-2"
       />
       <Row label="Tanques restantes">{calculations.tanquesRestantes}</Row>
-      <Row label="Monto restante" highlight>
+      <Row label="Monto restante" remaining>
         $ {calculations.naftaRestante.toLocaleString('es-AR')}
       </Row>
 
@@ -56,7 +56,7 @@ export function FimaSection({ data, calculations, onUpdate }: FimaSectionProps) 
         className="px-3 py-2"
       />
       <Row label="Clases restantes">{calculations.clasesRestantes}</Row>
-      <Row label="Monto restante" highlight>
+      <Row label="Monto restante" remaining>
         $ {calculations.clasesMontoRestante.toLocaleString('es-AR')}
       </Row>
     </SectionCard>

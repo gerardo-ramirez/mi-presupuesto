@@ -36,7 +36,7 @@ export function FiwindSection({
       />
       <Separator className="bg-gray-800 my-2" />
       <Row label="Gastado">$ {calculations.totalElementosComprados.toLocaleString('es-AR')}</Row>
-      <Row label="Disponible" highlight>
+      <Row label="Disponible" remaining>
         $ {calculations.gastosDisponible.toLocaleString('es-AR')}
       </Row>
     </SectionCard>

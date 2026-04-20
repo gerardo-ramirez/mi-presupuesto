@@ -41,7 +41,7 @@ export function SimpleSection({
       <Row label="Gastado">
         $ {(calculations.totalGastado ?? 0).toLocaleString('es-AR')}
       </Row>
-      <Row label="Disponible" highlight>
+      <Row label="Disponible" remaining>
         $ {(calculations.disponible ?? 0).toLocaleString('es-AR')}
       </Row>
     </SectionCard>

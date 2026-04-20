@@ -65,7 +65,7 @@ export function EquivalenceSection({
       <Row label={`${unitLabel}s restantes`}>
         {calculations.unidadesRestantes ?? 0}
       </Row>
-      <Row label="Monto restante" highlight>
+      <Row label="Monto restante" remaining>
         $ {(calculations.montoRestante ?? 0).toLocaleString('es-AR')}
       </Row>
     </SectionCard>
