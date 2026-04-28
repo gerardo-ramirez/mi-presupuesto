@@ -1,6 +1,10 @@
 import { z } from 'zod'
 import type { BudgetData } from '../types/budget.types'
 
+// Whitelist: definís exactamente qué caracteres son válidos en un nombre de gasto.
+// Letras (con tildes/ñ), números, espacios, y puntuación básica esperada en un nombre.
+const SAFE_TEXT = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9\s.,\-()\/%$]+$/
+
 const brubankGastoSchema = z.object({
   id: z.string(),
   monto: z.number(),
@@ -8,7 +12,10 @@ const brubankGastoSchema = z.object({
 
 const elementoCompradoSchema = z.object({
   id: z.string(),
-  nombre: z.string(),
+  nombre: z.string()
+  .max(200)                    // límite de longitud explícito en el schema
+  .regex(SAFE_TEXT, 'Solo se permiten letras, números y puntuación básica')
+  .optional(),
   monto: z.number(),
 })
 
