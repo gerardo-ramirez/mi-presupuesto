@@ -5,7 +5,7 @@ export interface BrubankGasto {
 
 export interface ElementoComprado {
   id: string;
-  nombre: string;
+  nombre?: string;
   monto: number;
 }
 
