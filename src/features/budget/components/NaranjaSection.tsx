@@ -9,11 +9,14 @@ interface NaranjaSectionProps {
   data: Pick<BudgetData, 'naranjaPesos' | 'costoSesion' | 'sesionesCursadas' | 'dolaresNaranja' | 'costoVisa'>
   calculations: Pick<BudgetCalculations, 'sesionesDisponibles' | 'sesionesRestantes' | 'mesesVisa'>
   onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
+  onRemove?: () => void
+  onComplete?: () => void
+  isCompleted?: boolean
 }
 
-export function NaranjaSection({ data, calculations, onUpdate }: NaranjaSectionProps) {
+export function NaranjaSection({ data, calculations, onUpdate, onRemove, onComplete, isCompleted }: NaranjaSectionProps) {
   return (
-    <SectionCard title="Naranja X" icon="🟠">
+    <SectionCard title="Naranja X" icon="🟠" onRemove={onRemove} onComplete={onComplete} isCompleted={isCompleted}>
       <Row label="Pesos disponibles">
         <EditableNumber value={data.naranjaPesos} onChange={(v) => onUpdate('naranjaPesos', v)} />
       </Row>

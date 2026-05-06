@@ -7,15 +7,18 @@ interface RipioSectionProps {
   data: Pick<BudgetData, 'ripioPorDia'>
   calculations: Pick<BudgetCalculations, 'diasRipio' | 'diasTranscurridos' | 'totalRipioObjetivo' | 'totalRipioAcumulado'>
   onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
+  onRemove?: () => void
+  onComplete?: () => void
+  isCompleted?: boolean
 }
 
-export function RipioSection({ data, calculations, onUpdate }: RipioSectionProps) {
+export function RipioSection({ data, calculations, onUpdate, onRemove, onComplete, isCompleted }: RipioSectionProps) {
   const progreso = calculations.diasRipio > 0
     ? Math.round((calculations.diasTranscurridos / calculations.diasRipio) * 100)
     : 0
 
   return (
-    <SectionCard title="Ripio" icon="🪨">
+    <SectionCard title="Ripio" icon="🪨" onRemove={onRemove} onComplete={onComplete} isCompleted={isCompleted}>
       <Row label="Ahorro por día">
         <EditableNumber value={data.ripioPorDia} onChange={(v) => onUpdate('ripioPorDia', v)} />
       </Row>

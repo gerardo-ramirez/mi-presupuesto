@@ -12,6 +12,7 @@ export interface CustomSection {
   icon: string;
   order: number;
   type: SectionType;
+  completed?: boolean;
 
   // Común a simple y equivalence
   totalAmount: number;

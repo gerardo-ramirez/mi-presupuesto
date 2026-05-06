@@ -14,6 +14,9 @@ interface BrubankSectionProps {
   onBrubankChange: (v: number) => void
   onAddGasto: (monto: number) => void
   onRemoveGasto: (id: string) => void
+  onRemove?: () => void
+  onComplete?: () => void
+  isCompleted?: boolean
 }
 
 export function BrubankSection({
@@ -23,9 +26,12 @@ export function BrubankSection({
   onBrubankChange,
   onAddGasto,
   onRemoveGasto,
+  onRemove,
+  onComplete,
+  isCompleted,
 }: BrubankSectionProps) {
   return (
-    <SectionCard title="Brubank" icon="🏦">
+    <SectionCard title="Brubank" icon="🏦" onRemove={onRemove} onComplete={onComplete} isCompleted={isCompleted}>
       <Row label="Saldo">
         <EditableNumber value={brubank} onChange={onBrubankChange} />
       </Row>

@@ -7,11 +7,14 @@ interface GaliciaAutoSectionProps {
   data: Pick<BudgetData, 'dolarAuto' | 'autoViejoVendido'>
   calculations: Pick<BudgetCalculations, 'pesosAuto' | 'totalPresupuestoAuto'>
   onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
+  onRemove?: () => void
+  onComplete?: () => void
+  isCompleted?: boolean
 }
 
-export function GaliciaAutoSection({ data, calculations, onUpdate }: GaliciaAutoSectionProps) {
+export function GaliciaAutoSection({ data, calculations, onUpdate, onRemove, onComplete, isCompleted }: GaliciaAutoSectionProps) {
   return (
-    <SectionCard title="Galicia — Auto" icon="🚗">
+    <SectionCard title="Galicia — Auto" icon="🚗" onRemove={onRemove} onComplete={onComplete} isCompleted={isCompleted}>
       <Row label="Dólares">
         <EditableNumber value={data.dolarAuto} onChange={(v) => onUpdate('dolarAuto', v)} prefix="USD" />
       </Row>

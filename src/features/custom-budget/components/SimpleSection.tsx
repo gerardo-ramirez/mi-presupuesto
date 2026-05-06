@@ -13,6 +13,7 @@ interface SimpleSectionProps {
   onAddExpense: (monto: number, nombre?: string) => void
   onRemoveExpense: (expenseId: string) => void
   onRemove: () => void
+  onComplete: () => void
 }
 
 export function SimpleSection({
@@ -22,6 +23,7 @@ export function SimpleSection({
   onAddExpense,
   onRemoveExpense,
   onRemove,
+  onComplete,
 }: SimpleSectionProps) {
   return (
     <SectionCard
@@ -30,6 +32,8 @@ export function SimpleSection({
       onRemove={onRemove}
       onTitleChange={(title) => onUpdate({ title })}
       onIconChange={(icon) => onUpdate({ icon })}
+      onComplete={onComplete}
+      isCompleted={section.completed}
     >
       <Row label="Monto total">
         <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />

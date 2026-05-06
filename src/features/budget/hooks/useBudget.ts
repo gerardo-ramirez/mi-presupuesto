@@ -84,6 +84,26 @@ export function useBudget() {
     }))
   }
 
+  function markSectionComplete(id: string) {
+    setBudgetData((prev) => ({
+      ...prev,
+      completedSections: prev.completedSections.includes(id)
+        ? prev.completedSections
+        : [...prev.completedSections, id],
+      hiddenSections: prev.hiddenSections.filter((s) => s !== id),
+    }))
+  }
+
+  function hideSection(id: string) {
+    setBudgetData((prev) => ({
+      ...prev,
+      hiddenSections: prev.hiddenSections.includes(id)
+        ? prev.hiddenSections
+        : [...prev.hiddenSections, id],
+      completedSections: prev.completedSections.filter((s) => s !== id),
+    }))
+  }
+
   function resetBudget() {
     setBudgetData(DEFAULT_BUDGET)
   }
@@ -98,6 +118,8 @@ export function useBudget() {
     removeBrubankGasto,
     addElemento,
     removeElemento,
+    markSectionComplete,
+    hideSection,
     resetBudget,
   }
 }

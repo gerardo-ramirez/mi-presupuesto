@@ -33,6 +33,7 @@ function SectionRenderer({
   onAddDivision,
   onRemoveDivision,
   onRemove,
+  onComplete,
 }: {
   section: CustomSection
   currencyValue: number
@@ -45,6 +46,7 @@ function SectionRenderer({
   onAddDivision: (parts: number) => void
   onRemoveDivision: (index: number) => void
   onRemove: () => void
+  onComplete: () => void
 }) {
   const calculations = useCustomCalculations(section, currencyValue)
 
@@ -57,6 +59,7 @@ function SectionRenderer({
         onAddExpense={onAddExpense}
         onRemoveExpense={onRemoveExpense}
         onRemove={onRemove}
+        onComplete={onComplete}
       />
     )
   }
@@ -70,6 +73,7 @@ function SectionRenderer({
         onIncrement={onIncrement}
         onDecrement={onDecrement}
         onRemove={onRemove}
+        onComplete={onComplete}
       />
     )
   }
@@ -83,6 +87,7 @@ function SectionRenderer({
       onAddDivision={onAddDivision}
       onRemoveDivision={onRemoveDivision}
       onRemove={onRemove}
+      onComplete={onComplete}
     />
   )
 }
@@ -105,6 +110,7 @@ export function CustomBudgetDashboard() {
     decrementConsumed,
     addDivision,
     removeDivision,
+    markSectionComplete,
     resetCustomBudget,
   } = useCustomBudget()
 
@@ -125,10 +131,13 @@ export function CustomBudgetDashboard() {
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event
     if (!over || active.id === over.id) return
-    const sortedIds = [...data.sections].sort((a, b) => a.order - b.order).map((s) => s.id)
-    const oldIndex = sortedIds.indexOf(active.id as string)
-    const newIndex = sortedIds.indexOf(over.id as string)
-    reorderSections(arrayMove(sortedIds, oldIndex, newIndex))
+    const activeIds = [...data.sections]
+      .filter((s) => !s.completed)
+      .sort((a, b) => a.order - b.order)
+      .map((s) => s.id)
+    const oldIndex = activeIds.indexOf(active.id as string)
+    const newIndex = activeIds.indexOf(over.id as string)
+    reorderSections(arrayMove(activeIds, oldIndex, newIndex))
   }
 
   if (isLoading) {
@@ -139,7 +148,24 @@ export function CustomBudgetDashboard() {
     )
   }
 
-  const sortedSections = [...data.sections].sort((a, b) => a.order - b.order)
+  const allSorted = [...data.sections].sort((a, b) => a.order - b.order)
+  const activeSections = allSorted.filter((s) => !s.completed)
+  const completedSections = allSorted.filter((s) => s.completed)
+
+  const sharedRendererProps = (section: CustomSection) => ({
+    section,
+    currencyValue: data.currencyValue,
+    currencyName: data.currencyName,
+    onUpdate: (updates: Partial<CustomSection>) => updateSection(section.id, updates),
+    onAddExpense: (monto: number, nombre?: string) => addExpense(section.id, monto, nombre),
+    onRemoveExpense: (expenseId: string) => removeExpense(section.id, expenseId),
+    onIncrement: () => incrementConsumed(section.id),
+    onDecrement: () => decrementConsumed(section.id),
+    onAddDivision: (parts: number) => addDivision(section.id, parts),
+    onRemoveDivision: (index: number) => removeDivision(section.id, index),
+    onRemove: () => removeSection(section.id),
+    onComplete: () => markSectionComplete(section.id),
+  })
 
   return (
     <>
@@ -188,7 +214,7 @@ export function CustomBudgetDashboard() {
         />
 
         {/* Example banner */}
-        {!bannerDismissed && sortedSections.some((s) => s.id.startsWith('example-')) && (
+        {!bannerDismissed && activeSections.some((s) => s.id.startsWith('example-')) && (
           <div className="flex items-start gap-3 mb-4 px-4 py-3 rounded-xl bg-amber-900/20 border border-amber-800/50">
             <Info className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
             <div className="flex-1 min-w-0">
@@ -209,7 +235,7 @@ export function CustomBudgetDashboard() {
           </div>
         )}
 
-        {sortedSections.length === 0 ? (
+        {activeSections.length === 0 && completedSections.length === 0 ? (
           /* Empty state */
           <div className="flex flex-col items-center justify-center py-24 gap-4">
             <p className="text-gray-400 text-lg font-semibold">Tu presupuesto está vacío</p>
@@ -220,44 +246,51 @@ export function CustomBudgetDashboard() {
           </div>
         ) : (
           <>
-            {/* Sections grid con drag & drop */}
-            <DndContext
-              sensors={sensors}
-              collisionDetection={closestCenter}
-              onDragEnd={handleDragEnd}
-            >
-              <SortableContext
-                items={sortedSections.map((s) => s.id)}
-                strategy={rectSortingStrategy}
+            {/* Secciones activas con drag & drop */}
+            {activeSections.length > 0 && (
+              <DndContext
+                sensors={sensors}
+                collisionDetection={closestCenter}
+                onDragEnd={handleDragEnd}
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4">
-                  {sortedSections.map((section) => (
-                    <SortableItem key={section.id} id={section.id}>
-                      <SectionRenderer
-                        section={section}
-                        currencyValue={data.currencyValue}
-                        currencyName={data.currencyName}
-                        onUpdate={(updates) => updateSection(section.id, updates)}
-                        onAddExpense={(monto, nombre) => addExpense(section.id, monto, nombre)}
-                        onRemoveExpense={(expenseId) => removeExpense(section.id, expenseId)}
-                        onIncrement={() => incrementConsumed(section.id)}
-                        onDecrement={() => decrementConsumed(section.id)}
-                        onAddDivision={(parts) => addDivision(section.id, parts)}
-                        onRemoveDivision={(index) => removeDivision(section.id, index)}
-                        onRemove={() => removeSection(section.id)}
-                      />
-                    </SortableItem>
-                  ))}
-                </div>
-              </SortableContext>
-            </DndContext>
+                <SortableContext
+                  items={activeSections.map((s) => s.id)}
+                  strategy={rectSortingStrategy}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4">
+                    {activeSections.map((section) => (
+                      <SortableItem key={section.id} id={section.id}>
+                        <SectionRenderer {...sharedRendererProps(section)} />
+                      </SortableItem>
+                    ))}
+                  </div>
+                </SortableContext>
+              </DndContext>
+            )}
 
-            {/* Add section */}
-            <div className="max-w-sm">
+            {/* Agregar sección */}
+            <div className="max-w-sm mb-6">
               <AddSectionButton onAdd={addSection} />
             </div>
+
+            {/* Secciones completadas — sin drag & drop */}
+            {completedSections.length > 0 && (
+              <div>
+                <p className="text-xs uppercase tracking-widest text-gray-600 mb-3">
+                  Completadas
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {completedSections.map((section) => (
+                    <div key={section.id}>
+                      <SectionRenderer {...sharedRendererProps(section)} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </>
         )}
+
         {/* Footer */}
         <footer className="mt-12 pt-6 border-t border-gray-800/50 flex items-center justify-between gap-4">
           <a
