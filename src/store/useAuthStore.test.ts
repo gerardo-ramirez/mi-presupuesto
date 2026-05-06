@@ -43,4 +43,20 @@ describe('useAuthStore', () => {
     expect(state.user).toBeNull()
     expect(state.isAuthenticated).toBe(false)
   })
+
+    it('setUser(null) debe desautenticar aunque no se llame a clearUser (simula expiración de sesión Firebase)', () => {
+    // Arrange: simulamos sesión activa
+    useAuthStore.setState({
+      user: { uid: 'u-1', email: 'g@dev.com', displayName: 'Gerardo' },
+      isAuthenticated: true,
+    })
+
+    // Act: Firebase llama a onAuthStateChanged con null al expirar el token
+    useAuthStore.getState().setUser(null)
+
+    // Assert: la regla de negocio — isAuthenticated SIEMPRE === (user !== null)
+    const state = useAuthStore.getState()
+    expect(state.user).toBeNull()
+    expect(state.isAuthenticated).toBe(false)
+  })
 })
