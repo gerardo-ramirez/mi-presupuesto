@@ -1,7 +1,20 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { CheckCheck } from 'lucide-react'
+import { cn } from '@/lib/utils'
 import { IconPicker } from './IconPicker'
 import { EditableText } from './EditableText'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
 
 interface SectionCardProps {
   title: string
@@ -10,6 +23,8 @@ interface SectionCardProps {
   onRemove?: () => void
   onTitleChange?: (title: string) => void
   onIconChange?: (icon: string) => void
+  onComplete?: () => void
+  isCompleted?: boolean
 }
 
 export function SectionCard({
@@ -19,40 +34,98 @@ export function SectionCard({
   onRemove,
   onTitleChange,
   onIconChange,
+  onComplete,
+  isCompleted = false,
 }: SectionCardProps) {
   return (
-    <Card className="bg-gray-900 border-gray-800 shadow-lg">
+    <Card
+      className={cn(
+        'shadow-lg',
+        isCompleted
+          ? 'bg-emerald-950/40 border-emerald-900/60'
+          : 'bg-gray-900 border-gray-800',
+      )}
+    >
       <CardHeader className="pb-2 pt-4 px-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            {onIconChange ? (
+          <div className="flex items-center gap-1 min-w-0">
+            {!isCompleted && onIconChange ? (
               <IconPicker value={icon} onChange={onIconChange} />
             ) : (
-              <span className="text-base">{icon}</span>
+              <span className="text-base shrink-0">{icon}</span>
             )}
-            {onTitleChange ? (
+            {!isCompleted && onTitleChange ? (
               <EditableText value={title} onChange={onTitleChange} />
             ) : (
-              <span className="text-xs font-semibold tracking-widest uppercase text-amber-300">
+              <span className="text-xs font-semibold tracking-widest uppercase text-amber-300 truncate">
                 {title}
               </span>
             )}
+            {isCompleted && (
+              <span className="flex items-center gap-1 ml-1 text-emerald-500 text-xs font-medium normal-case tracking-normal shrink-0">
+                <CheckCheck className="h-3.5 w-3.5" />
+                Listo
+              </span>
+            )}
           </div>
-          {onRemove && (
-            <Button
-              type="button"
-              variant="ghost"
-              size="sm"
-              onClick={onRemove}
-              className="h-6 w-6 p-0 text-gray-600 hover:text-red-400 hover:bg-red-950/30"
-              title="Eliminar sección"
-            >
-              ✕
-            </Button>
-          )}
+
+          <div className="flex items-center gap-1 shrink-0">
+            {!isCompleted && onComplete && (
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={onComplete}
+                className="h-6 px-2 text-xs text-emerald-600/70 border border-emerald-800/50 hover:text-emerald-400 hover:bg-emerald-950/40 hover:border-emerald-700/70"
+                title="Marcar como listo"
+              >
+                Listo
+              </Button>
+            )}
+            {onRemove && (
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="h-6 w-6 p-0 text-gray-500 border border-gray-700/60 hover:text-red-400 hover:bg-red-950/30 hover:border-red-800/60"
+                    title="Eliminar sección"
+                  >
+                    ✕
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>¿Eliminar "{title}"?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      Esta acción eliminará la sección permanentemente. No se puede deshacer.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                    <AlertDialogAction
+                      onClick={onRemove}
+                      className="bg-red-600 text-white hover:bg-red-700"
+                    >
+                      Eliminar
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            )}
+          </div>
         </div>
       </CardHeader>
-      <CardContent className="px-4 pb-4 space-y-1">{children}</CardContent>
+
+      <CardContent
+        className={cn(
+          'px-4 pb-4 space-y-1',
+          isCompleted && 'pointer-events-none opacity-40 grayscale select-none',
+        )}
+      >
+        {children}
+      </CardContent>
     </Card>
   )
 }

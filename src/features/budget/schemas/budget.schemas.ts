@@ -42,6 +42,8 @@ export const budgetSchema = z.object({
   ripioPorDia: z.number(),
   gastosGenerales: z.number(),
   elementosComprados: z.array(elementoCompradoSchema),
+  completedSections: z.array(z.string()).default([]),
+  hiddenSections: z.array(z.string()).default([]),
 })
 
 export const DEFAULT_BUDGET: BudgetData = {
@@ -67,4 +69,6 @@ export const DEFAULT_BUDGET: BudgetData = {
   ripioPorDia: 10000,
   gastosGenerales: 100000,
   elementosComprados: [],
+  completedSections: [],
+  hiddenSections: [],
 }

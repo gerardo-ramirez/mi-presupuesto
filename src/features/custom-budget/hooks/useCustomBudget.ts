@@ -161,6 +161,15 @@ export function useCustomBudget() {
     }))
   }
 
+  function markSectionComplete(sectionId: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId ? { ...s, completed: true } : s,
+      ),
+    }))
+  }
+
   function resetCustomBudget() {
     setData(DEFAULT_CUSTOM_BUDGET)
   }
@@ -180,6 +189,7 @@ export function useCustomBudget() {
     decrementConsumed,
     addDivision,
     removeDivision,
+    markSectionComplete,
     resetCustomBudget,
   }
 }

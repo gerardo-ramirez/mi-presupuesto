@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -22,7 +22,7 @@ import { GaliciaSueldoSection } from './GaliciaSueldoSection'
 import { RipioSection } from './RipioSection'
 import { FiwindSection } from './FiwindSection'
 
-const DEFAULT_ORDER = [
+const ALL_SECTIONS = [
   'dolar',
   'brubank',
   'naranja',
@@ -44,10 +44,23 @@ export function BudgetDashboard() {
     removeBrubankGasto,
     addElemento,
     removeElemento,
+    markSectionComplete,
+    hideSection,
     resetBudget,
   } = useBudget()
 
-  const [sectionOrder, setSectionOrder] = useState(DEFAULT_ORDER)
+  const [sectionOrder, setSectionOrder] = useState<string[]>([])
+
+  useEffect(() => {
+    if (!isLoading) {
+      setSectionOrder(
+        ALL_SECTIONS.filter(
+          (id) =>
+            !data.hiddenSections.includes(id) && !data.completedSections.includes(id),
+        ),
+      )
+    }
+  }, [isLoading])
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
@@ -64,12 +77,119 @@ export function BudgetDashboard() {
     })
   }
 
+  function handleComplete(id: string) {
+    markSectionComplete(id)
+    setSectionOrder((prev) => prev.filter((s) => s !== id))
+  }
+
+  function handleHide(id: string) {
+    hideSection(id)
+    setSectionOrder((prev) => prev.filter((s) => s !== id))
+  }
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-amber-500" />
       </div>
     )
+  }
+
+  const completedIds = data.completedSections.filter((id) => ALL_SECTIONS.includes(id))
+
+  function renderSection(id: string, isCompleted = false) {
+    const shared = {
+      onRemove: () => (isCompleted ? handleHide(id) : handleHide(id)),
+      onComplete: isCompleted ? undefined : () => handleComplete(id),
+      isCompleted,
+    }
+
+    if (id === 'dolar') return (
+      <DolarSection
+        precioDolar={data.precioDolar}
+        currencyName={data.currencyName}
+        onPrecioDolarChange={(v) => updateField('precioDolar', v)}
+        onCurrencyNameChange={(v) => updateField('currencyName', v)}
+        {...shared}
+      />
+    )
+    if (id === 'brubank') return (
+      <BrubankSection
+        brubank={data.brubank}
+        brubankGastos={data.brubankGastos}
+        calculations={calculations}
+        onBrubankChange={(v) => updateField('brubank', v)}
+        onAddGasto={addBrubankGasto}
+        onRemoveGasto={removeBrubankGasto}
+        {...shared}
+      />
+    )
+    if (id === 'naranja') return (
+      <NaranjaSection
+        data={{
+          naranjaPesos: data.naranjaPesos,
+          costoSesion: data.costoSesion,
+          sesionesCursadas: data.sesionesCursadas,
+          dolaresNaranja: data.dolaresNaranja,
+          costoVisa: data.costoVisa,
+        }}
+        calculations={calculations}
+        onUpdate={updateField}
+        {...shared}
+      />
+    )
+    if (id === 'fima') return (
+      <FimaSection
+        data={{
+          fima: data.fima,
+          montoNafta: data.montoNafta,
+          precioTanque: data.precioTanque,
+          tanquesCargados: data.tanquesCargados,
+          paraClasesJony: data.paraClasesJony,
+          precioClase: data.precioClase,
+          clasesCursadas: data.clasesCursadas,
+        }}
+        calculations={calculations}
+        onUpdate={updateField}
+        {...shared}
+      />
+    )
+    if (id === 'galiciaAuto') return (
+      <GaliciaAutoSection
+        data={{ dolarAuto: data.dolarAuto, autoViejoVendido: data.autoViejoVendido }}
+        calculations={calculations}
+        onUpdate={updateField}
+        {...shared}
+      />
+    )
+    if (id === 'galiciaSueldo') return (
+      <GaliciaSueldoSection
+        data={{ dolarSueldo: data.dolarSueldo }}
+        calculations={calculations}
+        onUpdate={updateField}
+        {...shared}
+      />
+    )
+    if (id === 'ripio') return (
+      <RipioSection
+        data={{ ripioPorDia: data.ripioPorDia }}
+        calculations={calculations}
+        onUpdate={updateField}
+        {...shared}
+      />
+    )
+    if (id === 'fiwind') return (
+      <FiwindSection
+        data={{ gastosGenerales: data.gastosGenerales }}
+        elementosComprados={data.elementosComprados}
+        calculations={calculations}
+        onUpdate={updateField}
+        onAddElemento={addElemento}
+        onRemoveElemento={removeElemento}
+        {...shared}
+      />
+    )
+    return null
   }
 
   return (
@@ -109,7 +229,7 @@ export function BudgetDashboard() {
           </Button>
         </header>
 
-        {/* Grid con drag & drop */}
+        {/* Grid activo con drag & drop */}
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
@@ -119,88 +239,28 @@ export function BudgetDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
               {sectionOrder.map((id) => (
                 <SortableItem key={id} id={id}>
-                  {id === 'dolar' && (
-                    <DolarSection
-                      precioDolar={data.precioDolar}
-                      currencyName={data.currencyName}
-                      onPrecioDolarChange={(v) => updateField('precioDolar', v)}
-                      onCurrencyNameChange={(v) => updateField('currencyName', v)}
-                    />
-                  )}
-                  {id === 'brubank' && (
-                    <BrubankSection
-                      brubank={data.brubank}
-                      brubankGastos={data.brubankGastos}
-                      calculations={calculations}
-                      onBrubankChange={(v) => updateField('brubank', v)}
-                      onAddGasto={addBrubankGasto}
-                      onRemoveGasto={removeBrubankGasto}
-                    />
-                  )}
-                  {id === 'naranja' && (
-                    <NaranjaSection
-                      data={{
-                        naranjaPesos: data.naranjaPesos,
-                        costoSesion: data.costoSesion,
-                        sesionesCursadas: data.sesionesCursadas,
-                        dolaresNaranja: data.dolaresNaranja,
-                        costoVisa: data.costoVisa,
-                      }}
-                      calculations={calculations}
-                      onUpdate={updateField}
-                    />
-                  )}
-                  {id === 'fima' && (
-                    <FimaSection
-                      data={{
-                        fima: data.fima,
-                        montoNafta: data.montoNafta,
-                        precioTanque: data.precioTanque,
-                        tanquesCargados: data.tanquesCargados,
-                        paraClasesJony: data.paraClasesJony,
-                        precioClase: data.precioClase,
-                        clasesCursadas: data.clasesCursadas,
-                      }}
-                      calculations={calculations}
-                      onUpdate={updateField}
-                    />
-                  )}
-                  {id === 'galiciaAuto' && (
-                    <GaliciaAutoSection
-                      data={{ dolarAuto: data.dolarAuto, autoViejoVendido: data.autoViejoVendido }}
-                      calculations={calculations}
-                      onUpdate={updateField}
-                    />
-                  )}
-                  {id === 'galiciaSueldo' && (
-                    <GaliciaSueldoSection
-                      data={{ dolarSueldo: data.dolarSueldo }}
-                      calculations={calculations}
-                      onUpdate={updateField}
-                    />
-                  )}
-                  {id === 'ripio' && (
-                    <RipioSection
-                      data={{ ripioPorDia: data.ripioPorDia }}
-                      calculations={calculations}
-                      onUpdate={updateField}
-                    />
-                  )}
-                  {id === 'fiwind' && (
-                    <FiwindSection
-                      data={{ gastosGenerales: data.gastosGenerales }}
-                      elementosComprados={data.elementosComprados}
-                      calculations={calculations}
-                      onUpdate={updateField}
-                      onAddElemento={addElemento}
-                      onRemoveElemento={removeElemento}
-                    />
-                  )}
+                  {renderSection(id, false)}
                 </SortableItem>
               ))}
             </div>
           </SortableContext>
         </DndContext>
+
+        {/* Secciones completadas — fuera del drag & drop */}
+        {completedIds.length > 0 && (
+          <div className="mt-6">
+            <p className="text-xs uppercase tracking-widest text-gray-600 mb-3">
+              Completadas
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {completedIds.map((id) => (
+                <div key={id}>
+                  {renderSection(id, true)}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Footer */}
         <footer className="mt-12 pt-6 border-t border-gray-800/50 flex items-center justify-between gap-4">

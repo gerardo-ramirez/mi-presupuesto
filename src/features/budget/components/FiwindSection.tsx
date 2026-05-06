@@ -13,6 +13,9 @@ interface FiwindSectionProps {
   onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
   onAddElemento: (nombre: string, monto: number) => void
   onRemoveElemento: (id: string) => void
+  onRemove?: () => void
+  onComplete?: () => void
+  isCompleted?: boolean
 }
 
 export function FiwindSection({
@@ -22,9 +25,12 @@ export function FiwindSection({
   onUpdate,
   onAddElemento,
   onRemoveElemento,
+  onRemove,
+  onComplete,
+  isCompleted,
 }: FiwindSectionProps) {
   return (
-    <SectionCard title="Fiwind — Gastos Generales" icon="🧾">
+    <SectionCard title="Fiwind — Gastos Generales" icon="🧾" onRemove={onRemove} onComplete={onComplete} isCompleted={isCompleted}>
       <Row label="Presupuesto">
         <EditableNumber value={data.gastosGenerales} onChange={(v) => onUpdate('gastosGenerales', v)} />
       </Row>

@@ -10,6 +10,9 @@ interface DolarSectionProps {
   currencyName: string
   onPrecioDolarChange: (v: number) => void
   onCurrencyNameChange: (v: string) => void
+  onRemove?: () => void
+  onComplete?: () => void
+  isCompleted?: boolean
 }
 
 function EditableLabel({
@@ -75,9 +78,12 @@ export function DolarSection({
   currencyName,
   onPrecioDolarChange,
   onCurrencyNameChange,
+  onRemove,
+  onComplete,
+  isCompleted,
 }: DolarSectionProps) {
   return (
-    <SectionCard title="Tipo de Cambio" icon="💵">
+    <SectionCard title="Tipo de Cambio" icon="💵" onRemove={onRemove} onComplete={onComplete} isCompleted={isCompleted}>
       <Row label={<EditableLabel value={currencyName} onChange={onCurrencyNameChange} />} highlight>
         <EditableNumber value={precioDolar} onChange={onPrecioDolarChange} />
       </Row>

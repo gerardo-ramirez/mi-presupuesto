@@ -7,11 +7,14 @@ interface GaliciaSueldoSectionProps {
   data: Pick<BudgetData, 'dolarSueldo'>
   calculations: Pick<BudgetCalculations, 'pesosSueldo' | 'sueldo4' | 'sueldo5' | 'sueldo6'>
   onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
+  onRemove?: () => void
+  onComplete?: () => void
+  isCompleted?: boolean
 }
 
-export function GaliciaSueldoSection({ data, calculations, onUpdate }: GaliciaSueldoSectionProps) {
+export function GaliciaSueldoSection({ data, calculations, onUpdate, onRemove, onComplete, isCompleted }: GaliciaSueldoSectionProps) {
   return (
-    <SectionCard title="Galicia — Sueldo" icon="💰">
+    <SectionCard title="Galicia — Sueldo" icon="💰" onRemove={onRemove} onComplete={onComplete} isCompleted={isCompleted}>
       <Row label="Dólares">
         <EditableNumber value={data.dolarSueldo} onChange={(v) => onUpdate('dolarSueldo', v)} prefix="USD" />
       </Row>

@@ -12,6 +12,7 @@ interface EquivalenceSectionProps {
   onIncrement: () => void
   onDecrement: () => void
   onRemove: () => void
+  onComplete: () => void
 }
 
 export function EquivalenceSection({
@@ -21,6 +22,7 @@ export function EquivalenceSection({
   onIncrement,
   onDecrement,
   onRemove,
+  onComplete,
 }: EquivalenceSectionProps) {
   const unitLabel = section.unitLabel ?? 'unidad'
 
@@ -31,6 +33,8 @@ export function EquivalenceSection({
       onRemove={onRemove}
       onTitleChange={(title) => onUpdate({ title })}
       onIconChange={(icon) => onUpdate({ icon })}
+      onComplete={onComplete}
+      isCompleted={section.completed}
     >
       <Row label="Monto total">
         <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />

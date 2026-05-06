@@ -9,11 +9,14 @@ interface FimaSectionProps {
   data: Pick<BudgetData, 'fima' | 'montoNafta' | 'precioTanque' | 'tanquesCargados' | 'paraClasesJony' | 'precioClase' | 'clasesCursadas'>
   calculations: Pick<BudgetCalculations, 'naftaRestante' | 'tanquesTotales' | 'tanquesRestantes' | 'clasesTotales' | 'clasesRestantes' | 'clasesMontoRestante'>
   onUpdate: <K extends keyof BudgetData>(key: K, value: BudgetData[K]) => void
+  onRemove?: () => void
+  onComplete?: () => void
+  isCompleted?: boolean
 }
 
-export function FimaSection({ data, calculations, onUpdate }: FimaSectionProps) {
+export function FimaSection({ data, calculations, onUpdate, onRemove, onComplete, isCompleted }: FimaSectionProps) {
   return (
-    <SectionCard title="FIMA" icon="💼">
+    <SectionCard title="FIMA" icon="💼" onRemove={onRemove} onComplete={onComplete} isCompleted={isCompleted}>
       <Row label="Saldo total" highlight>
         <EditableNumber value={data.fima} onChange={(v) => onUpdate('fima', v)} />
       </Row>

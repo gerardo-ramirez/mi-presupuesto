@@ -32,6 +32,8 @@ export interface BudgetData {
   ripioPorDia: number;
   gastosGenerales: number;
   elementosComprados: ElementoComprado[];
+  completedSections: string[];
+  hiddenSections: string[];
 }
 
 export interface BudgetCalculations {

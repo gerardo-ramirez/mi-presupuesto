@@ -16,6 +16,7 @@ interface ConversionSectionProps {
   onAddDivision: (parts: number) => void
   onRemoveDivision: (index: number) => void
   onRemove: () => void
+  onComplete: () => void
 }
 
 export function ConversionSection({
@@ -26,6 +27,7 @@ export function ConversionSection({
   onAddDivision,
   onRemoveDivision,
   onRemove,
+  onComplete,
 }: ConversionSectionProps) {
   const [showExtra, setShowExtra] = useState(!!(section.extraLabel || (section.extraAmount ?? 0) > 0))
   const equivalencia = calculations.equivalenciaPesos ?? 0
@@ -37,6 +39,8 @@ export function ConversionSection({
       onRemove={onRemove}
       onTitleChange={(title) => onUpdate({ title })}
       onIconChange={(icon) => onUpdate({ icon })}
+      onComplete={onComplete}
+      isCompleted={section.completed}
     >
       {/* Toggle useCurrency */}
       <div className="flex items-center gap-2 px-3 py-2">
