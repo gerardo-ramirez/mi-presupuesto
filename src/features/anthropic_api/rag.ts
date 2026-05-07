@@ -46,7 +46,7 @@ const ask = async (question: string) => {
   console.log('Contexto encontrado:')
   console.log(context)
   console.log('\n---\n')
-
+/*
   const response = await client.messages.create({
     model: 'claude-sonnet-4-5',
     max_tokens: 1024,
@@ -61,9 +61,63 @@ ${context}`,
     ]
   })
 
-  console.log('Respuesta de Claude:')
-  console.log(response.content[0].text)
+*/
+ const stream = await client.messages.stream({
+    model: 'claude-sonnet-4-5',
+    max_tokens: 1024,
+    system: [{
+      type:'text',
+      text:`Sos un asistente de atención al cliente experto.
+Respondé ÚNICAMENTE basándote en el siguiente contexto.
+Si la respuesta no está en el contexto, decí que no tenés esa información.
+
+REGLAS DE ATENCIÓN:
+- Siempre saludá al cliente por su nombre si lo mencionó
+- Sé empático y profesional en todo momento
+- Si el cliente está enojado, primero validá su frustración
+- Nunca prometás cosas que no están en el contexto
+- Si no tenés información, ofrecé derivar a un agente humano
+- Respondé siempre en el mismo idioma que el cliente
+- Usá un tono cálido pero profesional
+- Si la consulta es urgente, priorizá la respuesta
+- Evitá respuestas genéricas, sé específico con la información disponible
+- Siempre ofrecé ayuda adicional al final de cada respuesta
+
+CONTEXTO DE LA EMPRESA:
+Somos una empresa de e-commerce con más de 10 años en el mercado.
+Nuestra misión es brindar la mejor experiencia de compra online.
+Contamos con un equipo de atención al cliente disponible 24/7.
+Nos especializamos en productos tecnológicos y electrónica de consumo.
+Tenemos alianzas con las principales marcas del mercado.
+Nuestra política es la satisfacción total del cliente.
+Procesamos más de 10,000 pedidos diarios en todo el país.
+Trabajamos con los mejores servicios de logística del mercado.
+Tenemos presencia en todas las provincias de Argentina.
+
+CONTEXTO DE DOCUMENTOS:
+${context}`,
+ cache_control: { type: 'ephemeral' }}
+    ],
+    
+    
+    
+    messages: [
+      { role: 'user', content: question }
+    ]
+  })
+    console.log('\nClaude: ')
+  for await (const chunk of stream) {
+    if (
+      chunk.type === 'content_block_delta' &&
+      chunk.delta.type === 'text_delta'
+    ) {
+      process.stdout.write(chunk.delta.text)
+    }
+  }
+    const final = await stream.finalMessage()
+  console.log('\n\nUsage:', final.usage)
 }
 
 //sk('¿Cuánto tarda un envío a Córdoba?')
-ask('¿Tienen sucursales físicas?')
+//ask('¿Tienen sucursales físicas?')
+ask('¿Cuánto tarda un envío a Mendoza?')
