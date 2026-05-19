@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import type { BudgetData } from '../types/budget.types'
 
 // Whitelist: definís exactamente qué caracteres son válidos en un nombre de gasto.
 // Letras (con tildes/ñ), números, espacios, y puntuación básica esperada en un nombre.
@@ -44,7 +43,7 @@ export const budgetSchema = z.object({
   elementosComprados: z.array(elementoCompradoSchema),
 })
 
-export const DEFAULT_BUDGET: BudgetData = {
+export const DEFAULT_BUDGET: z.infer<typeof budgetSchema> = {
   precioDolar: 1375,
   currencyName: 'DÓLAR',
   brubank: 104000,

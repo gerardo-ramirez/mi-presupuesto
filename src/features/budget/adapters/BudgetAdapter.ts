@@ -3,12 +3,16 @@ import type { BudgetData } from '../types/budget.types'
 
 export const BudgetAdapter = {
   toFirestore(budget: BudgetData): Record<string, unknown> {
-    return budget as unknown as Record<string, unknown>
+    return { ...budget }
   },
 
   fromFirestore(doc: Record<string, unknown>): BudgetData {
     const merged = { ...DEFAULT_BUDGET, ...doc }
     const result = budgetSchema.safeParse(merged)
-    return result.success ? result.data : DEFAULT_BUDGET
+    if (!result.success) {
+      console.error('[BudgetAdapter] schema parse error:', result.error)
+      return DEFAULT_BUDGET
+    }
+    return result.data
   },
 }

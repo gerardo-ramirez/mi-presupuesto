@@ -1,3 +1,8 @@
+import { z } from 'zod'
+import { budgetSchema } from '../schemas/budget.schemas'
+
+export type BudgetData = z.infer<typeof budgetSchema>
+
 export interface BrubankGasto {
   id: string;
   monto: number;
@@ -7,31 +12,6 @@ export interface ElementoComprado {
   id: string;
   nombre?: string;
   monto: number;
-}
-
-export interface BudgetData {
-  precioDolar: number;
-  currencyName: string;
-  brubank: number;
-  brubankGastos: BrubankGasto[];
-  naranjaPesos: number;
-  costoSesion: number;
-  sesionesCursadas: number;
-  dolaresNaranja: number;
-  costoVisa: number;
-  fima: number;
-  montoNafta: number;
-  precioTanque: number;
-  tanquesCargados: number;
-  paraClasesJony: number;
-  precioClase: number;
-  clasesCursadas: number;
-  dolarAuto: number;
-  autoViejoVendido: number;
-  dolarSueldo: number;
-  ripioPorDia: number;
-  gastosGenerales: number;
-  elementosComprados: ElementoComprado[];
 }
 
 export interface BudgetCalculations {
