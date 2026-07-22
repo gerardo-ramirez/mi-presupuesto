@@ -29,6 +29,15 @@ export const LABEL_REGEX = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/
  */
 export const DISPLAY_NAME_REGEX = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9]+$/
 
+/**
+ * Email: whitelist basada en el patrón HTML5 (WHATWG). Rechaza espacios y
+ * los caracteres típicamente usados para inyección (<, >, ", (, ), ,, ;, :, \)
+ * sin bloquear caracteres legítimos de RFC 5321 como el apóstrofe.
+ * Requiere un dominio con al menos un punto (ej: "aaa" sin TLD queda afuera).
+ */
+export const EMAIL_REGEX =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/
+
 // ─── Helpers de Zod reutilizables ────────────────────────────────────────────
 
 /**
@@ -51,6 +60,21 @@ export function safeLabelField(maxLength = 20) {
     .min(1)
     .max(maxLength)
     .regex(LABEL_REGEX, 'Solo se permiten letras y espacios')
+}
+
+/**
+ * Campo de email: recorta espacios, normaliza a minúsculas y valida contra
+ * una whitelist (no contra la validación laxa por defecto de Zod), evitando
+ * que caracteres de inyección (<, >, ", etc.) lleguen a Firebase Auth.
+ * Longitud máxima 254 según RFC 5321.
+ */
+export function safeEmailField() {
+  return z
+    .string()
+    .trim()
+    .toLowerCase()
+    .max(254, 'El email es demasiado largo')
+    .regex(EMAIL_REGEX, 'Ingresá un email válido')
 }
 
 // ─── Para el futuro: si algún día usás dangerouslySetInnerHTML ───────────────

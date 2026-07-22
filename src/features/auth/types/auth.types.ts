@@ -2,6 +2,7 @@ export type AuthUser = {
   uid: string;
   email: string;
   displayName: string | null;
+  emailVerified: boolean;
 };
 
 export type LoginCredentials = {

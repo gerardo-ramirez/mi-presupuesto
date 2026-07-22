@@ -8,6 +8,7 @@ import Loading from '@/components/shared/Loading'
 
 const LoginPage = lazy(() => import('@/pages/LoginPage'))
 const RegisterPage = lazy(() => import('@/pages/RegisterPage'))
+const ForgotPasswordPage = lazy(() => import('@/pages/ForgotPasswordPage'))
 const BudgetPage = lazy(() => import('@/pages/BudgetPage'))
 const CustomBudgetPage = lazy(() => import('@/pages/CustomBudgetPage'))
 
@@ -28,6 +29,16 @@ export const router = createBrowserRouter([
       <PublicRoute>
         <Suspense fallback={<Loading />}>
           <RegisterPage />
+        </Suspense>
+      </PublicRoute>
+    ),
+  },
+  {
+    path: '/forgot-password',
+    element: (
+      <PublicRoute>
+        <Suspense fallback={<Loading />}>
+          <ForgotPasswordPage />
         </Suspense>
       </PublicRoute>
     ),
