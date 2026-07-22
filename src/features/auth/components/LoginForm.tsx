@@ -90,9 +90,18 @@ export function LoginForm({ onSubmit, isLoading, error }: LoginFormProps) {
                 name="password"
                 render={({ field, fieldState }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-300 text-sm font-medium">
-                      Contraseña
-                    </FormLabel>
+                    <div className="flex items-center justify-between">
+                      <FormLabel className="text-gray-300 text-sm font-medium">
+                        Contraseña
+                      </FormLabel>
+                      <Link
+                        to="/forgot-password"
+                        tabIndex={-1}
+                        className="text-amber-400 hover:text-amber-300 text-xs font-medium underline-offset-4 hover:underline transition-colors"
+                      >
+                        ¿Olvidaste tu contraseña?
+                      </Link>
+                    </div>
                     <FormControl>
                       <div className="relative">
                         <Input

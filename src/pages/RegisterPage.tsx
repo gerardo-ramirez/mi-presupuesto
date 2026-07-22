@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 import { RegisterForm } from '@/features/auth'
 import { useAuth } from '@/features/auth'
 import { getAuthErrorMessage } from '@/features/auth/utils/authErrors'
@@ -22,6 +23,7 @@ export default function RegisterPage() {
     setIsLoading(true)
     try {
       await register(data)
+      toast.success('Cuenta creada. Te enviamos un email para verificar tu dirección.')
       navigate('/')
     } catch (err) {
       const next = attempts + 1

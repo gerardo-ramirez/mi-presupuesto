@@ -9,11 +9,12 @@ describe('Integración: Panel de Presupuesto', () => {
   beforeEach(() => {
     // Simulamos el estado de autenticación antes de cada test
     useAuthStore.setState({ 
-      user: { 
-        uid: 'user-123', 
-        email: 'test@fintech.com', 
-        displayName: 'Gerardo Dev' 
-      }, 
+      user: {
+        uid: 'user-123',
+        email: 'test@fintech.com',
+        displayName: 'Gerardo Dev',
+        emailVerified: true
+      },
       isAuthenticated: true 
     })
   })

@@ -38,5 +38,30 @@ export function useAuth() {
     }
   }
 
-  return { user, isAuthenticated, isLoading, login, register, logout }
+  const resetPassword = async (email: string) => {
+    try {
+      await AuthService.resetPassword(email)
+    } catch (error) {
+      throw error
+    }
+  }
+
+  const resendVerificationEmail = async () => {
+    try {
+      await AuthService.resendVerificationEmail()
+    } catch (error) {
+      throw error
+    }
+  }
+
+  return {
+    user,
+    isAuthenticated,
+    isLoading,
+    login,
+    register,
+    logout,
+    resetPassword,
+    resendVerificationEmail,
+  }
 }

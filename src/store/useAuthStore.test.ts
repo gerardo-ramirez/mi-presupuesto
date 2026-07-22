@@ -21,7 +21,7 @@ describe('useAuthStore', () => {
   })
 
   it('setUser debe actualizar el usuario y marcar como autenticado', () => {
-    const mockUser = { uid: '123', email: 'test@dev.com', displayName: 'Gerardo' }
+    const mockUser = { uid: '123', email: 'test@dev.com', displayName: 'Gerardo', emailVerified: false }
     
     // Accionamos
     useAuthStore.getState().setUser(mockUser)
