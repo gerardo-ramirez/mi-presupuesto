@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { sanitizeSafeText } from '@/lib/sanitize'
 
 interface AddExpenseFormProps {
   onAdd: (monto: number, nombre?: string) => void
@@ -30,7 +31,7 @@ export function AddExpenseForm({ onAdd, withName = false }: AddExpenseFormProps)
       {withName && (
         <Input
           value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
+          onChange={(e) => setNombre(sanitizeSafeText(e.target.value))}
           onKeyDown={(e) => { if (e.key === 'Enter') montoRef.current?.focus() }}
           placeholder="Agregá un gasto"
           maxLength={200}

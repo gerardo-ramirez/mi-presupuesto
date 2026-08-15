@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { sanitizeSafeText } from '@/lib/sanitize'
 
 interface AddSeparatorFormProps {
   onAdd: (label: string) => void
@@ -39,7 +40,7 @@ export function AddSeparatorForm({ onAdd }: AddSeparatorFormProps) {
       <Input
         ref={inputRef}
         value={label}
-        onChange={(e) => setLabel(e.target.value)}
+        onChange={(e) => setLabel(sanitizeSafeText(e.target.value))}
         onKeyDown={(e) => {
           if (e.key === 'Enter') handleSubmit()
           if (e.key === 'Escape') setExpanded(false)
