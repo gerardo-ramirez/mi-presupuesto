@@ -23,7 +23,7 @@ export function ChecklistExpenseList({ expenses, onRemove, onUpdate, onToggleDon
           <button
             type="button"
             onClick={() => onToggleDone(e.id)}
-            className="flex items-center gap-2 min-w-0 text-left"
+            className="flex items-start gap-2 min-w-0 text-left"
             title={e.done ? 'Marcar como pendiente' : 'Marcar como hecho'}
           >
             {e.done ? (
@@ -33,7 +33,7 @@ export function ChecklistExpenseList({ expenses, onRemove, onUpdate, onToggleDon
             )}
             <span
               className={cn(
-                'text-sm truncate max-w-[50%]',
+                'text-sm line-clamp-2 max-w-[50%] break-words',
                 e.done ? 'text-text-subtle line-through' : 'text-text-muted',
               )}
             >
