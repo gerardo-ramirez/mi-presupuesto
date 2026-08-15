@@ -44,8 +44,8 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
   }
 
   return (
-    <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-gray-900 border-gray-800 shadow-2xl shadow-black/50">
+    <div className="min-h-screen bg-bg flex items-center justify-center p-4">
+      <Card className="w-full max-w-md bg-bg-elevated border-border shadow-2xl shadow-black/50">
         <CardHeader className="space-y-1 pb-6">
           <div className="flex items-center gap-2 mb-2">
             <div className="h-6 w-6 rounded-sm bg-amber-500" />
@@ -53,10 +53,10 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
               Mi Presupuesto
             </span>
           </div>
-          <CardTitle className="text-2xl font-bold text-gray-100">
+          <CardTitle className="text-2xl font-bold text-text">
             Crear Cuenta
           </CardTitle>
-          <CardDescription className="text-gray-400">
+          <CardDescription className="text-text-muted">
             Empezá a gestionar tu presupuesto
           </CardDescription>
         </CardHeader>
@@ -69,7 +69,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                 name="displayName"
                 render={({ field, fieldState }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-300 text-sm font-medium">
+                    <FormLabel className="text-text-muted text-sm font-medium">
                       Nombre
                     </FormLabel>
                     <FormControl>
@@ -79,7 +79,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                         autoComplete="name"
                         disabled={isLoading}
                         className={cn(
-                          'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500',
+                          'bg-bg-elevated border-border-strong text-text placeholder:text-text-subtle',
                           'focus-visible:ring-amber-500 focus-visible:border-amber-500',
                           fieldState.error && 'border-red-500 focus-visible:ring-red-500',
                         )}
@@ -96,7 +96,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                 name="email"
                 render={({ field, fieldState }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-300 text-sm font-medium">
+                    <FormLabel className="text-text-muted text-sm font-medium">
                       Email
                     </FormLabel>
                     <FormControl>
@@ -106,7 +106,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                         autoComplete="email"
                         disabled={isLoading}
                         className={cn(
-                          'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500',
+                          'bg-bg-elevated border-border-strong text-text placeholder:text-text-subtle',
                           'focus-visible:ring-amber-500 focus-visible:border-amber-500',
                           fieldState.error && 'border-red-500 focus-visible:ring-red-500',
                         )}
@@ -123,7 +123,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                 name="password"
                 render={({ field, fieldState }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-300 text-sm font-medium">
+                    <FormLabel className="text-text-muted text-sm font-medium">
                       Contraseña
                     </FormLabel>
                     <FormControl>
@@ -134,7 +134,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                           autoComplete="new-password"
                           disabled={isLoading}
                           className={cn(
-                            'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500 pr-10',
+                            'bg-bg-elevated border-border-strong text-text placeholder:text-text-subtle pr-10',
                             'focus-visible:ring-amber-500 focus-visible:border-amber-500',
                             fieldState.error && 'border-red-500 focus-visible:ring-red-500',
                           )}
@@ -145,7 +145,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                           variant="ghost"
                           size="icon"
                           onClick={() => setShowPassword((p) => !p)}
-                          className="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-gray-300 hover:bg-transparent"
+                          className="absolute right-0 top-0 h-full px-3 text-text-subtle hover:text-text-muted hover:bg-transparent"
                           tabIndex={-1}
                           aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                         >
@@ -163,7 +163,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                 name="confirmPassword"
                 render={({ field, fieldState }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-300 text-sm font-medium">
+                    <FormLabel className="text-text-muted text-sm font-medium">
                       Confirmar Contraseña
                     </FormLabel>
                     <FormControl>
@@ -174,7 +174,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                           autoComplete="new-password"
                           disabled={isLoading}
                           className={cn(
-                            'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500 pr-10',
+                            'bg-bg-elevated border-border-strong text-text placeholder:text-text-subtle pr-10',
                             'focus-visible:ring-amber-500 focus-visible:border-amber-500',
                             fieldState.error && 'border-red-500 focus-visible:ring-red-500',
                           )}
@@ -185,7 +185,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                           variant="ghost"
                           size="icon"
                           onClick={() => setShowConfirmPassword((p) => !p)}
-                          className="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-gray-300 hover:bg-transparent"
+                          className="absolute right-0 top-0 h-full px-3 text-text-subtle hover:text-text-muted hover:bg-transparent"
                           tabIndex={-1}
                           aria-label={showConfirmPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                         >
@@ -226,7 +226,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
             </CardContent>
 
             <CardFooter className="pt-2 pb-6 justify-center">
-              <p className="text-gray-500 text-sm">
+              <p className="text-text-subtle text-sm">
                 ¿Ya tenés cuenta?{' '}
                 <Link
                   to="/login"

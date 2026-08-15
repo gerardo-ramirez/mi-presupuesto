@@ -11,7 +11,7 @@ interface CounterProps {
 export function Counter({ value, onChange, label, className }: CounterProps) {
   return (
     <div className={cn('flex items-center gap-3', className)}>
-      {label && <span className="text-gray-400 text-sm">{label}</span>}
+      {label && <span className="text-text-muted text-sm">{label}</span>}
       <div className="flex items-center gap-1">
         <Button
           type="button"
@@ -19,7 +19,7 @@ export function Counter({ value, onChange, label, className }: CounterProps) {
           size="sm"
           onClick={() => onChange(Math.max(0, value - 1))}
           disabled={value <= 0}
-          className="h-7 w-7 p-0 text-gray-400 hover:text-amber-400 hover:bg-gray-800"
+          className="h-7 w-7 p-0 text-text-muted hover:text-amber-400 hover:bg-bg-muted"
         >
           −
         </Button>
@@ -29,7 +29,7 @@ export function Counter({ value, onChange, label, className }: CounterProps) {
           variant="ghost"
           size="sm"
           onClick={() => onChange(value + 1)}
-          className="h-7 w-7 p-0 text-gray-400 hover:text-amber-400 hover:bg-gray-800"
+          className="h-7 w-7 p-0 text-text-muted hover:text-amber-400 hover:bg-bg-muted"
         >
           +
         </Button>

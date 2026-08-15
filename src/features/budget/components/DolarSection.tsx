@@ -51,7 +51,7 @@ function EditableLabel({
         onChange={(e) => setRaw(e.target.value)}
         onBlur={confirm}
         onKeyDown={handleKeyDown}
-        className="h-6 w-28 bg-gray-800 border-amber-500 text-amber-300 text-xs font-semibold tracking-widest uppercase focus-visible:ring-amber-500 px-2"
+        className="h-6 w-28 bg-bg-muted border-amber-500 text-amber-300 text-xs font-semibold tracking-widest uppercase focus-visible:ring-amber-500 px-2"
       />
     )
   }

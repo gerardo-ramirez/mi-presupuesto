@@ -12,6 +12,16 @@ const expenseSchema = z.object({
   .regex(SAFE_TEXT, 'Solo se permiten letras, números y puntuación básica')
   .optional(),
   monto: z.number().positive(),  // .positive() evita montos negativos o cero
+  order: z.number().optional(),
+  done: z.boolean().default(false),
+})
+
+const separatorSchema = z.object({
+  id: z.string(),
+  label: z.string()
+    .max(100)
+    .regex(SAFE_TEXT, 'Solo se permiten letras, números y puntuación básica'),
+  order: z.number(),
 })
 
 export const customSectionSchema = z.object({
@@ -19,10 +29,11 @@ export const customSectionSchema = z.object({
   title: z.string(),
   icon: z.string(),
   order: z.number(),
-  type: z.enum(['simple', 'equivalence', 'conversion']),
+  type: z.enum(['simple', 'equivalence', 'conversion', 'checklist']),
   completed: z.boolean().default(false),
   totalAmount: z.number(),
   expenses: z.array(expenseSchema).default([]),
+  separators: z.array(separatorSchema).default([]),
   // Equivalence
   unitLabel: z.string().optional(),
   unitPrice: z.number().optional(),
@@ -55,6 +66,7 @@ export const EXAMPLE_SECTIONS: CustomSection[] = [
       { id: 'ex-1', nombre: 'Streaming', monto: 15000 },
       { id: 'ex-2', nombre: 'Gimnasio', monto: 25000 },
     ],
+    separators: [],
   },
   {
     id: 'example-equivalence',
@@ -65,6 +77,7 @@ export const EXAMPLE_SECTIONS: CustomSection[] = [
     completed: false,
     totalAmount: 240000,
     expenses: [],
+    separators: [],
     unitLabel: 'clase',
     unitPrice: 20000,
     consumed: 3,
@@ -78,6 +91,7 @@ export const EXAMPLE_SECTIONS: CustomSection[] = [
     completed: false,
     totalAmount: 0,
     expenses: [],
+    separators: [],
     useCurrency: true,
     currencyAmount: 500,
     extraAmount: 0,
@@ -100,6 +114,7 @@ export const TEMPLATE_SIMPLE: Omit<CustomSection, 'id' | 'order'> = {
   completed: false,
   totalAmount: 0,
   expenses: [],
+  separators: [],
 }
 
 export const TEMPLATE_EQUIVALENCE: Omit<CustomSection, 'id' | 'order'> = {
@@ -109,6 +124,7 @@ export const TEMPLATE_EQUIVALENCE: Omit<CustomSection, 'id' | 'order'> = {
   completed: false,
   totalAmount: 0,
   expenses: [],
+  separators: [],
   unitLabel: 'unidad',
   unitPrice: 0,
   consumed: 0,
@@ -121,10 +137,21 @@ export const TEMPLATE_CONVERSION: Omit<CustomSection, 'id' | 'order'> = {
   completed: false,
   totalAmount: 0,
   expenses: [],
+  separators: [],
   useCurrency: true,
   currencyAmount: 0,
   extraAmount: 0,
   extraLabel: '',
   divisions: [],
   divisionLabel: 'partes',
+}
+
+export const TEMPLATE_CHECKLIST: Omit<CustomSection, 'id' | 'order'> = {
+  title: 'Nueva Sección',
+  icon: '✅',
+  type: 'checklist',
+  completed: false,
+  totalAmount: 0,
+  expenses: [],
+  separators: [],
 }

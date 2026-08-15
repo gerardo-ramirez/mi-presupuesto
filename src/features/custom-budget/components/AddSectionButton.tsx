@@ -15,6 +15,7 @@ const OPTIONS: { type: SectionType; emoji: string; label: string; description: s
   { type: 'simple', emoji: '💰', label: 'Simple', description: 'Monto + lista de gastos' },
   { type: 'equivalence', emoji: '📊', label: 'Equivalencia', description: 'Monto + unidades consumibles' },
   { type: 'conversion', emoji: '💱', label: 'Conversión', description: 'Divisa + divisiones' },
+  { type: 'checklist', emoji: '✅', label: 'Checklist', description: 'Gastos a futuro, pendiente/hecho' },
 ]
 
 export function AddSectionButton({ onAdd }: AddSectionButtonProps) {
@@ -30,7 +31,7 @@ export function AddSectionButton({ onAdd }: AddSectionButtonProps) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="bg-gray-900 border-gray-700 w-56"
+        className="bg-bg-elevated border-border-strong w-56"
         align="center"
       >
         {OPTIONS.map(({ type, emoji, label, description }) => (
@@ -39,10 +40,10 @@ export function AddSectionButton({ onAdd }: AddSectionButtonProps) {
             onClick={() => onAdd(type)}
             className="flex flex-col items-start gap-0.5 cursor-pointer focus:bg-amber-500/20 focus:text-amber-300 py-2"
           >
-            <span className="text-gray-200 font-medium text-sm">
+            <span className="text-text font-medium text-sm">
               {emoji} {label}
             </span>
-            <span className="text-gray-500 text-xs">{description}</span>
+            <span className="text-text-subtle text-xs">{description}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

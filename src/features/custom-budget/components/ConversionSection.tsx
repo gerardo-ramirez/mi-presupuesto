@@ -48,7 +48,7 @@ export function ConversionSection({
           type="button"
           onClick={() => onUpdate({ useCurrency: !section.useCurrency })}
           className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
-            section.useCurrency ? 'bg-amber-500' : 'bg-gray-700'
+            section.useCurrency ? 'bg-amber-500' : 'bg-bg-muted'
           }`}
         >
           <span
@@ -57,7 +57,7 @@ export function ConversionSection({
             }`}
           />
         </button>
-        <span className="text-xs text-gray-400">Usar tipo de cambio</span>
+        <span className="text-xs text-text-muted">Usar tipo de cambio</span>
       </div>
 
       {section.useCurrency ? (
@@ -84,8 +84,8 @@ export function ConversionSection({
 
       {/* Extra amount */}
       {showExtra ? (
-        <div className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800/50">
-          <span className="text-sm text-gray-400 flex items-center gap-1">
+        <div className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-bg-muted/50">
+          <span className="text-sm text-text-muted flex items-center gap-1">
             <EditableText
               value={section.extraLabel || ''}
               onChange={(v) => onUpdate({ extraLabel: v })}
@@ -105,7 +105,7 @@ export function ConversionSection({
             variant="ghost"
             size="sm"
             onClick={() => { setShowExtra(true); onUpdate({ extraLabel: '', extraAmount: 0 }) }}
-            className="h-6 text-xs text-gray-600 hover:text-amber-400 px-0"
+            className="h-6 text-xs text-text-subtle hover:text-amber-400 px-0"
           >
             + Agregar monto extra
           </Button>
@@ -118,7 +118,7 @@ export function ConversionSection({
         </Row>
       )}
 
-      <Separator className="bg-gray-800 my-2" />
+      <Separator className="bg-bg-muted my-2" />
 
       <DivisionManager
         divisions={section.divisions ?? []}

@@ -16,6 +16,7 @@ import { useCustomBudget } from '../hooks/useCustomBudget'
 import { useCustomCalculations } from '../hooks/useCustomCalculations'
 import { CurrencyBar } from './CurrencyBar'
 import { SimpleSection } from './SimpleSection'
+import { ChecklistSection } from './ChecklistSection'
 import { EquivalenceSection } from './EquivalenceSection'
 import { ConversionSection } from './ConversionSection'
 import { AddSectionButton } from './AddSectionButton'
@@ -28,6 +29,10 @@ function SectionRenderer({
   onUpdate,
   onAddExpense,
   onRemoveExpense,
+  onUpdateExpense,
+  onToggleExpenseDone,
+  onAddSeparator,
+  onRemoveSeparator,
   onIncrement,
   onDecrement,
   onAddDivision,
@@ -41,6 +46,10 @@ function SectionRenderer({
   onUpdate: (updates: Partial<CustomSection>) => void
   onAddExpense: (monto: number, nombre?: string) => void
   onRemoveExpense: (expenseId: string) => void
+  onUpdateExpense: (expenseId: string, monto: number) => void
+  onToggleExpenseDone: (expenseId: string) => void
+  onAddSeparator: (label: string) => void
+  onRemoveSeparator: (separatorId: string) => void
   onIncrement: () => void
   onDecrement: () => void
   onAddDivision: (parts: number) => void
@@ -58,6 +67,25 @@ function SectionRenderer({
         onUpdate={onUpdate}
         onAddExpense={onAddExpense}
         onRemoveExpense={onRemoveExpense}
+        onUpdateExpense={onUpdateExpense}
+        onAddSeparator={onAddSeparator}
+        onRemoveSeparator={onRemoveSeparator}
+        onRemove={onRemove}
+        onComplete={onComplete}
+      />
+    )
+  }
+
+  if (section.type === 'checklist') {
+    return (
+      <ChecklistSection
+        section={section}
+        calculations={calculations}
+        onUpdate={onUpdate}
+        onAddExpense={onAddExpense}
+        onRemoveExpense={onRemoveExpense}
+        onUpdateExpense={onUpdateExpense}
+        onToggleExpenseDone={onToggleExpenseDone}
         onRemove={onRemove}
         onComplete={onComplete}
       />
@@ -106,6 +134,10 @@ export function CustomBudgetDashboard() {
     reorderSections,
     addExpense,
     removeExpense,
+    updateExpense,
+    toggleExpenseDone,
+    addSeparator,
+    removeSeparator,
     incrementConsumed,
     decrementConsumed,
     addDivision,
@@ -142,7 +174,7 @@ export function CustomBudgetDashboard() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+      <div className="min-h-screen bg-bg flex items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-amber-500" />
       </div>
     )
@@ -159,6 +191,10 @@ export function CustomBudgetDashboard() {
     onUpdate: (updates: Partial<CustomSection>) => updateSection(section.id, updates),
     onAddExpense: (monto: number, nombre?: string) => addExpense(section.id, monto, nombre),
     onRemoveExpense: (expenseId: string) => removeExpense(section.id, expenseId),
+    onUpdateExpense: (expenseId: string, monto: number) => updateExpense(section.id, expenseId, monto),
+    onToggleExpenseDone: (expenseId: string) => toggleExpenseDone(section.id, expenseId),
+    onAddSeparator: (label: string) => addSeparator(section.id, label),
+    onRemoveSeparator: (separatorId: string) => removeSeparator(section.id, separatorId),
     onIncrement: () => incrementConsumed(section.id),
     onDecrement: () => decrementConsumed(section.id),
     onAddDivision: (parts: number) => addDivision(section.id, parts),
@@ -174,7 +210,7 @@ export function CustomBudgetDashboard() {
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
       />
       <div
-        className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 p-4 md:p-8"
+        className="min-h-screen bg-gradient-to-b from-bg to-bg-elevated p-4 md:p-8"
         style={{ fontFamily: "'JetBrains Mono', monospace" }}
       >
         {/* Header */}
@@ -183,7 +219,7 @@ export function CustomBudgetDashboard() {
             <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
               Mi Presupuesto
             </h1>
-            <p className="text-gray-500 text-sm mt-1">
+            <p className="text-text-subtle text-sm mt-1">
               {isSaving ? (
                 <span className="text-amber-500/70 inline-flex items-center gap-1">
                   <Loader2 className="h-3 w-3 animate-spin" />
@@ -199,7 +235,7 @@ export function CustomBudgetDashboard() {
             variant="ghost"
             size="sm"
             onClick={resetCustomBudget}
-            className="text-gray-600 hover:text-red-400 hover:bg-red-950/30 text-xs"
+            className="text-text-subtle hover:text-red-400 hover:bg-red-950/30 text-xs"
           >
             Resetear
           </Button>
@@ -238,8 +274,8 @@ export function CustomBudgetDashboard() {
         {activeSections.length === 0 && completedSections.length === 0 ? (
           /* Empty state */
           <div className="flex flex-col items-center justify-center py-24 gap-4">
-            <p className="text-gray-400 text-lg font-semibold">Tu presupuesto está vacío</p>
-            <p className="text-gray-600 text-sm">Agregá tu primera sección para empezar</p>
+            <p className="text-text-muted text-lg font-semibold">Tu presupuesto está vacío</p>
+            <p className="text-text-subtle text-sm">Agregá tu primera sección para empezar</p>
             <div className="w-full max-w-sm mt-2">
               <AddSectionButton onAdd={addSection} />
             </div>
@@ -276,7 +312,7 @@ export function CustomBudgetDashboard() {
             {/* Secciones completadas — sin drag & drop */}
             {completedSections.length > 0 && (
               <div>
-                <p className="text-xs uppercase tracking-widest text-gray-600 mb-3">
+                <p className="text-xs uppercase tracking-widest text-text-subtle mb-3">
                   Completadas
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -292,23 +328,23 @@ export function CustomBudgetDashboard() {
         )}
 
         {/* Footer */}
-        <footer className="mt-12 pt-6 border-t border-gray-800/50 flex items-center justify-between gap-4">
+        <footer className="mt-12 pt-6 border-t border-border/50 flex items-center justify-between gap-4">
           <a
             href="https://gramirez-lab.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-gray-700 hover:text-amber-500/70 transition-colors duration-200 tracking-widest uppercase"
+            className="text-xs text-text-subtle hover:text-amber-500/70 transition-colors duration-200 tracking-widest uppercase"
           >
             gramirezlab ↗
           </a>
-          <div className="flex items-center gap-2 text-xs text-gray-700">
-            <span className="text-gray-800">·</span>
+          <div className="flex items-center gap-2 text-xs text-text-subtle">
+            <span className="text-text">·</span>
             <span>desarrollado por</span>
             <a
               href="https://gramirez.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-amber-500/70 transition-colors duration-200"
+              className="text-text-subtle hover:text-amber-500/70 transition-colors duration-200"
             >
               Gerardo Ramirez ↗
             </a>

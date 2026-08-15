@@ -43,7 +43,7 @@ export function SectionCard({
         'shadow-lg',
         isCompleted
           ? 'bg-emerald-950/40 border-emerald-900/60'
-          : 'bg-gray-900 border-gray-800',
+          : 'bg-bg-elevated border-border',
       )}
     >
       <CardHeader className="pb-2 pt-4 px-4">
@@ -89,7 +89,7 @@ export function SectionCard({
                     type="button"
                     variant="ghost"
                     size="sm"
-                    className="h-6 w-6 p-0 text-gray-500 border border-gray-700/60 hover:text-red-400 hover:bg-red-950/30 hover:border-red-800/60"
+                    className="h-6 w-6 p-0 text-text-subtle border border-border-strong/60 hover:text-red-400 hover:bg-red-950/30 hover:border-red-800/60"
                     title="Eliminar sección"
                   >
                     ✕

@@ -6,6 +6,7 @@ import {
   TEMPLATE_SIMPLE,
   TEMPLATE_EQUIVALENCE,
   TEMPLATE_CONVERSION,
+  TEMPLATE_CHECKLIST,
 } from '../schemas/customBudget.schemas'
 import type { CustomBudgetData, CustomSection, SectionType } from '../types/customBudget.types'
 
@@ -59,7 +60,9 @@ export function useCustomBudget() {
         ? TEMPLATE_SIMPLE
         : type === 'equivalence'
           ? TEMPLATE_EQUIVALENCE
-          : TEMPLATE_CONVERSION
+          : type === 'checklist'
+            ? TEMPLATE_CHECKLIST
+            : TEMPLATE_CONVERSION
 
     const newSection: CustomSection = {
       ...template,
@@ -103,8 +106,41 @@ export function useCustomBudget() {
         s.id === sectionId
           ? {
               ...s,
-              expenses: [...s.expenses, { id: crypto.randomUUID(), nombre, monto }],
+              expenses: [...s.expenses, { id: crypto.randomUUID(), nombre, monto, order: Date.now() }],
             }
+          : s,
+      ),
+    }))
+  }
+
+  function toggleExpenseDone(sectionId: string, expenseId: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId
+          ? { ...s, expenses: s.expenses.map((e) => (e.id === expenseId ? { ...e, done: !e.done } : e)) }
+          : s,
+      ),
+    }))
+  }
+
+  function addSeparator(sectionId: string, label: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId
+          ? { ...s, separators: [...s.separators, { id: crypto.randomUUID(), label, order: Date.now() }] }
+          : s,
+      ),
+    }))
+  }
+
+  function removeSeparator(sectionId: string, separatorId: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId
+          ? { ...s, separators: s.separators.filter((sep) => sep.id !== separatorId) }
           : s,
       ),
     }))
@@ -116,6 +152,17 @@ export function useCustomBudget() {
       sections: prev.sections.map((s) =>
         s.id === sectionId
           ? { ...s, expenses: s.expenses.filter((e) => e.id !== expenseId) }
+          : s,
+      ),
+    }))
+  }
+
+  function updateExpense(sectionId: string, expenseId: string, monto: number) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId
+          ? { ...s, expenses: s.expenses.map((e) => (e.id === expenseId ? { ...e, monto } : e)) }
           : s,
       ),
     }))
@@ -185,6 +232,10 @@ export function useCustomBudget() {
     reorderSections,
     addExpense,
     removeExpense,
+    updateExpense,
+    toggleExpenseDone,
+    addSeparator,
+    removeSeparator,
     incrementConsumed,
     decrementConsumed,
     addDivision,

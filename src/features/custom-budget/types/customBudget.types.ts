@@ -1,9 +1,17 @@
-export type SectionType = "simple" | "equivalence" | "conversion";
+export type SectionType = "simple" | "equivalence" | "conversion" | "checklist";
 
 export interface Expense {
   id: string;
   nombre?: string;
   monto: number;
+  order?: number;
+  done?: boolean;
+}
+
+export interface Separator {
+  id: string;
+  label: string;
+  order: number;
 }
 
 export interface CustomSection {
@@ -17,8 +25,10 @@ export interface CustomSection {
   // Común a simple y equivalence
   totalAmount: number;
 
-  // Solo SIMPLE: lista de gastos
+  // Solo SIMPLE y CHECKLIST: lista de gastos
   expenses: Expense[];
+  // Solo SIMPLE: separadores visuales (no afectan los cálculos)
+  separators: Separator[];
 
   // Solo EQUIVALENCE
   unitLabel?: string;       // "tanque", "clase", "sesión"

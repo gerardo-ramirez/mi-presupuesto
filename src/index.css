@@ -1,46 +1,129 @@
 @import "tailwindcss";
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 3.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 3.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 3.9%;
-  --primary: 0 0% 9%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 0 0% 96.1%;
-  --secondary-foreground: 0 0% 9%;
-  --muted: 0 0% 96.1%;
-  --muted-foreground: 0 0% 45.1%;
-  --accent: 0 0% 96.1%;
-  --accent-foreground: 0 0% 9%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 89.8%;
-  --input: 0 0% 89.8%;
-  --ring: 0 0% 3.9%;
   --radius: 0.5rem;
+
+  /* Light (default) */
+  --bg: #f9fafb;
+  --bg-elevated: #ffffff;
+  --bg-muted: #f3f4f6;
+  --text: #111827;
+  --text-muted: #4b5563;
+  --text-subtle: #6b7280;
+  --border-color: #e5e7eb;
+  --border-strong: #d1d5db;
+
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--bg-elevated);
+  --card-foreground: var(--text);
+  --popover: var(--bg-elevated);
+  --popover-foreground: var(--text);
+  --primary: var(--text);
+  --primary-foreground: var(--bg);
+  --secondary: var(--bg-muted);
+  --secondary-foreground: var(--text);
+  --muted: var(--bg-muted);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--bg-muted);
+  --accent-foreground: var(--text);
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+  --input: var(--border-color);
+  --ring: #f59e0b;
 }
 
-.dark {
-  --background: 0 0% 3.9%;
-  --foreground: 0 0% 98%;
-  --card: 0 0% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --popover: 0 0% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 0 0% 98%;
-  --primary-foreground: 0 0% 9%;
-  --secondary: 0 0% 14.9%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 14.9%;
-  --muted-foreground: 0 0% 63.9%;
-  --accent: 0 0% 14.9%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 14.9%;
-  --input: 0 0% 14.9%;
-  --ring: 0 0% 83.1%;
+[data-theme='dark'] {
+  --bg: #030712;
+  --bg-elevated: #111827;
+  --bg-muted: #1f2937;
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --text-subtle: #6b7280;
+  --border-color: #1f2937;
+  --border-strong: #374151;
+
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--bg-elevated);
+  --card-foreground: var(--text);
+  --popover: var(--bg-elevated);
+  --popover-foreground: var(--text);
+  --primary: var(--text);
+  --primary-foreground: var(--bg);
+  --secondary: var(--bg-muted);
+  --secondary-foreground: var(--text);
+  --muted: var(--bg-muted);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--bg-muted);
+  --accent-foreground: var(--text);
+  --destructive: #991b1b;
+  --destructive-foreground: #fef2f2;
+  --input: var(--border-color);
+  --ring: #f59e0b;
+}
+
+/* Fallback para cuando el usuario todavía no eligió tema explícitamente
+   (el script inline en index.html normalmente ya fija data-theme antes del primer paint) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #030712;
+    --bg-elevated: #111827;
+    --bg-muted: #1f2937;
+    --text: #e5e7eb;
+    --text-muted: #9ca3af;
+    --text-subtle: #6b7280;
+    --border-color: #1f2937;
+    --border-strong: #374151;
+
+    --background: var(--bg);
+    --foreground: var(--text);
+    --card: var(--bg-elevated);
+    --card-foreground: var(--text);
+    --popover: var(--bg-elevated);
+    --popover-foreground: var(--text);
+    --primary: var(--text);
+    --primary-foreground: var(--bg);
+    --secondary: var(--bg-muted);
+    --secondary-foreground: var(--text);
+    --muted: var(--bg-muted);
+    --muted-foreground: var(--text-muted);
+    --accent: var(--bg-muted);
+    --accent-foreground: var(--text);
+    --destructive: #991b1b;
+    --destructive-foreground: #fef2f2;
+    --input: var(--border-color);
+    --ring: #f59e0b;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-muted: var(--bg-muted);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
+  --color-border: var(--border-color);
+  --color-border-strong: var(--border-strong);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-lg: var(--radius);
 }

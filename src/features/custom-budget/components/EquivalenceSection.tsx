@@ -39,8 +39,8 @@ export function EquivalenceSection({
       <Row label="Monto total">
         <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />
       </Row>
-      <div className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800/50">
-        <span className="text-sm text-gray-400 flex items-center gap-1">
+      <div className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-bg-muted/50">
+        <span className="text-sm text-text-muted flex items-center gap-1">
           Precio por{' '}
           <EditableText
             value={unitLabel}
@@ -56,8 +56,8 @@ export function EquivalenceSection({
       <Row label={`Total ${unitLabel}s`}>
         {calculations.totalUnidades ?? 0}
       </Row>
-      <div className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-gray-800/50">
-        <span className="text-sm text-gray-400">{unitLabel}s consumidos</span>
+      <div className="flex items-center justify-between px-3 py-2 rounded-md hover:bg-bg-muted/50">
+        <span className="text-sm text-text-muted">{unitLabel}s consumidos</span>
         <Counter
           value={section.consumed ?? 0}
           onChange={(v) => {

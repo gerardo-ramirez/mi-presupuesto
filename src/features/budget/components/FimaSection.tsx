@@ -21,8 +21,8 @@ export function FimaSection({ data, calculations, onUpdate, onRemove, onComplete
         <EditableNumber value={data.fima} onChange={(v) => onUpdate('fima', v)} />
       </Row>
 
-      <Separator className="bg-gray-800 my-3" />
-      <p className="text-xs uppercase tracking-widest text-gray-600 px-3 pb-1">⛽ Nafta</p>
+      <Separator className="bg-bg-muted my-3" />
+      <p className="text-xs uppercase tracking-widest text-text-subtle px-3 pb-1">⛽ Nafta</p>
 
       <Row label="Monto asignado">
         <EditableNumber value={data.montoNafta} onChange={(v) => onUpdate('montoNafta', v)} />
@@ -42,8 +42,8 @@ export function FimaSection({ data, calculations, onUpdate, onRemove, onComplete
         $ {calculations.naftaRestante.toLocaleString('es-AR')}
       </Row>
 
-      <Separator className="bg-gray-800 my-3" />
-      <p className="text-xs uppercase tracking-widest text-gray-600 px-3 pb-1">🎸 Clases Jony</p>
+      <Separator className="bg-bg-muted my-3" />
+      <p className="text-xs uppercase tracking-widest text-text-subtle px-3 pb-1">🎸 Clases Jony</p>
 
       <Row label="Monto asignado">
         <EditableNumber value={data.paraClasesJony} onChange={(v) => onUpdate('paraClasesJony', v)} />

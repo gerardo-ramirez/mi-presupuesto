@@ -37,8 +37,8 @@ export function ForgotPasswordForm({ onSubmit, isLoading, error, isSuccess }: Fo
   })
 
   return (
-    <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-gray-900 border-gray-800 shadow-2xl shadow-black/50">
+    <div className="min-h-screen bg-bg flex items-center justify-center p-4">
+      <Card className="w-full max-w-md bg-bg-elevated border-border shadow-2xl shadow-black/50">
         <CardHeader className="space-y-1 pb-6">
           <div className="flex items-center gap-2 mb-2">
             <div className="h-6 w-6 rounded-sm bg-amber-500" />
@@ -46,10 +46,10 @@ export function ForgotPasswordForm({ onSubmit, isLoading, error, isSuccess }: Fo
               Mi Presupuesto
             </span>
           </div>
-          <CardTitle className="text-2xl font-bold text-gray-100">
+          <CardTitle className="text-2xl font-bold text-text">
             Recuperar Contraseña
           </CardTitle>
-          <CardDescription className="text-gray-400">
+          <CardDescription className="text-text-muted">
             {isSuccess
               ? 'Revisá tu bandeja de entrada'
               : 'Ingresá tu email y te enviaremos un link para restablecerla'}
@@ -60,7 +60,7 @@ export function ForgotPasswordForm({ onSubmit, isLoading, error, isSuccess }: Fo
           <CardContent className="space-y-4">
             <div className="flex flex-col items-center gap-3 py-4 text-center">
               <Mail className="h-10 w-10 text-amber-400" />
-              <p className="text-gray-300 text-sm">
+              <p className="text-text-muted text-sm">
                 Si el email ingresado corresponde a una cuenta registrada, vas a recibir un
                 correo con instrucciones para restablecer tu contraseña.
               </p>
@@ -84,7 +84,7 @@ export function ForgotPasswordForm({ onSubmit, isLoading, error, isSuccess }: Fo
                   name="email"
                   render={({ field, fieldState }) => (
                     <FormItem>
-                      <FormLabel className="text-gray-300 text-sm font-medium">
+                      <FormLabel className="text-text-muted text-sm font-medium">
                         Email
                       </FormLabel>
                       <FormControl>
@@ -94,7 +94,7 @@ export function ForgotPasswordForm({ onSubmit, isLoading, error, isSuccess }: Fo
                           autoComplete="email"
                           disabled={isLoading}
                           className={cn(
-                            'bg-gray-900 border-gray-700 text-gray-100 placeholder:text-gray-500',
+                            'bg-bg-elevated border-border-strong text-text placeholder:text-text-subtle',
                             'focus-visible:ring-amber-500 focus-visible:border-amber-500',
                             fieldState.error && 'border-red-500 focus-visible:ring-red-500',
                           )}
@@ -136,7 +136,7 @@ export function ForgotPasswordForm({ onSubmit, isLoading, error, isSuccess }: Fo
               <CardFooter className="pt-2 pb-6 justify-center">
                 <Link
                   to="/login"
-                  className="flex items-center gap-1 text-gray-500 hover:text-amber-400 text-sm transition-colors"
+                  className="flex items-center gap-1 text-text-subtle hover:text-amber-400 text-sm transition-colors"
                 >
                   <ArrowLeft className="h-3.5 w-3.5" />
                   Volver a Iniciar Sesión

@@ -89,7 +89,7 @@ export function BudgetDashboard() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+      <div className="min-h-screen bg-bg flex items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-amber-500" />
       </div>
     )
@@ -199,7 +199,7 @@ export function BudgetDashboard() {
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
       />
       <div
-        className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 p-4 md:p-8"
+        className="min-h-screen bg-gradient-to-b from-bg to-bg-elevated p-4 md:p-8"
         style={{ fontFamily: "'JetBrains Mono', monospace" }}
       >
         {/* Header */}
@@ -208,7 +208,7 @@ export function BudgetDashboard() {
             <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
               Mi Presupuesto
             </h1>
-            <p className="text-gray-500 text-sm mt-1">
+            <p className="text-text-subtle text-sm mt-1">
               Auto-guardado en Firebase
               {isSaving && (
                 <span className="ml-2 text-amber-500/70 inline-flex items-center gap-1">
@@ -223,7 +223,7 @@ export function BudgetDashboard() {
             variant="ghost"
             size="sm"
             onClick={resetBudget}
-            className="text-gray-600 hover:text-red-400 hover:bg-red-950/30 text-xs"
+            className="text-text-subtle hover:text-red-400 hover:bg-red-950/30 text-xs"
           >
             Resetear
           </Button>
@@ -249,7 +249,7 @@ export function BudgetDashboard() {
         {/* Secciones completadas — fuera del drag & drop */}
         {completedIds.length > 0 && (
           <div className="mt-6">
-            <p className="text-xs uppercase tracking-widest text-gray-600 mb-3">
+            <p className="text-xs uppercase tracking-widest text-text-subtle mb-3">
               Completadas
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -263,23 +263,23 @@ export function BudgetDashboard() {
         )}
 
         {/* Footer */}
-        <footer className="mt-12 pt-6 border-t border-gray-800/50 flex items-center justify-between gap-4">
+        <footer className="mt-12 pt-6 border-t border-border/50 flex items-center justify-between gap-4">
           <a
             href="https://gramirez-lab.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-gray-700 hover:text-amber-500/70 transition-colors duration-200 tracking-widest uppercase"
+            className="text-xs text-text-subtle hover:text-amber-500/70 transition-colors duration-200 tracking-widest uppercase"
           >
             gramirezlab ↗
           </a>
-          <div className="flex items-center gap-2 text-xs text-gray-700">
-            <span className="text-gray-800">·</span>
+          <div className="flex items-center gap-2 text-xs text-text-subtle">
+            <span className="text-text">·</span>
             <span>desarrollado por</span>
             <a
               href="https://gramirez.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-amber-500/70 transition-colors duration-200"
+              className="text-text-subtle hover:text-amber-500/70 transition-colors duration-200"
             >
               Gerardo Ramirez ↗
             </a>

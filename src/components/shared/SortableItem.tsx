@@ -34,8 +34,8 @@ export function SortableItem({ id, children }: SortableItemProps) {
           {...listeners}
           className={cn(
             'pointer-events-auto flex items-center gap-1 px-3 py-1 rounded-b-lg',
-            'bg-gray-800 border border-t-0 border-gray-700',
-            'text-gray-500 hover:text-gray-300 hover:border-gray-600 hover:bg-gray-700',
+            'bg-bg-muted border border-t-0 border-border-strong',
+            'text-text-subtle hover:text-text-muted hover:border-border-strong hover:bg-bg-muted',
             'cursor-grab active:cursor-grabbing',
             'transition-all duration-150',
             // siempre visible levemente (para touch), más al hover

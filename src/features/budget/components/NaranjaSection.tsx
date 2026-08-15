@@ -31,7 +31,7 @@ export function NaranjaSection({ data, calculations, onUpdate, onRemove, onCompl
         className="px-3 py-2"
       />
       <Row label="Restantes" highlight>{calculations.sesionesRestantes}</Row>
-      <Separator className="bg-gray-800 my-2" />
+      <Separator className="bg-bg-muted my-2" />
       <Row label="Dólares">
         <EditableNumber value={data.dolaresNaranja} onChange={(v) => onUpdate('dolaresNaranja', v)} prefix="USD" />
       </Row>

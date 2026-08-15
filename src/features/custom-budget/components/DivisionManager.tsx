@@ -32,17 +32,17 @@ export function DivisionManager({
   return (
     <div className="space-y-1">
       <div className="flex items-center gap-1 px-3 py-1">
-        <span className="text-xs text-gray-500">Dividir en</span>
+        <span className="text-xs text-text-subtle">Dividir en</span>
         <EditableText value={divisionLabel} onChange={onLabelChange} />
       </div>
 
       {divisions.map((parts, index) => (
-        <div key={index} className="flex items-center justify-between px-3 py-1 rounded-md hover:bg-gray-800/50">
-          <span className="text-sm text-gray-400">
+        <div key={index} className="flex items-center justify-between px-3 py-1 rounded-md hover:bg-bg-muted/50">
+          <span className="text-sm text-text-muted">
             A {parts} {divisionLabel}
           </span>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-mono text-gray-200">
+            <span className="text-sm font-mono text-text">
               $ {Math.round(equivalencia / parts).toLocaleString('es-AR')}
             </span>
             <Button
@@ -50,7 +50,7 @@ export function DivisionManager({
               variant="ghost"
               size="sm"
               onClick={() => onRemove(index)}
-              className="h-5 w-5 p-0 text-gray-600 hover:text-red-400 hover:bg-red-950/30"
+              className="h-5 w-5 p-0 text-text-subtle hover:text-red-400 hover:bg-red-950/30"
             >
               ✕
             </Button>
@@ -65,7 +65,7 @@ export function DivisionManager({
             onChange={(e) => setRaw(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter') handleAdd() }}
             placeholder="Cantidad"
-            className="h-7 w-20 bg-gray-800 border-gray-700 text-gray-200 text-xs placeholder:text-gray-600 focus-visible:ring-amber-500 focus-visible:border-amber-500"
+            className="h-7 w-20 bg-bg-muted border-border-strong text-text text-xs placeholder:text-text-subtle focus-visible:ring-amber-500 focus-visible:border-amber-500"
           />
           <Button
             type="button"
