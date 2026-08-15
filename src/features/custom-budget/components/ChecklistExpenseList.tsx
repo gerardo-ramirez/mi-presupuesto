@@ -23,24 +23,24 @@ export function ChecklistExpenseList({ expenses, onRemove, onUpdate, onToggleDon
           <button
             type="button"
             onClick={() => onToggleDone(e.id)}
-            className="flex items-start gap-2 min-w-0 text-left"
+            className="flex items-start gap-2 min-w-0 flex-1 text-left"
             title={e.done ? 'Marcar como pendiente' : 'Marcar como hecho'}
           >
             {e.done ? (
-              <CheckSquare className="h-4 w-4 text-emerald-500 shrink-0" />
+              <CheckSquare className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
             ) : (
-              <Square className="h-4 w-4 text-text-subtle shrink-0" />
+              <Square className="h-4 w-4 text-text-subtle shrink-0 mt-0.5" />
             )}
             <span
               className={cn(
-                'text-sm line-clamp-2 max-w-[50%] break-words',
+                'text-sm line-clamp-2 break-words min-w-0',
                 e.done ? 'text-text-subtle line-through' : 'text-text-muted',
               )}
             >
               {e.nombre ?? '—'}
             </span>
           </button>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <EditableNumber value={e.monto} onChange={(v) => onUpdate(e.id, v)} positive />
             <Button
               type="button"
