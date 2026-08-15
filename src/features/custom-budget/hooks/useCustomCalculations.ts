@@ -12,6 +12,14 @@ export function useCustomCalculations(
       return { totalGastado, disponible }
     }
 
+    if (section.type === 'checklist') {
+      const totalGastado = section.expenses
+        .filter((e) => e.done)
+        .reduce((acc, e) => acc + e.monto, 0)
+      const disponible = section.totalAmount - totalGastado
+      return { totalGastado, disponible }
+    }
+
     if (section.type === 'equivalence') {
       const unitPrice = section.unitPrice ?? 0
       const consumed = section.consumed ?? 0

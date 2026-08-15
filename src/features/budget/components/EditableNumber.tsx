@@ -47,7 +47,7 @@ export function EditableNumber({ value, onChange, prefix = '$', className }: Edi
         inputMode="decimal"
         placeholder="0"
         className={cn(
-          'h-7 w-36 bg-gray-800 border-amber-500 text-amber-300 text-sm font-mono',
+          'h-7 w-36 bg-bg-muted border-amber-500 text-amber-300 text-sm font-mono',
           'focus-visible:ring-amber-500',
           className,
         )}

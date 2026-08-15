@@ -38,13 +38,13 @@ export function SectionCard({
       className={cn(
         isCompleted
           ? 'bg-emerald-950/40 border-emerald-900/60'
-          : 'bg-gray-900 border-gray-800',
+          : 'bg-bg-elevated border-border',
         className,
       )}
     >
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between gap-2">
-          <CardTitle className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-500">
+          <CardTitle className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-text-subtle">
             <span>{icon}</span>
             <span>{title}</span>
             {isCompleted && (
@@ -75,7 +75,7 @@ export function SectionCard({
                     type="button"
                     variant="ghost"
                     size="sm"
-                    className="h-6 w-6 p-0 text-gray-500 border border-gray-700/60 hover:text-red-400 hover:bg-red-950/30 hover:border-red-800/60"
+                    className="h-6 w-6 p-0 text-text-subtle border border-border-strong/60 hover:text-red-400 hover:bg-red-950/30 hover:border-red-800/60"
                     title="Eliminar sección"
                   >
                     ✕

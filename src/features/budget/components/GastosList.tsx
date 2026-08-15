@@ -20,9 +20,9 @@ export function GastosList({ items, onRemove, className }: GastosListProps) {
       {items.map((item) => (
         <li
           key={item.id}
-          className="flex items-center justify-between gap-2 px-3 py-1.5 rounded-md bg-gray-800/60 text-sm"
+          className="flex items-center justify-between gap-2 px-3 py-1.5 rounded-md bg-bg-muted/60 text-sm"
         >
-          <span className="text-gray-300 truncate">
+          <span className="text-text-muted truncate">
             {item.nombre ? `${item.nombre} — ` : ''}
             <span className="font-mono text-amber-300">
               $ {item.monto.toLocaleString('es-AR')}

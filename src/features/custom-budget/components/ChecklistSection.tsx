@@ -1,37 +1,34 @@
-import { Separator as UiSeparator } from '@/components/ui/separator'
+import { Separator } from '@/components/ui/separator'
 import type { CustomSection, SectionCalculations } from '../types/customBudget.types'
 import { SectionCard } from './SectionCard'
 import { Row } from './Row'
 import { EditableNumber } from './EditableNumber'
-import { ExpenseList } from './ExpenseList'
+import { ChecklistExpenseList } from './ChecklistExpenseList'
 import { AddExpenseForm } from './AddExpenseForm'
-import { AddSeparatorForm } from './AddSeparatorForm'
 
-interface SimpleSectionProps {
+interface ChecklistSectionProps {
   section: CustomSection
   calculations: SectionCalculations
   onUpdate: (updates: Partial<CustomSection>) => void
   onAddExpense: (monto: number, nombre?: string) => void
   onRemoveExpense: (expenseId: string) => void
   onUpdateExpense: (expenseId: string, monto: number) => void
-  onAddSeparator: (label: string) => void
-  onRemoveSeparator: (separatorId: string) => void
+  onToggleExpenseDone: (expenseId: string) => void
   onRemove: () => void
   onComplete: () => void
 }
 
-export function SimpleSection({
+export function ChecklistSection({
   section,
   calculations,
   onUpdate,
   onAddExpense,
   onRemoveExpense,
   onUpdateExpense,
-  onAddSeparator,
-  onRemoveSeparator,
+  onToggleExpenseDone,
   onRemove,
   onComplete,
-}: SimpleSectionProps) {
+}: ChecklistSectionProps) {
   return (
     <SectionCard
       title={section.title}
@@ -45,21 +42,19 @@ export function SimpleSection({
       <Row label="Monto total">
         <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />
       </Row>
-      <UiSeparator className="bg-bg-muted my-1" />
-      <ExpenseList
+      <Separator className="bg-bg-muted my-1" />
+      <ChecklistExpenseList
         expenses={section.expenses}
-        separators={section.separators}
         onRemove={onRemoveExpense}
         onUpdate={onUpdateExpense}
-        onRemoveSeparator={onRemoveSeparator}
+        onToggleDone={onToggleExpenseDone}
       />
       <AddExpenseForm onAdd={onAddExpense} withName />
-      <AddSeparatorForm onAdd={onAddSeparator} />
-      <UiSeparator className="bg-bg-muted my-1" />
-      <Row label="Gastado">
+      <Separator className="bg-bg-muted my-1" />
+      <Row label="Gastado" highlight>
         $ {(calculations.totalGastado ?? 0).toLocaleString('es-AR')}
       </Row>
-      <Row label="Disponible" remaining>
+      <Row label="Disponible">
         $ {(calculations.disponible ?? 0).toLocaleString('es-AR')}
       </Row>
     </SectionCard>

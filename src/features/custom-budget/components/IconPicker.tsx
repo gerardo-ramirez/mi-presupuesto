@@ -28,12 +28,12 @@ export function IconPicker({ value, onChange }: IconPickerProps) {
       <SelectTrigger className="h-7 w-14 bg-transparent border-none text-base px-1 focus:ring-0 focus:ring-offset-0">
         <SelectValue>{value}</SelectValue>
       </SelectTrigger>
-      <SelectContent className="bg-gray-900 border-gray-700">
+      <SelectContent className="bg-bg-elevated border-border-strong">
         {ICONS.map(({ emoji, label }) => (
           <SelectItem
             key={emoji}
             value={emoji}
-            className="text-gray-200 focus:bg-amber-500/20 focus:text-amber-300 cursor-pointer"
+            className="text-text focus:bg-amber-500/20 focus:text-amber-300 cursor-pointer"
           >
             {emoji} {label}
           </SelectItem>

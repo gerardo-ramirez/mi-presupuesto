@@ -34,7 +34,7 @@ export function AddExpenseForm({ onAdd, withName = false }: AddExpenseFormProps)
           onKeyDown={(e) => { if (e.key === 'Enter') montoRef.current?.focus() }}
           placeholder="Agregá un gasto"
           maxLength={200}
-          className="h-7 bg-gray-800 border-gray-700 text-gray-200 text-xs placeholder:text-gray-600 focus-visible:ring-amber-500 focus-visible:border-amber-500"
+          className="h-7 bg-bg-muted border-border-strong text-text text-xs placeholder:text-text-subtle focus-visible:ring-amber-500 focus-visible:border-amber-500"
         />
       )}
       <Input
@@ -44,7 +44,7 @@ export function AddExpenseForm({ onAdd, withName = false }: AddExpenseFormProps)
         onKeyDown={handleMontoKeyDown}
         placeholder="Monto"
         inputMode="decimal"
-        className="h-7 bg-gray-800 border-gray-700 text-gray-200 text-xs placeholder:text-gray-600 focus-visible:ring-amber-500 focus-visible:border-amber-500"
+        className="h-7 bg-bg-muted border-border-strong text-text text-xs placeholder:text-text-subtle focus-visible:ring-amber-500 focus-visible:border-amber-500"
       />
       <Button
         type="button"

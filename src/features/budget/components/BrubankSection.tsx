@@ -35,10 +35,10 @@ export function BrubankSection({
       <Row label="Saldo">
         <EditableNumber value={brubank} onChange={onBrubankChange} />
       </Row>
-      <Separator className="bg-gray-800 my-2" />
+      <Separator className="bg-bg-muted my-2" />
       <GastosList items={brubankGastos} onRemove={onRemoveGasto} />
       <AddGastoForm onAdd={onAddGasto} withName={false} />
-      <Separator className="bg-gray-800 my-2" />
+      <Separator className="bg-bg-muted my-2" />
       <Row label="Gastado">$ {calculations.totalBrubankGastado.toLocaleString('es-AR')}</Row>
       <Row label="Disponible" remaining>
         $ {calculations.brubankRestante.toLocaleString('es-AR')}

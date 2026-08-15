@@ -18,7 +18,7 @@ export function CurrencyBar({
     <div className="flex items-center justify-between px-4 py-3 rounded-lg bg-amber-500/10 border border-amber-500/20 mb-4">
       <div className="flex items-center gap-2">
         <span className="text-base">💵</span>
-        <span className="text-xs text-gray-500 font-semibold tracking-widest uppercase">
+        <span className="text-xs text-text-subtle font-semibold tracking-widest uppercase">
           Tipo de cambio
         </span>
         <EditableText value={currencyName} onChange={onNameChange} />

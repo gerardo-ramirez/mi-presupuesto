@@ -42,7 +42,7 @@ export function EditableText({ value, onChange, className, placeholder = 'AgregÃ
         maxLength={50}
         placeholder={placeholder}
         className={cn(
-          'h-6 bg-gray-800 border-amber-500 text-amber-300 text-xs font-semibold tracking-widest uppercase focus-visible:ring-amber-500 px-2',
+          'h-6 bg-bg-muted border-amber-500 text-amber-300 text-xs font-semibold tracking-widest uppercase focus-visible:ring-amber-500 px-2',
           className,
         )}
       />

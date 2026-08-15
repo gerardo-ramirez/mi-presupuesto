@@ -34,13 +34,13 @@ export function FiwindSection({
       <Row label="Presupuesto">
         <EditableNumber value={data.gastosGenerales} onChange={(v) => onUpdate('gastosGenerales', v)} />
       </Row>
-      <Separator className="bg-gray-800 my-2" />
+      <Separator className="bg-bg-muted my-2" />
       <GastosList items={elementosComprados} onRemove={onRemoveElemento} />
       <AddGastoForm
         onAdd={(monto, nombre) => onAddElemento(nombre ?? '', monto)}
         withName
       />
-      <Separator className="bg-gray-800 my-2" />
+      <Separator className="bg-bg-muted my-2" />
       <Row label="Gastado">$ {calculations.totalElementosComprados.toLocaleString('es-AR')}</Row>
       <Row label="Disponible" remaining>
         $ {calculations.gastosDisponible.toLocaleString('es-AR')}

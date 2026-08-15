@@ -14,7 +14,7 @@ export function AddGastoForm({ onAdd, withName = false, className }: AddGastoFor
   const [monto, setMonto] = useState('')
 
   const inputClass = cn(
-    'h-8 bg-gray-800 border-gray-700 text-gray-100 placeholder:text-gray-600 text-sm',
+    'h-8 bg-bg-muted border-border-strong text-text placeholder:text-text-subtle text-sm',
     'focus-visible:ring-amber-500 focus-visible:border-amber-500',
   )
 

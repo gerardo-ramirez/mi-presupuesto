@@ -17,7 +17,7 @@ export function Row({ label, highlight, remaining, children, className }: RowPro
           ? 'bg-rose-500/10 border border-rose-500/20'
           : highlight
             ? 'bg-amber-500/10 border border-amber-500/20'
-            : 'hover:bg-gray-800/50',
+            : 'hover:bg-bg-muted/50',
         className,
       )}
     >
@@ -28,7 +28,7 @@ export function Row({ label, highlight, remaining, children, className }: RowPro
             ? 'text-rose-400 font-medium'
             : highlight
               ? 'text-amber-300 font-medium'
-              : 'text-gray-400',
+              : 'text-text-muted',
         )}
       >
         {label}
@@ -40,7 +40,7 @@ export function Row({ label, highlight, remaining, children, className }: RowPro
             ? 'text-rose-400 font-semibold'
             : highlight
               ? 'text-amber-300 font-semibold'
-              : 'text-gray-200',
+              : 'text-text',
         )}
       >
         {children}

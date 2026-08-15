@@ -18,7 +18,7 @@ export function MainLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-bg">
       <Navbar
         userName={user?.displayName ?? null}
         onLogout={logout}
