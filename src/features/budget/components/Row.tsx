@@ -27,7 +27,7 @@ export function Row({ label, highlight, remaining, children, className }: RowPro
           remaining
             ? 'text-rose-400 font-medium'
             : highlight
-              ? 'text-amber-300 font-medium'
+              ? 'text-gold-300 font-medium'
               : 'text-text-muted',
         )}
       >
@@ -39,7 +39,7 @@ export function Row({ label, highlight, remaining, children, className }: RowPro
           remaining
             ? 'text-rose-400 font-semibold'
             : highlight
-              ? 'text-amber-300 font-semibold'
+              ? 'text-gold-300 font-semibold'
               : 'text-text',
         )}
       >

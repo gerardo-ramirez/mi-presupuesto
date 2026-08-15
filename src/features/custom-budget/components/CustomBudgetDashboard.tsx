@@ -175,7 +175,7 @@ export function CustomBudgetDashboard() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-bg flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-amber-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-gold-500" />
       </div>
     )
   }
@@ -216,12 +216,12 @@ export function CustomBudgetDashboard() {
         {/* Header */}
         <header className="mb-6 flex items-start justify-between">
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">
               Mi Presupuesto
             </h1>
             <p className="text-text-subtle text-sm mt-1">
               {isSaving ? (
-                <span className="text-amber-500/70 inline-flex items-center gap-1">
+                <span className="text-gold-500/70 inline-flex items-center gap-1">
                   <Loader2 className="h-3 w-3 animate-spin" />
                   Guardando...
                 </span>
@@ -252,10 +252,10 @@ export function CustomBudgetDashboard() {
         {/* Example banner */}
         {!bannerDismissed && activeSections.some((s) => s.id.startsWith('example-')) && (
           <div className="flex items-start gap-3 mb-4 px-4 py-3 rounded-xl bg-amber-900/20 border border-amber-800/50">
-            <Info className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
+            <Info className="h-4 w-4 text-gold-400 mt-0.5 shrink-0" />
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-amber-300">Estas secciones son de ejemplo</p>
-              <p className="text-xs text-amber-700 mt-0.5">
+              <p className="text-sm font-medium text-gold-300">Estas secciones son de ejemplo</p>
+              <p className="text-xs text-gold-700 mt-0.5">
                 Podés editarlas, eliminarlas o crear las tuyas propias. Los cambios se guardan automáticamente en tu cuenta.
               </p>
             </div>
@@ -264,7 +264,7 @@ export function CustomBudgetDashboard() {
               variant="ghost"
               size="sm"
               onClick={dismissBanner}
-              className="text-amber-600 hover:text-amber-400 hover:bg-amber-500/10 text-xs h-7 px-2 shrink-0"
+              className="text-gold-600 hover:text-gold-400 hover:bg-amber-500/10 text-xs h-7 px-2 shrink-0"
             >
               Entendido
             </Button>
@@ -333,7 +333,7 @@ export function CustomBudgetDashboard() {
             href="https://gramirez-lab.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-text-subtle hover:text-amber-500/70 transition-colors duration-200 tracking-widest uppercase"
+            className="text-xs text-text-subtle hover:text-gold-500/70 transition-colors duration-200 tracking-widest uppercase"
           >
             gramirezlab ↗
           </a>
@@ -344,7 +344,7 @@ export function CustomBudgetDashboard() {
               href="https://gramirez.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-subtle hover:text-amber-500/70 transition-colors duration-200"
+              className="text-text-subtle hover:text-gold-500/70 transition-colors duration-200"
             >
               Gerardo Ramirez ↗
             </a>

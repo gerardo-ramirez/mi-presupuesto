@@ -90,7 +90,7 @@ export function BudgetDashboard() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-bg flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-amber-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-gold-500" />
       </div>
     )
   }
@@ -205,13 +205,13 @@ export function BudgetDashboard() {
         {/* Header */}
         <header className="mb-8 flex items-start justify-between">
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">
               Mi Presupuesto
             </h1>
             <p className="text-text-subtle text-sm mt-1">
               Auto-guardado en Firebase
               {isSaving && (
-                <span className="ml-2 text-amber-500/70 inline-flex items-center gap-1">
+                <span className="ml-2 text-gold-500/70 inline-flex items-center gap-1">
                   <Loader2 className="h-3 w-3 animate-spin" />
                   Guardando...
                 </span>
@@ -268,7 +268,7 @@ export function BudgetDashboard() {
             href="https://gramirez-lab.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-text-subtle hover:text-amber-500/70 transition-colors duration-200 tracking-widest uppercase"
+            className="text-xs text-text-subtle hover:text-gold-500/70 transition-colors duration-200 tracking-widest uppercase"
           >
             gramirezlab ↗
           </a>
@@ -279,7 +279,7 @@ export function BudgetDashboard() {
               href="https://gramirez.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-subtle hover:text-amber-500/70 transition-colors duration-200"
+              className="text-text-subtle hover:text-gold-500/70 transition-colors duration-200"
             >
               Gerardo Ramirez ↗
             </a>

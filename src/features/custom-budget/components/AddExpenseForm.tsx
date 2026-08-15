@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { sanitizeSafeText } from '@/lib/sanitize'
 
 interface AddExpenseFormProps {
   onAdd: (monto: number, nombre?: string) => void
@@ -30,7 +31,7 @@ export function AddExpenseForm({ onAdd, withName = false }: AddExpenseFormProps)
       {withName && (
         <Input
           value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
+          onChange={(e) => setNombre(sanitizeSafeText(e.target.value))}
           onKeyDown={(e) => { if (e.key === 'Enter') montoRef.current?.focus() }}
           placeholder="Agregá un gasto"
           maxLength={200}
@@ -50,7 +51,7 @@ export function AddExpenseForm({ onAdd, withName = false }: AddExpenseFormProps)
         type="button"
         size="sm"
         onClick={handleSubmit}
-        className="h-7 px-2 bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/30 text-xs"
+        className="h-7 px-2 bg-amber-500/20 text-gold-300 hover:bg-amber-500/30 border border-amber-500/30 text-xs"
       >
         {withName ? '+' : 'Aplicar'}
       </Button>

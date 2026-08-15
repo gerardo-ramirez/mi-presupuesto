@@ -57,7 +57,7 @@ export function SectionCard({
             {!isCompleted && onTitleChange ? (
               <EditableText value={title} onChange={onTitleChange} />
             ) : (
-              <span className="text-xs font-semibold tracking-widest uppercase text-amber-300 truncate">
+              <span className="text-xs font-semibold tracking-widest uppercase text-gold-300 truncate">
                 {title}
               </span>
             )}

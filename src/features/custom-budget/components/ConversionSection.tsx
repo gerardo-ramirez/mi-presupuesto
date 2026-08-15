@@ -105,7 +105,7 @@ export function ConversionSection({
             variant="ghost"
             size="sm"
             onClick={() => { setShowExtra(true); onUpdate({ extraLabel: '', extraAmount: 0 }) }}
-            className="h-6 text-xs text-text-subtle hover:text-amber-400 px-0"
+            className="h-6 text-xs text-text-subtle hover:text-gold-400 px-0"
           >
             + Agregar monto extra
           </Button>

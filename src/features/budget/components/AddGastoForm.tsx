@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { sanitizeSafeText } from '@/lib/sanitize'
 
 interface AddGastoFormProps {
   onAdd: (monto: number, nombre?: string) => void
@@ -37,7 +38,7 @@ export function AddGastoForm({ onAdd, withName = false, className }: AddGastoFor
         <Input
           placeholder="Agregá un gasto"
           value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
+          onChange={(e) => setNombre(sanitizeSafeText(e.target.value))}
           onKeyDown={handleKeyDown}
           maxLength={200}
           className={cn(inputClass, 'flex-1')}

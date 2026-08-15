@@ -51,7 +51,7 @@ function EditableLabel({
         onChange={(e) => setRaw(e.target.value)}
         onBlur={confirm}
         onKeyDown={handleKeyDown}
-        className="h-6 w-28 bg-bg-muted border-amber-500 text-amber-300 text-xs font-semibold tracking-widest uppercase focus-visible:ring-amber-500 px-2"
+        className="h-6 w-28 bg-bg-muted border-amber-500 text-gold-300 text-xs font-semibold tracking-widest uppercase focus-visible:ring-amber-500 px-2"
       />
     )
   }
@@ -61,8 +61,8 @@ function EditableLabel({
       type="button"
       onClick={startEditing}
       className={cn(
-        'text-xs font-semibold tracking-widest uppercase text-amber-300',
-        'hover:text-amber-200 hover:underline underline-offset-2',
+        'text-xs font-semibold tracking-widest uppercase text-gold-300',
+        'hover:text-gold-200 hover:underline underline-offset-2',
         'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-500 rounded',
         'cursor-pointer transition-colors',
       )}

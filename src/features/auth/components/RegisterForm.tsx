@@ -49,7 +49,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
         <CardHeader className="space-y-1 pb-6">
           <div className="flex items-center gap-2 mb-2">
             <div className="h-6 w-6 rounded-sm bg-amber-500" />
-            <span className="text-amber-400 text-sm font-medium tracking-wide uppercase">
+            <span className="text-gold-400 text-sm font-medium tracking-wide uppercase">
               Mi Presupuesto
             </span>
           </div>
@@ -230,7 +230,7 @@ export function RegisterForm({ onSubmit, isLoading, error }: RegisterFormProps) 
                 ¿Ya tenés cuenta?{' '}
                 <Link
                   to="/login"
-                  className="text-amber-400 hover:text-amber-300 font-medium underline-offset-4 hover:underline transition-colors"
+                  className="text-gold-400 hover:text-gold-300 font-medium underline-offset-4 hover:underline transition-colors"
                 >
                   Iniciá sesión
                 </Link>

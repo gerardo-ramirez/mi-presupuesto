@@ -18,6 +18,19 @@ import { z } from 'zod'
 export const SAFE_TEXT_REGEX = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9\s.,\-()\/%$]+$/
 
 /**
+ * Caracteres NO permitidos por SAFE_TEXT_REGEX (mismo whitelist, sin anclar).
+ * Usar en formularios para filtrar el input en tiempo real, así lo que el
+ * usuario escribe nunca puede fallar después la validación de safeTextField()
+ * al guardar (y evitar el fallback destructivo de los adapters ante un
+ * documento inválido).
+ */
+const UNSAFE_TEXT_CHARS = /[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9\s.,\-()\/%$]/g
+
+export function sanitizeSafeText(input: string): string {
+  return input.replace(UNSAFE_TEXT_CHARS, '')
+}
+
+/**
  * Nombre de divisa o etiqueta corta: solo letras y espacios.
  * Ejemplo: "DÓLAR", "EURO", "clase", "partes"
  */
