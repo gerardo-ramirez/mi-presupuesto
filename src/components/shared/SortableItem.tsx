@@ -40,7 +40,7 @@ export function SortableItem({ id, children }: SortableItemProps) {
             'transition-all duration-150',
             // siempre visible levemente (para touch), más al hover
             'opacity-40 group-hover:opacity-100',
-            isDragging && 'opacity-100 cursor-grabbing text-amber-400 border-amber-500/50 bg-amber-950/30',
+            isDragging && 'opacity-100 cursor-grabbing text-gold-400 border-amber-500/50 bg-amber-950/30',
           )}
           aria-label="Arrastrar para reordenar"
         >

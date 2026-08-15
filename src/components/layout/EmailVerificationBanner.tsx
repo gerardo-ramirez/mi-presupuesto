@@ -27,7 +27,7 @@ export function EmailVerificationBanner() {
 
   return (
     <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 bg-amber-500/10 border-b border-amber-500/30 px-3 sm:px-6 py-2 text-xs sm:text-sm">
-      <div className="flex items-center gap-2 text-amber-300">
+      <div className="flex items-center gap-2 text-gold-300">
         <MailWarning className="h-4 w-4 shrink-0" />
         <span>Tu email todavía no está verificado.</span>
       </div>
@@ -37,7 +37,7 @@ export function EmailVerificationBanner() {
         size="sm"
         onClick={handleResend}
         disabled={isSending || sent}
-        className="h-auto py-0.5 px-2 text-amber-400 hover:text-amber-300 hover:bg-amber-500/10 underline-offset-4 hover:underline disabled:opacity-60"
+        className="h-auto py-0.5 px-2 text-gold-400 hover:text-gold-300 hover:bg-amber-500/10 underline-offset-4 hover:underline disabled:opacity-60"
       >
         {isSending ? (
           <>

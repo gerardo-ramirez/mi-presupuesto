@@ -33,7 +33,7 @@ export function IconPicker({ value, onChange }: IconPickerProps) {
           <SelectItem
             key={emoji}
             value={emoji}
-            className="text-text focus:bg-amber-500/20 focus:text-amber-300 cursor-pointer"
+            className="text-text focus:bg-amber-500/20 focus:text-gold-300 cursor-pointer"
           >
             {emoji} {label}
           </SelectItem>

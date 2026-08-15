@@ -19,17 +19,17 @@ export function Counter({ value, onChange, label, className }: CounterProps) {
           size="sm"
           onClick={() => onChange(Math.max(0, value - 1))}
           disabled={value <= 0}
-          className="h-7 w-7 p-0 text-text-muted hover:text-amber-400 hover:bg-bg-muted"
+          className="h-7 w-7 p-0 text-text-muted hover:text-gold-400 hover:bg-bg-muted"
         >
           −
         </Button>
-        <span className="font-mono text-amber-300 min-w-[2rem] text-center">{value}</span>
+        <span className="font-mono text-gold-300 min-w-[2rem] text-center">{value}</span>
         <Button
           type="button"
           variant="ghost"
           size="sm"
           onClick={() => onChange(value + 1)}
-          className="h-7 w-7 p-0 text-text-muted hover:text-amber-400 hover:bg-bg-muted"
+          className="h-7 w-7 p-0 text-text-muted hover:text-gold-400 hover:bg-bg-muted"
         >
           +
         </Button>

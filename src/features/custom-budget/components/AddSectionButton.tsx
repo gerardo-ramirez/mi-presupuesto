@@ -25,7 +25,7 @@ export function AddSectionButton({ onAdd }: AddSectionButtonProps) {
         <Button
           type="button"
           variant="outline"
-          className="w-full border-amber-500/30 text-amber-400 hover:bg-amber-500/10 hover:text-amber-300 hover:border-amber-500/50 bg-transparent text-sm"
+          className="w-full border-amber-500/30 text-gold-400 hover:bg-amber-500/10 hover:text-gold-300 hover:border-amber-500/50 bg-transparent text-sm"
         >
           + Agregar sección
         </Button>
@@ -38,7 +38,7 @@ export function AddSectionButton({ onAdd }: AddSectionButtonProps) {
           <DropdownMenuItem
             key={type}
             onClick={() => onAdd(type)}
-            className="flex flex-col items-start gap-0.5 cursor-pointer focus:bg-amber-500/20 focus:text-amber-300 py-2"
+            className="flex flex-col items-start gap-0.5 cursor-pointer focus:bg-amber-500/20 focus:text-gold-300 py-2"
           >
             <span className="text-text font-medium text-sm">
               {emoji} {label}

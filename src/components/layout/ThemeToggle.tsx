@@ -11,7 +11,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="sm"
       onClick={toggleTheme}
-      className="text-text-muted hover:text-amber-400 hover:bg-amber-500/10 px-2 sm:px-3"
+      className="text-text-muted hover:text-gold-400 hover:bg-amber-500/10 px-2 sm:px-3"
       aria-label={theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
       title={theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
     >

@@ -42,7 +42,7 @@ export function ForgotPasswordForm({ onSubmit, isLoading, error, isSuccess }: Fo
         <CardHeader className="space-y-1 pb-6">
           <div className="flex items-center gap-2 mb-2">
             <div className="h-6 w-6 rounded-sm bg-amber-500" />
-            <span className="text-amber-400 text-sm font-medium tracking-wide uppercase">
+            <span className="text-gold-400 text-sm font-medium tracking-wide uppercase">
               Mi Presupuesto
             </span>
           </div>
@@ -59,7 +59,7 @@ export function ForgotPasswordForm({ onSubmit, isLoading, error, isSuccess }: Fo
         {isSuccess ? (
           <CardContent className="space-y-4">
             <div className="flex flex-col items-center gap-3 py-4 text-center">
-              <Mail className="h-10 w-10 text-amber-400" />
+              <Mail className="h-10 w-10 text-gold-400" />
               <p className="text-text-muted text-sm">
                 Si el email ingresado corresponde a una cuenta registrada, vas a recibir un
                 correo con instrucciones para restablecer tu contraseña.
@@ -136,7 +136,7 @@ export function ForgotPasswordForm({ onSubmit, isLoading, error, isSuccess }: Fo
               <CardFooter className="pt-2 pb-6 justify-center">
                 <Link
                   to="/login"
-                  className="flex items-center gap-1 text-text-subtle hover:text-amber-400 text-sm transition-colors"
+                  className="flex items-center gap-1 text-text-subtle hover:text-gold-400 text-sm transition-colors"
                 >
                   <ArrowLeft className="h-3.5 w-3.5" />
                   Volver a Iniciar Sesión

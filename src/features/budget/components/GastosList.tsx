@@ -24,7 +24,7 @@ export function GastosList({ items, onRemove, className }: GastosListProps) {
         >
           <span className="text-text-muted truncate">
             {item.nombre ? `${item.nombre} — ` : ''}
-            <span className="font-mono text-amber-300">
+            <span className="font-mono text-gold-300">
               $ {item.monto.toLocaleString('es-AR')}
             </span>
           </span>

@@ -46,7 +46,7 @@ export function EditableNumber({ value, onChange, prefix = '$', positive = false
         onKeyDown={handleKeyDown}
         inputMode="decimal"
         placeholder="0"
-        className="h-6 w-28 bg-bg-muted border-amber-500 text-amber-300 text-xs font-mono focus-visible:ring-amber-500 px-2"
+        className="h-6 w-28 bg-bg-muted border-amber-500 text-gold-300 text-xs font-mono focus-visible:ring-amber-500 px-2"
       />
     )
   }
@@ -56,8 +56,8 @@ export function EditableNumber({ value, onChange, prefix = '$', positive = false
       type="button"
       onClick={startEditing}
       className={cn(
-        'text-sm font-mono font-semibold text-amber-300',
-        'hover:text-amber-200 hover:underline underline-offset-2',
+        'text-sm font-mono font-semibold text-gold-300',
+        'hover:text-gold-200 hover:underline underline-offset-2',
         'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-500 rounded',
         'cursor-pointer transition-colors',
       )}

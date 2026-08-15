@@ -15,11 +15,11 @@ export function Counter({ value, onChange, label }: CounterProps) {
         variant="ghost"
         size="sm"
         onClick={() => onChange(Math.max(0, value - 1))}
-        className="h-6 w-6 p-0 text-text-muted hover:text-amber-300 hover:bg-amber-500/10"
+        className="h-6 w-6 p-0 text-text-muted hover:text-gold-300 hover:bg-amber-500/10"
       >
         −
       </Button>
-      <span className="text-sm font-mono font-semibold text-amber-300 min-w-[2ch] text-center">
+      <span className="text-sm font-mono font-semibold text-gold-300 min-w-[2ch] text-center">
         {value}
       </span>
       <Button
@@ -27,7 +27,7 @@ export function Counter({ value, onChange, label }: CounterProps) {
         variant="ghost"
         size="sm"
         onClick={() => onChange(value + 1)}
-        className="h-6 w-6 p-0 text-text-muted hover:text-amber-300 hover:bg-amber-500/10"
+        className="h-6 w-6 p-0 text-text-muted hover:text-gold-300 hover:bg-amber-500/10"
       >
         +
       </Button>

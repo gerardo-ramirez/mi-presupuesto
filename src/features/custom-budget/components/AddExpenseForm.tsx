@@ -50,7 +50,7 @@ export function AddExpenseForm({ onAdd, withName = false }: AddExpenseFormProps)
         type="button"
         size="sm"
         onClick={handleSubmit}
-        className="h-7 px-2 bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/30 text-xs"
+        className="h-7 px-2 bg-amber-500/20 text-gold-300 hover:bg-amber-500/30 border border-amber-500/30 text-xs"
       >
         {withName ? '+' : 'Aplicar'}
       </Button>
