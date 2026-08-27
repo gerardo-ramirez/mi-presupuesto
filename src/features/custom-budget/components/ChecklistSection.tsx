@@ -5,6 +5,8 @@ import { Row } from './Row'
 import { EditableNumber } from './EditableNumber'
 import { ChecklistExpenseList } from './ChecklistExpenseList'
 import { AddExpenseForm } from './AddExpenseForm'
+import { shareText } from '@/lib/share'
+import { buildChecklistShareMessage } from '../utils/shareMessage'
 
 interface ChecklistSectionProps {
   section: CustomSection
@@ -42,6 +44,7 @@ export function ChecklistSection({
       onIconChange={(icon) => onUpdate({ icon })}
       onComplete={onComplete}
       isCompleted={section.completed}
+      onShare={() => shareText(buildChecklistShareMessage(section, calculations), section.title)}
     >
       <Row label="Monto total">
         <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />
