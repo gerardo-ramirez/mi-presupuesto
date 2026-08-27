@@ -30,9 +30,11 @@ function SectionRenderer({
   onAddExpense,
   onRemoveExpense,
   onUpdateExpense,
+  onUpdateExpenseName,
   onToggleExpenseDone,
   onAddSeparator,
   onRemoveSeparator,
+  onUpdateSeparatorLabel,
   onIncrement,
   onDecrement,
   onAddDivision,
@@ -47,9 +49,11 @@ function SectionRenderer({
   onAddExpense: (monto: number, nombre?: string) => void
   onRemoveExpense: (expenseId: string) => void
   onUpdateExpense: (expenseId: string, monto: number) => void
+  onUpdateExpenseName: (expenseId: string, nombre: string) => void
   onToggleExpenseDone: (expenseId: string) => void
   onAddSeparator: (label: string) => void
   onRemoveSeparator: (separatorId: string) => void
+  onUpdateSeparatorLabel: (separatorId: string, label: string) => void
   onIncrement: () => void
   onDecrement: () => void
   onAddDivision: (parts: number) => void
@@ -68,8 +72,10 @@ function SectionRenderer({
         onAddExpense={onAddExpense}
         onRemoveExpense={onRemoveExpense}
         onUpdateExpense={onUpdateExpense}
+        onUpdateExpenseName={onUpdateExpenseName}
         onAddSeparator={onAddSeparator}
         onRemoveSeparator={onRemoveSeparator}
+        onUpdateSeparatorLabel={onUpdateSeparatorLabel}
         onRemove={onRemove}
         onComplete={onComplete}
       />
@@ -135,9 +141,11 @@ export function CustomBudgetDashboard() {
     addExpense,
     removeExpense,
     updateExpense,
+    updateExpenseName,
     toggleExpenseDone,
     addSeparator,
     removeSeparator,
+    updateSeparator,
     incrementConsumed,
     decrementConsumed,
     addDivision,
@@ -192,9 +200,13 @@ export function CustomBudgetDashboard() {
     onAddExpense: (monto: number, nombre?: string) => addExpense(section.id, monto, nombre),
     onRemoveExpense: (expenseId: string) => removeExpense(section.id, expenseId),
     onUpdateExpense: (expenseId: string, monto: number) => updateExpense(section.id, expenseId, monto),
+    onUpdateExpenseName: (expenseId: string, nombre: string) =>
+      updateExpenseName(section.id, expenseId, nombre),
     onToggleExpenseDone: (expenseId: string) => toggleExpenseDone(section.id, expenseId),
     onAddSeparator: (label: string) => addSeparator(section.id, label),
     onRemoveSeparator: (separatorId: string) => removeSeparator(section.id, separatorId),
+    onUpdateSeparatorLabel: (separatorId: string, label: string) =>
+      updateSeparator(section.id, separatorId, label),
     onIncrement: () => incrementConsumed(section.id),
     onDecrement: () => decrementConsumed(section.id),
     onAddDivision: (parts: number) => addDivision(section.id, parts),

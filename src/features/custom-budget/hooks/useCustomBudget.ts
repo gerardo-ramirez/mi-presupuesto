@@ -168,6 +168,31 @@ export function useCustomBudget() {
     }))
   }
 
+  function updateExpenseName(sectionId: string, expenseId: string, nombre: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId
+          ? { ...s, expenses: s.expenses.map((e) => (e.id === expenseId ? { ...e, nombre } : e)) }
+          : s,
+      ),
+    }))
+  }
+
+  function updateSeparator(sectionId: string, separatorId: string, label: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId
+          ? {
+              ...s,
+              separators: s.separators.map((sep) => (sep.id === separatorId ? { ...sep, label } : sep)),
+            }
+          : s,
+      ),
+    }))
+  }
+
   function incrementConsumed(sectionId: string) {
     setData((prev) => ({
       ...prev,
@@ -233,9 +258,11 @@ export function useCustomBudget() {
     addExpense,
     removeExpense,
     updateExpense,
+    updateExpenseName,
     toggleExpenseDone,
     addSeparator,
     removeSeparator,
+    updateSeparator,
     incrementConsumed,
     decrementConsumed,
     addDivision,

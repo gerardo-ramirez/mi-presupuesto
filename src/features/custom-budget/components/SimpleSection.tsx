@@ -14,8 +14,10 @@ interface SimpleSectionProps {
   onAddExpense: (monto: number, nombre?: string) => void
   onRemoveExpense: (expenseId: string) => void
   onUpdateExpense: (expenseId: string, monto: number) => void
+  onUpdateExpenseName: (expenseId: string, nombre: string) => void
   onAddSeparator: (label: string) => void
   onRemoveSeparator: (separatorId: string) => void
+  onUpdateSeparatorLabel: (separatorId: string, label: string) => void
   onRemove: () => void
   onComplete: () => void
 }
@@ -27,11 +29,15 @@ export function SimpleSection({
   onAddExpense,
   onRemoveExpense,
   onUpdateExpense,
+  onUpdateExpenseName,
   onAddSeparator,
   onRemoveSeparator,
+  onUpdateSeparatorLabel,
   onRemove,
   onComplete,
 }: SimpleSectionProps) {
+  const disponible = calculations.disponible ?? 0
+  const excedido = disponible < 0
   return (
     <SectionCard
       title={section.title}
@@ -51,7 +57,9 @@ export function SimpleSection({
         separators={section.separators}
         onRemove={onRemoveExpense}
         onUpdate={onUpdateExpense}
+        onUpdateName={onUpdateExpenseName}
         onRemoveSeparator={onRemoveSeparator}
+        onUpdateSeparatorLabel={onUpdateSeparatorLabel}
       />
       <AddExpenseForm onAdd={onAddExpense} withName />
       <AddSeparatorForm onAdd={onAddSeparator} />
@@ -60,8 +68,13 @@ export function SimpleSection({
         $ {(calculations.totalGastado ?? 0).toLocaleString('es-AR')}
       </Row>
       <Row label="Disponible" remaining>
-        $ {(calculations.disponible ?? 0).toLocaleString('es-AR')}
+        $ {disponible.toLocaleString('es-AR')}
       </Row>
+      {excedido && (
+        <Row label="Te pasaste del monto total" danger>
+          - $ {Math.abs(disponible).toLocaleString('es-AR')}
+        </Row>
+      )}
     </SectionCard>
   )
 }

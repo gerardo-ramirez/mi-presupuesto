@@ -4,29 +4,34 @@ interface RowProps {
   label: string
   highlight?: boolean
   remaining?: boolean
+  danger?: boolean
   children: React.ReactNode
 }
 
-export function Row({ label, highlight, remaining, children }: RowProps) {
+export function Row({ label, highlight, remaining, danger, children }: RowProps) {
   return (
     <div
       className={cn(
         'flex items-center justify-between px-3 py-2 rounded-md',
-        remaining
-          ? 'bg-rose-500/10 border border-rose-500/20'
-          : highlight
-            ? 'bg-amber-500/10 border border-amber-500/20'
-            : 'hover:bg-bg-muted/50',
+        danger
+          ? 'bg-red-500/15 border border-red-500/40'
+          : remaining
+            ? 'bg-rose-500/10 border border-rose-500/20'
+            : highlight
+              ? 'bg-amber-500/10 border border-amber-500/20'
+              : 'hover:bg-bg-muted/50',
       )}
     >
       <span
         className={cn(
           'text-sm',
-          remaining
-            ? 'text-rose-400 font-medium'
-            : highlight
-              ? 'text-gold-300 font-medium'
-              : 'text-text-muted',
+          danger
+            ? 'text-red-400 font-semibold'
+            : remaining
+              ? 'text-rose-400 font-medium'
+              : highlight
+                ? 'text-gold-300 font-medium'
+                : 'text-text-muted',
         )}
       >
         {label}
@@ -34,11 +39,13 @@ export function Row({ label, highlight, remaining, children }: RowProps) {
       <div
         className={cn(
           'text-sm font-mono',
-          remaining
-            ? 'text-rose-400 font-semibold'
-            : highlight
-              ? 'text-gold-300 font-semibold'
-              : 'text-text',
+          danger
+            ? 'text-red-400 font-bold'
+            : remaining
+              ? 'text-rose-400 font-semibold'
+              : highlight
+                ? 'text-gold-300 font-semibold'
+                : 'text-text',
         )}
       >
         {children}

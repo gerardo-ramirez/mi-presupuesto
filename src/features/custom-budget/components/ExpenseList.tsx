@@ -1,20 +1,31 @@
 import { Button } from '@/components/ui/button'
 import type { Expense, Separator } from '../types/customBudget.types'
 import { EditableNumber } from './EditableNumber'
+import { EditableText } from './EditableText'
 
 interface ExpenseListProps {
   expenses: Expense[]
   separators?: Separator[]
   onRemove: (id: string) => void
   onUpdate: (id: string, monto: number) => void
+  onUpdateName?: (id: string, nombre: string) => void
   onRemoveSeparator?: (id: string) => void
+  onUpdateSeparatorLabel?: (id: string, label: string) => void
 }
 
 type MergedItem =
   | { kind: 'expense'; order: number; data: Expense }
   | { kind: 'separator'; order: number; data: Separator }
 
-export function ExpenseList({ expenses, separators = [], onRemove, onUpdate, onRemoveSeparator }: ExpenseListProps) {
+export function ExpenseList({
+  expenses,
+  separators = [],
+  onRemove,
+  onUpdate,
+  onUpdateName,
+  onRemoveSeparator,
+  onUpdateSeparatorLabel,
+}: ExpenseListProps) {
   if (expenses.length === 0 && separators.length === 0) {
     return <p className="text-xs text-text-subtle italic px-3 py-1">Sin gastos</p>
   }
@@ -32,7 +43,16 @@ export function ExpenseList({ expenses, separators = [], onRemove, onUpdate, onR
             key={item.data.id}
             className="flex items-center justify-between px-3 py-1 my-1 rounded-md bg-sky-500/10 border border-sky-500/30"
           >
-            <span className="text-xs font-medium text-sky-300 truncate">{item.data.label}</span>
+            {onUpdateSeparatorLabel ? (
+              <EditableText
+                value={item.data.label}
+                onChange={(label) => onUpdateSeparatorLabel(item.data.id, label)}
+                variant="label"
+                className="text-xs font-medium text-sky-300 hover:text-sky-200 truncate"
+              />
+            ) : (
+              <span className="text-xs font-medium text-sky-300 truncate">{item.data.label}</span>
+            )}
             {onRemoveSeparator && (
               <Button
                 type="button"
@@ -47,9 +67,19 @@ export function ExpenseList({ expenses, separators = [], onRemove, onUpdate, onR
           </li>
         ) : (
           <li key={item.data.id} className="flex items-center justify-between px-3 py-1 rounded-md hover:bg-bg-muted/50">
-            <span className="text-sm text-text-muted truncate max-w-[60%]">
-              {item.data.nombre ?? '—'}
-            </span>
+            {onUpdateName ? (
+              <EditableText
+                value={item.data.nombre ?? ''}
+                onChange={(nombre) => onUpdateName(item.data.id, nombre)}
+                variant="label"
+                placeholder="—"
+                className="text-sm text-text-muted hover:text-text truncate max-w-[60%]"
+              />
+            ) : (
+              <span className="text-sm text-text-muted truncate max-w-[60%]">
+                {item.data.nombre ?? '—'}
+              </span>
+            )}
             <div className="flex items-center gap-2">
               <EditableNumber value={item.data.monto} onChange={(v) => onUpdate(item.data.id, v)} positive />
               <Button
