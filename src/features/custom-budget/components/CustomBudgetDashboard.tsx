@@ -276,7 +276,7 @@ export function CustomBudgetDashboard() {
               variant="ghost"
               size="sm"
               onClick={dismissBanner}
-              className="text-gold-600 hover:text-gold-400 hover:bg-amber-500/10 text-xs h-7 px-2 shrink-0"
+              className="text-gold-300 border border-amber-700/50 bg-amber-500/10 hover:text-gold-200 hover:bg-amber-500/20 hover:border-amber-600/70 text-xs h-7 px-2 shrink-0"
             >
               Entendido
             </Button>
