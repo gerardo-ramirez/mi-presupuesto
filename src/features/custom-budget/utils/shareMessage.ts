@@ -52,3 +52,47 @@ export function buildChecklistShareMessage(section: CustomSection, calculations:
 
   return lines.join('\n')
 }
+
+export function buildEquivalenceShareMessage(section: CustomSection, calculations: SectionCalculations) {
+  const unitLabel = section.unitLabel ?? 'unidad'
+
+  const lines = [
+    `📊 *${section.title}*`,
+    `Monto total: ${formatMoney(section.totalAmount)}`,
+    `Precio por ${unitLabel}: ${formatMoney(section.unitPrice ?? 0)}`,
+    `Total ${unitLabel}s: ${calculations.totalUnidades ?? 0}`,
+    `${unitLabel}s consumidos: ${section.consumed ?? 0}`,
+    `${unitLabel}s restantes: ${calculations.unidadesRestantes ?? 0}`,
+    `Monto restante: ${formatMoney(calculations.montoRestante ?? 0)}`,
+  ]
+
+  return lines.join('\n')
+}
+
+export function buildConversionShareMessage(
+  section: CustomSection,
+  calculations: SectionCalculations,
+  currencyName: string,
+) {
+  const equivalencia = calculations.equivalenciaPesos ?? 0
+  const lines = [`📊 *${section.title}*`]
+
+  if (section.useCurrency) {
+    lines.push(`Monto en ${currencyName}: USD ${(section.currencyAmount ?? 0).toLocaleString('es-AR')}`)
+    lines.push(`Equivale en pesos: ${formatMoney(equivalencia)}`)
+  } else {
+    lines.push(`Monto en pesos: ${formatMoney(section.totalAmount)}`)
+  }
+
+  if ((section.extraAmount ?? 0) > 0) {
+    lines.push(`${section.extraLabel || 'Extra'}: ${formatMoney(section.extraAmount ?? 0)}`)
+    lines.push(`Total: ${formatMoney(calculations.totalConExtra ?? equivalencia)}`)
+  }
+
+  const divisionLabel = section.divisionLabel ?? 'partes'
+  for (const result of calculations.divisionResults ?? []) {
+    lines.push(`Dividido en ${result.parts} ${divisionLabel}: ${formatMoney(result.amount)} c/u`)
+  }
+
+  return lines.join('\n')
+}

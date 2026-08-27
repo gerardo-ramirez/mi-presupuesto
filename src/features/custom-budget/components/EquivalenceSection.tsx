@@ -4,6 +4,8 @@ import { Row } from './Row'
 import { EditableNumber } from './EditableNumber'
 import { EditableText } from './EditableText'
 import { Counter } from './Counter'
+import { shareText } from '@/lib/share'
+import { buildEquivalenceShareMessage } from '../utils/shareMessage'
 
 interface EquivalenceSectionProps {
   section: CustomSection
@@ -35,6 +37,7 @@ export function EquivalenceSection({
       onIconChange={(icon) => onUpdate({ icon })}
       onComplete={onComplete}
       isCompleted={section.completed}
+      onShare={() => shareText(buildEquivalenceShareMessage(section, calculations), section.title)}
     >
       <Row label="Monto total">
         <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />

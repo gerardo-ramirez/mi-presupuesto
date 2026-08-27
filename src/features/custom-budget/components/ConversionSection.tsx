@@ -7,6 +7,8 @@ import { Row } from './Row'
 import { EditableNumber } from './EditableNumber'
 import { EditableText } from './EditableText'
 import { DivisionManager } from './DivisionManager'
+import { shareText } from '@/lib/share'
+import { buildConversionShareMessage } from '../utils/shareMessage'
 
 interface ConversionSectionProps {
   section: CustomSection
@@ -41,6 +43,7 @@ export function ConversionSection({
       onIconChange={(icon) => onUpdate({ icon })}
       onComplete={onComplete}
       isCompleted={section.completed}
+      onShare={() => shareText(buildConversionShareMessage(section, calculations, currencyName), section.title)}
     >
       {/* Toggle useCurrency */}
       <div className="flex items-center gap-2 px-3 py-2">
