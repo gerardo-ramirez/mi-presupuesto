@@ -6,6 +6,8 @@ import { EditableNumber } from './EditableNumber'
 import { ExpenseList } from './ExpenseList'
 import { AddExpenseForm } from './AddExpenseForm'
 import { AddSeparatorForm } from './AddSeparatorForm'
+import { shareText } from '@/lib/share'
+import { buildSimpleShareMessage } from '../utils/shareMessage'
 
 interface SimpleSectionProps {
   section: CustomSection
@@ -47,6 +49,7 @@ export function SimpleSection({
       onIconChange={(icon) => onUpdate({ icon })}
       onComplete={onComplete}
       isCompleted={section.completed}
+      onShare={() => shareText(buildSimpleShareMessage(section, calculations), section.title)}
     >
       <Row label="Monto total">
         <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />

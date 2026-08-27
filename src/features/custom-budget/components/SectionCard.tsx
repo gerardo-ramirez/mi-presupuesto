@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { CheckCheck } from 'lucide-react'
+import { CheckCheck, Share2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { IconPicker } from './IconPicker'
 import { EditableText } from './EditableText'
@@ -25,6 +25,7 @@ interface SectionCardProps {
   onIconChange?: (icon: string) => void
   onComplete?: () => void
   isCompleted?: boolean
+  onShare?: () => void
 }
 
 export function SectionCard({
@@ -36,6 +37,7 @@ export function SectionCard({
   onIconChange,
   onComplete,
   isCompleted = false,
+  onShare,
 }: SectionCardProps) {
   return (
     <Card
@@ -70,6 +72,19 @@ export function SectionCard({
           </div>
 
           <div className="flex items-center gap-1 shrink-0">
+            {onShare && (
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={onShare}
+                aria-label="Compartir por WhatsApp"
+                className="h-6 w-6 p-0 text-text-subtle border border-border-strong/60 hover:text-emerald-400 hover:bg-emerald-950/30 hover:border-emerald-700/60"
+                title="Compartir por WhatsApp"
+              >
+                <Share2 className="h-3.5 w-3.5" />
+              </Button>
+            )}
             {!isCompleted && onComplete && (
               <Button
                 type="button"
