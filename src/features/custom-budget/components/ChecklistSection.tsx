@@ -29,6 +29,10 @@ export function ChecklistSection({
   onRemove,
   onComplete,
 }: ChecklistSectionProps) {
+  const totalExpenses = section.expenses.reduce((acc, e) => acc + e.monto, 0)
+  const excedido = totalExpenses > section.totalAmount
+  const exceso = totalExpenses - section.totalAmount
+
   return (
     <SectionCard
       title={section.title}
@@ -57,6 +61,11 @@ export function ChecklistSection({
       <Row label="Disponible">
         $ {(calculations.disponible ?? 0).toLocaleString('es-AR')}
       </Row>
+      {excedido && (
+        <Row label="Te pasaste del monto total" danger>
+          - $ {exceso.toLocaleString('es-AR')}
+        </Row>
+      )}
     </SectionCard>
   )
 }
