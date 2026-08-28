@@ -7,6 +7,7 @@ import { ChecklistExpenseList } from './ChecklistExpenseList'
 import { AddExpenseForm } from './AddExpenseForm'
 import { shareText } from '@/lib/share'
 import { buildChecklistShareMessage } from '../utils/shareMessage'
+import { isSectionExample } from '../utils/exampleSection'
 
 interface ChecklistSectionProps {
   section: CustomSection
@@ -18,6 +19,7 @@ interface ChecklistSectionProps {
   onToggleExpenseDone: (expenseId: string) => void
   onRemove: () => void
   onComplete: () => void
+  onConfirmExample: () => void
 }
 
 export function ChecklistSection({
@@ -30,10 +32,12 @@ export function ChecklistSection({
   onToggleExpenseDone,
   onRemove,
   onComplete,
+  onConfirmExample,
 }: ChecklistSectionProps) {
   const totalExpenses = section.expenses.reduce((acc, e) => acc + e.monto, 0)
   const excedido = totalExpenses > section.totalAmount
   const exceso = totalExpenses - section.totalAmount
+  const isExample = isSectionExample(section)
 
   return (
     <SectionCard
@@ -45,6 +49,9 @@ export function ChecklistSection({
       onComplete={onComplete}
       isCompleted={section.completed}
       onShare={() => shareText(buildChecklistShareMessage(section, calculations), section.title)}
+      isExample={isExample}
+      showConfirmExample={isExample && !!section.exampleEdited}
+      onConfirmExample={onConfirmExample}
     >
       <Row label="Monto total">
         <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />

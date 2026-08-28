@@ -9,6 +9,7 @@ import {
   TEMPLATE_CHECKLIST,
 } from '../schemas/customBudget.schemas'
 import type { CustomBudgetData, CustomSection, SectionType } from '../types/customBudget.types'
+import { isSectionExample } from '../utils/exampleSection'
 
 export function useCustomBudget() {
   const { user } = useAuth()
@@ -79,10 +80,32 @@ export function useCustomBudget() {
     }))
   }
 
-  function updateSection(sectionId: string, updates: Partial<CustomSection>) {
+  /**
+   * Aplica `updater` a la sección indicada. Si la sección es de ejemplo,
+   * marca `exampleEdited` para que la UI ofrezca confirmarla como propia.
+   */
+  function updateSectionData(sectionId: string, updater: (section: CustomSection) => CustomSection) {
     setData((prev) => ({
       ...prev,
-      sections: prev.sections.map((s) => (s.id === sectionId ? { ...s, ...updates } : s)),
+      sections: prev.sections.map((s) => {
+        if (s.id !== sectionId) return s
+        const updated = updater(s)
+        if (updated === s) return s
+        return isSectionExample(updated) ? { ...updated, exampleEdited: true } : updated
+      }),
+    }))
+  }
+
+  function updateSection(sectionId: string, updates: Partial<CustomSection>) {
+    updateSectionData(sectionId, (s) => ({ ...s, ...updates }))
+  }
+
+  function confirmExampleSection(sectionId: string) {
+    setData((prev) => ({
+      ...prev,
+      sections: prev.sections.map((s) =>
+        s.id === sectionId ? { ...s, isExample: false, exampleEdited: false } : s,
+      ),
     }))
   }
 
@@ -100,146 +123,84 @@ export function useCustomBudget() {
   }
 
   function addExpense(sectionId: string, monto: number, nombre?: string) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId
-          ? {
-              ...s,
-              expenses: [...s.expenses, { id: crypto.randomUUID(), nombre, monto, order: Date.now() }],
-            }
-          : s,
-      ),
+    updateSectionData(sectionId, (s) => ({
+      ...s,
+      expenses: [...s.expenses, { id: crypto.randomUUID(), nombre, monto, order: Date.now() }],
     }))
   }
 
   function toggleExpenseDone(sectionId: string, expenseId: string) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId
-          ? { ...s, expenses: s.expenses.map((e) => (e.id === expenseId ? { ...e, done: !e.done } : e)) }
-          : s,
-      ),
+    updateSectionData(sectionId, (s) => ({
+      ...s,
+      expenses: s.expenses.map((e) => (e.id === expenseId ? { ...e, done: !e.done } : e)),
     }))
   }
 
   function addSeparator(sectionId: string, label: string) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId
-          ? { ...s, separators: [...s.separators, { id: crypto.randomUUID(), label, order: Date.now() }] }
-          : s,
-      ),
+    updateSectionData(sectionId, (s) => ({
+      ...s,
+      separators: [...s.separators, { id: crypto.randomUUID(), label, order: Date.now() }],
     }))
   }
 
   function removeSeparator(sectionId: string, separatorId: string) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId
-          ? { ...s, separators: s.separators.filter((sep) => sep.id !== separatorId) }
-          : s,
-      ),
+    updateSectionData(sectionId, (s) => ({
+      ...s,
+      separators: s.separators.filter((sep) => sep.id !== separatorId),
     }))
   }
 
   function removeExpense(sectionId: string, expenseId: string) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId
-          ? { ...s, expenses: s.expenses.filter((e) => e.id !== expenseId) }
-          : s,
-      ),
+    updateSectionData(sectionId, (s) => ({
+      ...s,
+      expenses: s.expenses.filter((e) => e.id !== expenseId),
     }))
   }
 
   function updateExpense(sectionId: string, expenseId: string, monto: number) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId
-          ? { ...s, expenses: s.expenses.map((e) => (e.id === expenseId ? { ...e, monto } : e)) }
-          : s,
-      ),
+    updateSectionData(sectionId, (s) => ({
+      ...s,
+      expenses: s.expenses.map((e) => (e.id === expenseId ? { ...e, monto } : e)),
     }))
   }
 
   function updateExpenseName(sectionId: string, expenseId: string, nombre: string) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId
-          ? { ...s, expenses: s.expenses.map((e) => (e.id === expenseId ? { ...e, nombre } : e)) }
-          : s,
-      ),
+    updateSectionData(sectionId, (s) => ({
+      ...s,
+      expenses: s.expenses.map((e) => (e.id === expenseId ? { ...e, nombre } : e)),
     }))
   }
 
   function updateSeparator(sectionId: string, separatorId: string, label: string) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId
-          ? {
-              ...s,
-              separators: s.separators.map((sep) => (sep.id === separatorId ? { ...sep, label } : sep)),
-            }
-          : s,
-      ),
+    updateSectionData(sectionId, (s) => ({
+      ...s,
+      separators: s.separators.map((sep) => (sep.id === separatorId ? { ...sep, label } : sep)),
     }))
   }
 
   function incrementConsumed(sectionId: string) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId ? { ...s, consumed: (s.consumed ?? 0) + 1 } : s,
-      ),
-    }))
+    updateSectionData(sectionId, (s) => ({ ...s, consumed: (s.consumed ?? 0) + 1 }))
   }
 
   function decrementConsumed(sectionId: string) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId ? { ...s, consumed: Math.max(0, (s.consumed ?? 0) - 1) } : s,
-      ),
-    }))
+    updateSectionData(sectionId, (s) => ({ ...s, consumed: Math.max(0, (s.consumed ?? 0) - 1) }))
   }
 
   function addDivision(sectionId: string, parts: number) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId && (s.divisions ?? []).length < 3
-          ? { ...s, divisions: [...(s.divisions ?? []), parts] }
-          : s,
-      ),
-    }))
+    updateSectionData(sectionId, (s) =>
+      (s.divisions ?? []).length < 3 ? { ...s, divisions: [...(s.divisions ?? []), parts] } : s,
+    )
   }
 
   function removeDivision(sectionId: string, index: number) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId
-          ? { ...s, divisions: (s.divisions ?? []).filter((_, i) => i !== index) }
-          : s,
-      ),
+    updateSectionData(sectionId, (s) => ({
+      ...s,
+      divisions: (s.divisions ?? []).filter((_, i) => i !== index),
     }))
   }
 
   function markSectionComplete(sectionId: string) {
-    setData((prev) => ({
-      ...prev,
-      sections: prev.sections.map((s) =>
-        s.id === sectionId ? { ...s, completed: true } : s,
-      ),
-    }))
+    updateSectionData(sectionId, (s) => ({ ...s, completed: true }))
   }
 
   function resetCustomBudget() {
@@ -268,6 +229,7 @@ export function useCustomBudget() {
     addDivision,
     removeDivision,
     markSectionComplete,
+    confirmExampleSection,
     resetCustomBudget,
   }
 }

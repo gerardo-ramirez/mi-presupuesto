@@ -21,6 +21,7 @@ import { EquivalenceSection } from './EquivalenceSection'
 import { ConversionSection } from './ConversionSection'
 import { AddSectionButton } from './AddSectionButton'
 import type { CustomSection } from '../types/customBudget.types'
+import { isSectionExample } from '../utils/exampleSection'
 
 function SectionRenderer({
   section,
@@ -41,6 +42,7 @@ function SectionRenderer({
   onRemoveDivision,
   onRemove,
   onComplete,
+  onConfirmExample,
 }: {
   section: CustomSection
   currencyValue: number
@@ -60,6 +62,7 @@ function SectionRenderer({
   onRemoveDivision: (index: number) => void
   onRemove: () => void
   onComplete: () => void
+  onConfirmExample: () => void
 }) {
   const calculations = useCustomCalculations(section, currencyValue)
 
@@ -78,6 +81,7 @@ function SectionRenderer({
         onUpdateSeparatorLabel={onUpdateSeparatorLabel}
         onRemove={onRemove}
         onComplete={onComplete}
+        onConfirmExample={onConfirmExample}
       />
     )
   }
@@ -94,6 +98,7 @@ function SectionRenderer({
         onToggleExpenseDone={onToggleExpenseDone}
         onRemove={onRemove}
         onComplete={onComplete}
+        onConfirmExample={onConfirmExample}
       />
     )
   }
@@ -108,6 +113,7 @@ function SectionRenderer({
         onDecrement={onDecrement}
         onRemove={onRemove}
         onComplete={onComplete}
+        onConfirmExample={onConfirmExample}
       />
     )
   }
@@ -122,6 +128,7 @@ function SectionRenderer({
       onRemoveDivision={onRemoveDivision}
       onRemove={onRemove}
       onComplete={onComplete}
+      onConfirmExample={onConfirmExample}
     />
   )
 }
@@ -151,6 +158,7 @@ export function CustomBudgetDashboard() {
     addDivision,
     removeDivision,
     markSectionComplete,
+    confirmExampleSection,
     resetCustomBudget,
   } = useCustomBudget()
 
@@ -213,6 +221,7 @@ export function CustomBudgetDashboard() {
     onRemoveDivision: (index: number) => removeDivision(section.id, index),
     onRemove: () => removeSection(section.id),
     onComplete: () => markSectionComplete(section.id),
+    onConfirmExample: () => confirmExampleSection(section.id),
   })
 
   return (
@@ -262,7 +271,7 @@ export function CustomBudgetDashboard() {
         />
 
         {/* Example banner */}
-        {!bannerDismissed && activeSections.some((s) => s.id.startsWith('example-')) && (
+        {!bannerDismissed && activeSections.some(isSectionExample) && (
           <div className="flex items-start gap-3 mb-4 px-4 py-3 rounded-xl bg-amber-900/20 border border-amber-800/50">
             <Info className="h-4 w-4 text-gold-400 mt-0.5 shrink-0" />
             <div className="flex-1 min-w-0">

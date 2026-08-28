@@ -8,6 +8,7 @@ import { AddExpenseForm } from './AddExpenseForm'
 import { AddSeparatorForm } from './AddSeparatorForm'
 import { shareText } from '@/lib/share'
 import { buildSimpleShareMessage } from '../utils/shareMessage'
+import { isSectionExample } from '../utils/exampleSection'
 
 interface SimpleSectionProps {
   section: CustomSection
@@ -22,6 +23,7 @@ interface SimpleSectionProps {
   onUpdateSeparatorLabel: (separatorId: string, label: string) => void
   onRemove: () => void
   onComplete: () => void
+  onConfirmExample: () => void
 }
 
 export function SimpleSection({
@@ -37,9 +39,11 @@ export function SimpleSection({
   onUpdateSeparatorLabel,
   onRemove,
   onComplete,
+  onConfirmExample,
 }: SimpleSectionProps) {
   const disponible = calculations.disponible ?? 0
   const excedido = disponible < 0
+  const isExample = isSectionExample(section)
   return (
     <SectionCard
       title={section.title}
@@ -50,6 +54,9 @@ export function SimpleSection({
       onComplete={onComplete}
       isCompleted={section.completed}
       onShare={() => shareText(buildSimpleShareMessage(section, calculations), section.title)}
+      isExample={isExample}
+      showConfirmExample={isExample && !!section.exampleEdited}
+      onConfirmExample={onConfirmExample}
     >
       <Row label="Monto total">
         <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />

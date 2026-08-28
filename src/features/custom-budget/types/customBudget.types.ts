@@ -21,6 +21,10 @@ export interface CustomSection {
   order: number;
   type: SectionType;
   completed?: boolean;
+  // Secciones de ejemplo precargadas: se marcan visualmente distinto hasta
+  // que el usuario confirma que quiere usarlas como propias.
+  isExample?: boolean;
+  exampleEdited?: boolean;
 
   // Común a simple y equivalence
   totalAmount: number;
