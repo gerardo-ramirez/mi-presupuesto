@@ -9,6 +9,7 @@ import { EditableText } from './EditableText'
 import { DivisionManager } from './DivisionManager'
 import { shareText } from '@/lib/share'
 import { buildConversionShareMessage } from '../utils/shareMessage'
+import { isSectionExample } from '../utils/exampleSection'
 
 interface ConversionSectionProps {
   section: CustomSection
@@ -19,6 +20,7 @@ interface ConversionSectionProps {
   onRemoveDivision: (index: number) => void
   onRemove: () => void
   onComplete: () => void
+  onConfirmExample: () => void
 }
 
 export function ConversionSection({
@@ -30,9 +32,11 @@ export function ConversionSection({
   onRemoveDivision,
   onRemove,
   onComplete,
+  onConfirmExample,
 }: ConversionSectionProps) {
   const [showExtra, setShowExtra] = useState(!!(section.extraLabel || (section.extraAmount ?? 0) > 0))
   const equivalencia = calculations.equivalenciaPesos ?? 0
+  const isExample = isSectionExample(section)
 
   return (
     <SectionCard
@@ -43,6 +47,9 @@ export function ConversionSection({
       onIconChange={(icon) => onUpdate({ icon })}
       onComplete={onComplete}
       isCompleted={section.completed}
+      isExample={isExample}
+      showConfirmExample={isExample && !!section.exampleEdited}
+      onConfirmExample={onConfirmExample}
       onShare={() => shareText(buildConversionShareMessage(section, calculations, currencyName), section.title)}
     >
       {/* Toggle useCurrency */}

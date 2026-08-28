@@ -26,6 +26,9 @@ interface SectionCardProps {
   onComplete?: () => void
   isCompleted?: boolean
   onShare?: () => void
+  isExample?: boolean
+  showConfirmExample?: boolean
+  onConfirmExample?: () => void
 }
 
 export function SectionCard({
@@ -38,6 +41,9 @@ export function SectionCard({
   onComplete,
   isCompleted = false,
   onShare,
+  isExample = false,
+  showConfirmExample = false,
+  onConfirmExample,
 }: SectionCardProps) {
   return (
     <Card
@@ -45,7 +51,9 @@ export function SectionCard({
         'shadow-lg',
         isCompleted
           ? 'bg-emerald-950/40 border-emerald-900/60'
-          : 'bg-bg-elevated border-border',
+          : isExample
+            ? 'bg-bg-elevated border-2 border-dashed border-sky-500/40'
+            : 'bg-bg-elevated border-border',
       )}
     >
       <CardHeader className="pb-2 pt-4 px-4">
@@ -61,6 +69,11 @@ export function SectionCard({
             ) : (
               <span className="text-xs font-semibold tracking-widest uppercase text-gold-300 truncate">
                 {title}
+              </span>
+            )}
+            {isExample && !isCompleted && (
+              <span className="shrink-0 text-[9px] font-bold tracking-wider uppercase px-1.5 py-0.5 rounded-full border border-sky-500/40 text-sky-300 bg-sky-500/10">
+                Ejemplo
               </span>
             )}
             {isCompleted && (
@@ -131,6 +144,21 @@ export function SectionCard({
             )}
           </div>
         </div>
+
+        {showConfirmExample && onConfirmExample && (
+          <div className="mt-2 flex items-center justify-between gap-2 px-2 py-1.5 rounded-md bg-emerald-500/10 border border-emerald-600/40">
+            <span className="text-[11px] text-emerald-300">Editaste esta sección de ejemplo</span>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={onConfirmExample}
+              className="h-6 px-2 text-[11px] text-emerald-300 border border-emerald-600/50 hover:bg-emerald-500/20 hover:text-emerald-200"
+            >
+              Usar esta sección
+            </Button>
+          </div>
+        )}
       </CardHeader>
 
       <CardContent

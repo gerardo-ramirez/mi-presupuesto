@@ -6,6 +6,7 @@ import { EditableText } from './EditableText'
 import { Counter } from './Counter'
 import { shareText } from '@/lib/share'
 import { buildEquivalenceShareMessage } from '../utils/shareMessage'
+import { isSectionExample } from '../utils/exampleSection'
 
 interface EquivalenceSectionProps {
   section: CustomSection
@@ -15,6 +16,7 @@ interface EquivalenceSectionProps {
   onDecrement: () => void
   onRemove: () => void
   onComplete: () => void
+  onConfirmExample: () => void
 }
 
 export function EquivalenceSection({
@@ -25,8 +27,10 @@ export function EquivalenceSection({
   onDecrement,
   onRemove,
   onComplete,
+  onConfirmExample,
 }: EquivalenceSectionProps) {
   const unitLabel = section.unitLabel ?? 'unidad'
+  const isExample = isSectionExample(section)
 
   return (
     <SectionCard
@@ -38,6 +42,9 @@ export function EquivalenceSection({
       onComplete={onComplete}
       isCompleted={section.completed}
       onShare={() => shareText(buildEquivalenceShareMessage(section, calculations), section.title)}
+      isExample={isExample}
+      showConfirmExample={isExample && !!section.exampleEdited}
+      onConfirmExample={onConfirmExample}
     >
       <Row label="Monto total">
         <EditableNumber value={section.totalAmount} onChange={(v) => onUpdate({ totalAmount: v })} />
