@@ -12,7 +12,7 @@ export function Row({ label, highlight, remaining, danger, children }: RowProps)
   return (
     <div
       className={cn(
-        'flex items-center justify-between px-3 py-2 rounded-md',
+        'flex items-center justify-between flex-wrap gap-x-2 gap-y-0.5 px-3 py-2 rounded-md',
         danger
           ? 'bg-red-500/15 border border-red-500/40'
           : remaining
@@ -38,7 +38,7 @@ export function Row({ label, highlight, remaining, danger, children }: RowProps)
       </span>
       <div
         className={cn(
-          'text-sm font-mono',
+          'text-sm font-mono shrink-0',
           danger
             ? 'text-red-400 font-bold'
             : remaining

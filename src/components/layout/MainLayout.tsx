@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/features/auth'
 import { Navbar } from './Navbar'
-import { EmailVerificationBanner } from './EmailVerificationBanner'
+// import { EmailVerificationBanner } from './EmailVerificationBanner' // deshabilitado temporalmente: el reenvío de verificación no funciona
 
 const ADMIN_EMAIL = 'gerardoramirez656@gmail.com'
 
@@ -26,7 +26,6 @@ export function MainLayout() {
         currentView={currentView}
         onSwitch={handleSwitch}
       />
-      <EmailVerificationBanner />
       <Outlet />
     </div>
   )

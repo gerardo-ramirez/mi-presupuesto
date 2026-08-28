@@ -72,7 +72,7 @@ export function ChecklistSection({
         $ {(calculations.disponible ?? 0).toLocaleString('es-AR')}
       </Row>
       {excedido && (
-        <Row label="Te pasaste del monto total" danger>
+        <Row label="Excedido por" danger>
           - $ {exceso.toLocaleString('es-AR')}
         </Row>
       )}

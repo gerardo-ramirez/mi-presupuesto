@@ -81,7 +81,7 @@ export function SimpleSection({
         $ {disponible.toLocaleString('es-AR')}
       </Row>
       {excedido && (
-        <Row label="Te pasaste del monto total" danger>
+        <Row label="Excedido por" danger>
           - $ {Math.abs(disponible).toLocaleString('es-AR')}
         </Row>
       )}
