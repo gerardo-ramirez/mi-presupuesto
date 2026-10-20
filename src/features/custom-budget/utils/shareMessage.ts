@@ -35,9 +35,9 @@ export function buildSimpleShareMessage(section: CustomSection, calculations: Se
 export function buildChecklistShareMessage(section: CustomSection, calculations: SectionCalculations) {
   const totalGastado = calculations.totalGastado ?? 0
   const disponible = calculations.disponible ?? 0
-  const totalExpenses = section.expenses.reduce((acc, e) => acc + e.monto, 0)
-  const excedido = totalExpenses > section.totalAmount
-  const exceso = totalExpenses - section.totalAmount
+  const totalPrevisto = calculations.totalPrevisto ?? 0
+  const excedido = totalPrevisto > section.totalAmount
+  const exceso = totalPrevisto - section.totalAmount
 
   const lines = [`📊 *${section.title}*`, `Monto total: ${formatMoney(section.totalAmount)}`, '']
 
@@ -45,7 +45,12 @@ export function buildChecklistShareMessage(section: CustomSection, calculations:
     lines.push(`${e.done ? '✅' : '⬜'} ${e.nombre ?? 'Gasto'}: ${formatMoney(e.monto)}`)
   }
 
-  lines.push('', `Hecho: ${formatMoney(totalGastado)}`, `Pendiente: ${formatMoney(disponible)}`)
+  lines.push(
+    '',
+    `Total previsto: ${formatMoney(totalPrevisto)}`,
+    `Gastado: ${formatMoney(totalGastado)}`,
+    `Disponible: ${formatMoney(disponible)}`,
+  )
   if (excedido) {
     lines.push(`⚠️ Te pasaste del monto total por: ${formatMoney(exceso)}`)
   }

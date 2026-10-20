@@ -28,7 +28,7 @@ describe('useCustomCalculations', () => {
     expect(result.current.disponible).toBe(75000)
   })
 
-  it('en checklist, Gastado suma solo los done y Disponible suma solo los pendientes', () => {
+  it('en checklist, Gastado suma solo los done y Disponible es Monto total - Gastado', () => {
     const section: CustomSection = {
       ...baseSection,
       type: 'checklist',
@@ -41,31 +41,52 @@ describe('useCustomCalculations', () => {
     const { result } = renderHook(() => useCustomCalculations(section, 1000))
 
     expect(result.current.totalGastado).toBe(20000)
-    expect(result.current.disponible).toBe(5000)
+    expect(result.current.disponible).toBe(80000)
+    expect(result.current.totalPrevisto).toBe(25000)
   })
 
-  it('en checklist, Disponible sube al agregar y baja al marcar como hecho', () => {
+  it('en checklist, Total previsto sube al agregar y Disponible baja solo al marcar como hecho', () => {
     const withOnePending: CustomSection = {
       ...baseSection,
       type: 'checklist',
       expenses: [{ id: 'e1', monto: 10000, done: false }],
     }
     const { result: r1 } = renderHook(() => useCustomCalculations(withOnePending, 1000))
-    expect(r1.current.disponible).toBe(10000)
+    expect(r1.current.disponible).toBe(100000)
+    expect(r1.current.totalPrevisto).toBe(10000)
 
     const afterAdding: CustomSection = {
       ...withOnePending,
       expenses: [...withOnePending.expenses, { id: 'e2', monto: 7000, done: false }],
     }
     const { result: r2 } = renderHook(() => useCustomCalculations(afterAdding, 1000))
-    expect(r2.current.disponible).toBe(17000) // sube al agregar
+    expect(r2.current.disponible).toBe(100000) // no cambia al agregar
+    expect(r2.current.totalPrevisto).toBe(17000) // sube al agregar
 
     const afterMarkingDone: CustomSection = {
       ...afterAdding,
       expenses: afterAdding.expenses.map((e) => (e.id === 'e1' ? { ...e, done: true } : e)),
     }
     const { result: r3 } = renderHook(() => useCustomCalculations(afterMarkingDone, 1000))
-    expect(r3.current.disponible).toBe(7000) // baja al marcar como listo
+    expect(r3.current.disponible).toBe(90000) // baja al marcar como listo
     expect(r3.current.totalGastado).toBe(10000)
+    expect(r3.current.totalPrevisto).toBe(17000) // no cambia al marcar
+  })
+
+  it('en checklist sin monto total, Total previsto refleja cuánto haría falta', () => {
+    const section: CustomSection = {
+      ...baseSection,
+      type: 'checklist',
+      totalAmount: 0,
+      expenses: [
+        { id: 'e1', monto: 3000, done: false },
+        { id: 'e2', monto: 4500, done: false },
+      ],
+    }
+
+    const { result } = renderHook(() => useCustomCalculations(section, 1000))
+
+    expect(result.current.totalPrevisto).toBe(7500)
+    expect(result.current.disponible).toBe(0)
   })
 })

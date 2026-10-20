@@ -16,13 +16,11 @@ export function useCustomCalculations(
       const totalGastado = section.expenses
         .filter((e) => e.done)
         .reduce((acc, e) => acc + e.monto, 0)
-      // "Disponible" en checklist es el total pendiente: suma de los gastos
-      // todavía no marcados como hechos. Sube al agregar uno nuevo, baja al
-      // eliminarlo o al marcarlo como listo (se mueve a totalGastado).
-      const disponible = section.expenses
-        .filter((e) => !e.done)
-        .reduce((acc, e) => acc + e.monto, 0)
-      return { totalGastado, disponible }
+      const disponible = section.totalAmount - totalGastado
+      // "Total previsto": suma de todos los items, marcados o no. Sirve para
+      // saber cuánto haría falta tener aunque no se haya cargado un monto total.
+      const totalPrevisto = section.expenses.reduce((acc, e) => acc + e.monto, 0)
+      return { totalGastado, disponible, totalPrevisto }
     }
 
     if (section.type === 'equivalence') {
