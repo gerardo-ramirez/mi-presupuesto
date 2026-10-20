@@ -34,9 +34,9 @@ export function ChecklistSection({
   onComplete,
   onConfirmExample,
 }: ChecklistSectionProps) {
-  const totalExpenses = section.expenses.reduce((acc, e) => acc + e.monto, 0)
-  const excedido = totalExpenses > section.totalAmount
-  const exceso = totalExpenses - section.totalAmount
+  const totalPrevisto = calculations.totalPrevisto ?? 0
+  const excedido = totalPrevisto > section.totalAmount
+  const exceso = totalPrevisto - section.totalAmount
   const isExample = isSectionExample(section)
 
   return (
@@ -65,6 +65,9 @@ export function ChecklistSection({
       />
       <AddExpenseForm onAdd={onAddExpense} withName />
       <Separator className="bg-bg-muted my-1" />
+      <Row label="Total previsto">
+        $ {totalPrevisto.toLocaleString('es-AR')}
+      </Row>
       <Row label="Gastado" highlight>
         $ {(calculations.totalGastado ?? 0).toLocaleString('es-AR')}
       </Row>

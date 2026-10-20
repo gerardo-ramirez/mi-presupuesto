@@ -59,6 +59,9 @@ export interface SectionCalculations {
   totalGastado?: number;
   disponible?: number;
 
+  // Checklist
+  totalPrevisto?: number;   // suma de todos los items, hechos o no
+
   // Equivalence
   totalUnidades?: number;
   unidadesRestantes?: number;
